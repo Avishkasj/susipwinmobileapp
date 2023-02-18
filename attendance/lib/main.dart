@@ -9,8 +9,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -35,21 +33,20 @@ class _loginState extends State<login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.yellow[400],
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-
               //welcome text
-              Icon(
-                Icons.adobe_sharp,
-                size: 100,
+              Padding(
+                padding: const EdgeInsets.all(30.0),
+                child: Image(image: AssetImage('assets/susipwinlogo.png')),
               ),
-              SizedBox(
-                height: 30,
-              ),
+              // SizedBox(
+              //   height: 30,
+              // ),
               Text(
                 "Hello",
                 style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
@@ -67,7 +64,7 @@ class _loginState extends State<login> {
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: Container(
                   decoration: BoxDecoration(
-                      color: Colors.yellow[200],
+                      color: Colors.redAccent[200],
                       border: Border.all(color: Colors.white),
                       borderRadius: BorderRadius.circular(12)),
                   child: Padding(
@@ -86,13 +83,12 @@ class _loginState extends State<login> {
                 height: 20,
               ),
 
-
               //password
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: Container(
                   decoration: BoxDecoration(
-                      color: Colors.yellow[200],
+                      color: Colors.redAccent[200],
                       border: Border.all(color: Colors.white),
                       borderRadius: BorderRadius.circular(12)),
                   child: Padding(
@@ -112,33 +108,30 @@ class _loginState extends State<login> {
                 height: 20,
               ),
 
-
               //button
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: Container(
-                  padding: EdgeInsets.all(20),
-                  decoration: BoxDecoration(
-                      color: Colors.black,
-                      borderRadius: BorderRadius.circular(12)),
-                  child: TextButton(
-                    style: ButtonStyle(
-                      foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
-                    ),
-                    onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder:(context)=>Course()));
-                    },
-                    child: Text('LOG IN'),
-                  )
-                ),
+                    padding: EdgeInsets.all(20),
+                    decoration: BoxDecoration(
+                        color: Colors.black,
+                        borderRadius: BorderRadius.circular(12)),
+                    child: TextButton(
+                      style: ButtonStyle(
+                        foregroundColor:
+                            MaterialStateProperty.all<Color>(Colors.blue),
+                      ),
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => Course()));
+                      },
+                      child: Text('LOG IN'),
+                    )),
               ),
 
               SizedBox(
                 height: 20,
               ),
-
-
-
 
               //become a member
 

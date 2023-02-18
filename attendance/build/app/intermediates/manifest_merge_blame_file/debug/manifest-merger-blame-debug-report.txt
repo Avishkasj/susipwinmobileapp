@@ -13,8 +13,8 @@
 13         to allow setting breakpoints, to provide hot reload, etc.
 14    -->
 15    <uses-permission android:name="android.permission.INTERNET" />
-15-->/Users/avishkasupun/AndroidStudioProjects/getattendance/android/app/src/debug/AndroidManifest.xml:7:5-66
-15-->/Users/avishkasupun/AndroidStudioProjects/getattendance/android/app/src/debug/AndroidManifest.xml:7:22-64
+15-->/Users/avishkasupun/AndroidStudioProjects/susipwinmobileapp/attendance/android/app/src/debug/AndroidManifest.xml:7:5-66
+15-->/Users/avishkasupun/AndroidStudioProjects/susipwinmobileapp/attendance/android/app/src/debug/AndroidManifest.xml:7:22-64
 16    <uses-permission android:name="android.permission.CAMERA" /> <!-- Don't require camera, as this requires a rear camera. This allows it to work on the Nexus 7 -->
 16-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/avishkasupun/.gradle/caches/transforms-3/ccd9eb4d4ec2ed5d9e25aa039038b873/transformed/jetified-zxing-android-embedded-4.3.0/AndroidManifest.xml:22:5-65
 16-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/avishkasupun/.gradle/caches/transforms-3/ccd9eb4d4ec2ed5d9e25aa039038b873/transformed/jetified-zxing-android-embedded-4.3.0/AndroidManifest.xml:22:22-62

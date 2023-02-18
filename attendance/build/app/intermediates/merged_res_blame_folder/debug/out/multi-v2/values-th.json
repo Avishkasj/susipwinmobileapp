@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/avishkasupun/AndroidStudioProjects/getattendance/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-th/values-th.xml",
+            "outputFile": "/Users/avishkasupun/AndroidStudioProjects/susipwinmobileapp/attendance/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-th/values-th.xml",
             "map": [
                 {
                     "source": "/Users/avishkasupun/.gradle/caches/transforms-3/ccd9eb4d4ec2ed5d9e25aa039038b873/transformed/jetified-zxing-android-embedded-4.3.0/res/values-th/values-th.xml",

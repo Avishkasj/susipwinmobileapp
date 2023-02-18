@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/avishkasupun/AndroidStudioProjects/getattendance/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-ca/values-ca.xml",
+            "outputFile": "/Users/avishkasupun/AndroidStudioProjects/susipwinmobileapp/attendance/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-ca/values-ca.xml",
             "map": [
                 {
                     "source": "/Users/avishkasupun/.gradle/caches/transforms-3/aa05765c0c5779f0a0cfbee5516574bd/transformed/core-1.7.0/res/values-ca/values-ca.xml",

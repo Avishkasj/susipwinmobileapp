@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/avishkasupun/AndroidStudioProjects/getattendance/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
+            "outputFile": "/Users/avishkasupun/AndroidStudioProjects/susipwinmobileapp/attendance/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
             "map": [
                 {
                     "source": "/Users/avishkasupun/.gradle/caches/transforms-3/7698c8f6c038119d1e6e439b51491d2b/transformed/jetified-window-1.0.0-beta04/res/values/values.xml",
@@ -56,25 +56,6 @@
                         "endLines": "252,258,280,2780,2784",
                         "endColumns": "56,64,63,24,24",
                         "endOffsets": "16518,16783,17931,177690,177839"
-                    }
-                },
-                {
-                    "source": "/Users/avishkasupun/AndroidStudioProjects/getattendance/android/app/src/main/res/values/styles.xml",
-                    "from": {
-                        "startLines": "3,14",
-                        "startColumns": "4,4",
-                        "startOffsets": "173,818",
-                        "endLines": "7,16",
-                        "endColumns": "12,12",
-                        "endOffsets": "476,982"
-                    },
-                    "to": {
-                        "startLines": "1430,1435",
-                        "startColumns": "4,4",
-                        "startOffsets": "93038,93346",
-                        "endLines": "1434,1437",
-                        "endColumns": "12,12",
-                        "endOffsets": "93341,93510"
                     }
                 },
                 {
@@ -202,6 +183,25 @@
                         "startOffsets": "17822",
                         "endColumns": "49",
                         "endOffsets": "17867"
+                    }
+                },
+                {
+                    "source": "/Users/avishkasupun/AndroidStudioProjects/susipwinmobileapp/attendance/android/app/src/main/res/values/styles.xml",
+                    "from": {
+                        "startLines": "3,14",
+                        "startColumns": "4,4",
+                        "startOffsets": "173,818",
+                        "endLines": "7,16",
+                        "endColumns": "12,12",
+                        "endOffsets": "476,982"
+                    },
+                    "to": {
+                        "startLines": "1430,1435",
+                        "startColumns": "4,4",
+                        "startOffsets": "93038,93346",
+                        "endLines": "1434,1437",
+                        "endColumns": "12,12",
+                        "endOffsets": "93341,93510"
                     }
                 }
             ]
