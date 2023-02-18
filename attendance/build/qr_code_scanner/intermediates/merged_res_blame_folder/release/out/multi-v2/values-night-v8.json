@@ -1,0 +1,34 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/avishkasupun/AndroidStudioProjects/getattendance/build/qr_code_scanner/intermediates/res/merged/release/values-night-v8/values-night-v8.xml",
+            "map": [
+                {
+                    "source": "/Users/avishkasupun/.gradle/caches/transforms-3/f5a83c40c1f95bcf22f957a533966c49/transformed/appcompat-1.4.2/res/values-night-v8/values-night-v8.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,125,209,293,389,491,593,687",
+                        "endColumns": "69,83,83,95,101,101,93,88",
+                        "endOffsets": "120,204,288,384,486,588,682,771"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/Users/avishkasupun/AndroidStudioProjects/getattendance/build/qr_code_scanner/intermediates/incremental/mergeReleaseResources/merged.dir/values-night-v8/values-night-v8.xml",
+            "map": [
+                {
+                    "source": "/Users/avishkasupun/.gradle/caches/transforms-3/f5a83c40c1f95bcf22f957a533966c49/transformed/appcompat-1.4.2/res/values-night-v8/values-night-v8.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,125,209,293,389,491,593,687",
+                        "endColumns": "69,83,83,95,101,101,93,88",
+                        "endOffsets": "120,204,288,384,486,588,682,771"
+                    }
+                }
+            ]
+        }
+    ]
+}
