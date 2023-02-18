@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 void main() {
   runApp(const MyApp());
+  const color = const Color(0x003679);
 }
 
 class MyApp extends StatelessWidget {
@@ -33,7 +34,7 @@ class _loginState extends State<login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Color(0xFFBB38),
       body: SafeArea(
         child: Center(
           child: Column(
