@@ -82,7 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
     }
 
     return Scaffold(
-      backgroundColor: Colors.yellow[400],
+      backgroundColor: Colors.redAccent[400],
       body: Column(
         children: <Widget>[
           Expanded(

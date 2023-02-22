@@ -10,9 +10,13 @@ class Course extends StatelessWidget {
     return MaterialApp(
       title: "screen 2",
       home: Scaffold(
-        backgroundColor: Colors.yellow[400],
+        backgroundColor: Colors.white,
         appBar: AppBar(
-          title: Text("QR scanner"),
+          leading: Padding(
+            padding: const EdgeInsets.only(left: 16),
+            child: Image.asset('assets/susipwinlogo.png'),
+          ),
+          // title: Text("QR scanner"),
         ),
         body: Center(
           child: Column(
@@ -20,16 +24,45 @@ class Course extends StatelessWidget {
               GestureDetector(
                 onTap: (){
                   Navigator.push(context, MaterialPageRoute(builder:(context)=>QrScanner()));
-                  print("Course 1 clicked");
+                  String datetime = DateTime.now().toString();
+                  print(datetime);
+                  print("Course 3 clicked");
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Container(
-                    height: 70,
-                    width: double.infinity,
-                    color: Colors.green,
-                    child: Center(
-                      child: Text("Course 1"),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15.0),
+                      color: Colors.deepPurpleAccent,
+                    ),
+                    height: 100.0,
+                    // height: 100,
+                    // width: double.infinity,
+                    // color: Colors.green,
+                    child: SingleChildScrollView(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text("Information communication technology",
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(15.0),
+                            child: Row(
+                              children: [
+                                Text("Teacher  "),
+                                Text("J.M.A.S. Jayasooriya"),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -39,24 +72,6 @@ class Course extends StatelessWidget {
               GestureDetector(
                 onTap: (){
                   Navigator.push(context, MaterialPageRoute(builder:(context)=>QrScanner()));
-                  print("Course 2 clicked");
-
-                },
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    height: 70,
-                    width: double.infinity,
-                    color: Colors.green,
-                    child: Center(
-                      child: Text("Course 2"),
-                    ),
-                  ),
-                ),
-              ),
-
-              GestureDetector(
-                onTap: (){
                   String datetime = DateTime.now().toString();
                   print(datetime);
                   print("Course 3 clicked");
@@ -64,14 +79,137 @@ class Course extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Container(
-                    height: 70,
-                    width: double.infinity,
-                    color: Colors.green,
-                    child: Center(
-                      child: Text("Course 3"),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15.0),
+                      color: Colors.green,
+                    ),
+                    height: 100.0,
+                    // height: 100,
+                    // width: double.infinity,
+                    // color: Colors.green,
+                    child: SingleChildScrollView(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text("Science for technology",
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(15.0),
+                            child: Row(
+                              children: [
+                                Text("Teacher  "),
+                                Text("J.M.A.S. Jayasooriya"),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
+              ),
+
+              GestureDetector(
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder:(context)=>QrScanner()));
+                  String datetime = DateTime.now().toString();
+                  print(datetime);
+                  print("Course 3 clicked");
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15.0),
+                      color: Colors.redAccent,
+                    ),
+                    height: 100.0,
+                    // height: 100,
+                    // width: double.infinity,
+                    // color: Colors.green,
+                    child: SingleChildScrollView(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text("Engineering technology",
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(15.0),
+                            child: Row(
+                              children: [
+                                Text("Teacher  "),
+                                Text("J.M.A.S. Jayasooriya"),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+
+
+
+              GestureDetector(
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder:(context)=>QrScanner()));
+                  String datetime = DateTime.now().toString();
+                  print(datetime);
+                  print("Course 3 clicked");
+                },
+               child: Padding(
+                 padding: const EdgeInsets.all(8.0),
+                 child: Container(
+                   decoration: BoxDecoration(
+                     borderRadius: BorderRadius.circular(15.0),
+                     color: Colors.blue,
+                   ),
+                   height: 100.0,
+                   // height: 100,
+                   // width: double.infinity,
+                   // color: Colors.green,
+                   child: SingleChildScrollView(
+                     child: Column(
+                       crossAxisAlignment: CrossAxisAlignment.start,
+                       children: [
+                         Padding(
+                           padding: const EdgeInsets.all(8.0),
+                           child: Text("Biosystem technology",
+                           style: TextStyle(
+                             fontSize: 20,
+                             color: Colors.white,
+                           ),
+                           ),
+                         ),
+                         Padding(
+                           padding: const EdgeInsets.all(15.0),
+                           child: Row(
+                             children: [
+                               Text("Teacher  "),
+                               Text("J.M.A.S. Jayasooriya"),
+                             ],
+                           ),
+                         ),
+                       ],
+                     ),
+                   ),
+                 ),
+               ),
               ),
 
             ],
