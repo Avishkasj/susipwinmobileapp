@@ -86,6 +86,13 @@
             </list>
           </value>
         </entry>
+        <entry key="google_nav_bar">
+          <value>
+            <list>
+              <option value="$USER_HOME$/dev/flutter/.pub-cache/hosted/pub.dartlang.org/google_nav_bar-5.0.6/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="intl">
           <value>
             <list>
@@ -210,6 +217,7 @@
       <root url="file://$USER_HOME$/dev/flutter/.pub-cache/hosted/pub.dartlang.org/cupertino_icons-1.0.5/lib" />
       <root url="file://$USER_HOME$/dev/flutter/.pub-cache/hosted/pub.dartlang.org/fake_async-1.3.1/lib" />
       <root url="file://$USER_HOME$/dev/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_lints-2.0.1/lib" />
+      <root url="file://$USER_HOME$/dev/flutter/.pub-cache/hosted/pub.dartlang.org/google_nav_bar-5.0.6/lib" />
       <root url="file://$USER_HOME$/dev/flutter/.pub-cache/hosted/pub.dartlang.org/intl-0.17.0/lib" />
       <root url="file://$USER_HOME$/dev/flutter/.pub-cache/hosted/pub.dartlang.org/js-0.6.4/lib" />
       <root url="file://$USER_HOME$/dev/flutter/.pub-cache/hosted/pub.dartlang.org/lints-2.0.1/lib" />
