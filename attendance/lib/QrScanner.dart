@@ -1,4 +1,4 @@
-import 'package:attendance/course.dart';
+
 import 'package:attendance/main.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
