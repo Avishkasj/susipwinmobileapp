@@ -1,6 +1,7 @@
 import 'package:attendance/QrScanner.dart';
 import 'package:attendance/course.dart';
 import 'package:flutter/material.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
 
 void main() {
   runApp(const MyApp());
@@ -153,6 +154,19 @@ class _loginState extends State<login> {
             ),
           ),
         ),
+      ),
+
+      bottomNavigationBar: GNav(
+        tabs: [
+          GButton(icon: Icons.home,
+          text: ("Home"),),
+          GButton(icon: Icons.stacked_bar_chart,
+          text: ("Grade"),),
+          GButton(icon: Icons.settings,
+          text: ("Course"),),
+          GButton(icon: Icons.add,
+          text: "Qr",),
+        ],
       ),
     );
   }
