@@ -280,8 +280,8 @@ class Course extends StatelessWidget {
               text: ("Courses"),),
             GButton(icon: Icons.settings,
               text: ("Course"),),
-            GButton(icon: Icons.add,
-              text: "Qr",),
+            GButton(icon: Icons.logout,
+              text: "Log out",),
           ],
           selectedIndex: 1,
 

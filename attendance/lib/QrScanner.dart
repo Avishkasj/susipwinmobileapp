@@ -1,4 +1,3 @@
-
 import 'package:attendance/main.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
@@ -83,7 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
     }
 
     return Scaffold(
-      backgroundColor: Colors.redAccent[400],
+      backgroundColor: Color.fromRGBO(7, 20, 48, 1),
       body: Column(
         children: <Widget>[
           Expanded(
@@ -103,7 +102,12 @@ class _MyHomePageState extends State<MyHomePage> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
-              child: Text('Date: $cdate'),
+              child: Text(
+                'Date: $cdate',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
             ),
           ),
           Padding(
@@ -117,8 +121,12 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Center(
               child: (result != null)
                   ? Text(
-                      'Barcode Type: ${describeEnum(result!.format)}   Data: ${result!.code}')
-                  : Text('Scan a code'),
+                      'Barcode Type: ${describeEnum(result!.format)}   Data: ${result!.code}'
+                ,)
+                  : Text('Scan a code',
+                style: TextStyle(
+                  color: Colors.white,
+                ),),
             ),
           ),
           Container(
@@ -157,25 +165,29 @@ class _MyHomePageState extends State<MyHomePage> {
           )
         ],
       ),
-
       bottomNavigationBar: GNav(
         backgroundColor: Color.fromRGBO(7, 20, 48, 1),
         color: Colors.white,
         activeColor: Colors.white,
         tabs: [
-          GButton(icon: Icons.home,
-            text: ("Home"),),
-          GButton(icon: Icons.stacked_bar_chart,
-            text: ("Grade"),),
-          GButton(icon: Icons.settings,
-            text: ("Course"),),
-          GButton(icon: Icons.add,
-            text: "Qr",),
+          GButton(
+            icon: Icons.home,
+            text: ("Home"),
+          ),
+          GButton(
+            icon: Icons.stacked_bar_chart,
+            text: ("Grade"),
+          ),
+          GButton(
+            icon: Icons.settings,
+            text: ("Course"),
+          ),
+          GButton(
+            icon: Icons.logout,
+            text: "Log out",
+          ),
         ],
       ),
-      
-      
-      
     );
   }
 
