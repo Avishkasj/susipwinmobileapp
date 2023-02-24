@@ -156,18 +156,7 @@ class _loginState extends State<login> {
         ),
       ),
 
-      bottomNavigationBar: GNav(
-        tabs: [
-          GButton(icon: Icons.home,
-          text: ("Home"),),
-          GButton(icon: Icons.stacked_bar_chart,
-          text: ("Grade"),),
-          GButton(icon: Icons.settings,
-          text: ("Course"),),
-          GButton(icon: Icons.add,
-          text: "Qr",),
-        ],
-      ),
+
     );
   }
 }

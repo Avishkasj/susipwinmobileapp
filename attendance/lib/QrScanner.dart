@@ -1,6 +1,7 @@
 
 import 'package:attendance/main.dart';
 import 'package:flutter/material.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'dart:io';
 import 'package:flutter/foundation.dart';
@@ -156,6 +157,25 @@ class _MyHomePageState extends State<MyHomePage> {
           )
         ],
       ),
+
+      bottomNavigationBar: GNav(
+        backgroundColor: Color.fromRGBO(7, 20, 48, 1),
+        color: Colors.white,
+        activeColor: Colors.white,
+        tabs: [
+          GButton(icon: Icons.home,
+            text: ("Home"),),
+          GButton(icon: Icons.stacked_bar_chart,
+            text: ("Grade"),),
+          GButton(icon: Icons.settings,
+            text: ("Course"),),
+          GButton(icon: Icons.add,
+            text: "Qr",),
+        ],
+      ),
+      
+      
+      
     );
   }
 
