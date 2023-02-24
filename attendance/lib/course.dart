@@ -276,13 +276,15 @@ class Course extends StatelessWidget {
           tabs: [
             GButton(icon: Icons.home,
               text: ("Home"),),
-            GButton(icon: Icons.stacked_bar_chart,
-              text: ("Grade"),),
+            GButton(icon: Icons.select_all,
+              text: ("Courses"),),
             GButton(icon: Icons.settings,
               text: ("Course"),),
             GButton(icon: Icons.add,
               text: "Qr",),
           ],
+          selectedIndex: 1,
+
         ),
 
       ),
