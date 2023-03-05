@@ -23,12 +23,13 @@ class Course extends StatelessWidget {
           // title: Text("QR scanner"),
         ),
         body: Center(
-          child:  SingleChildScrollView(
+          child: SingleChildScrollView(
             child: Column(
               children: [
                 GestureDetector(
-                  onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder:(context)=>QrScanner()));
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => QrScanner()));
                     String datetime = DateTime.now().toString();
                     print(datetime);
                     print("Course 3 clicked");
@@ -50,7 +51,8 @@ class Course extends StatelessWidget {
                           children: [
                             Padding(
                               padding: const EdgeInsets.all(8.0),
-                              child: Text("Information communication technology",
+                              child: Text(
+                                "Information communication technology",
                                 style: TextStyle(
                                   fontSize: 20,
                                   color: Colors.white,
@@ -61,7 +63,7 @@ class Course extends StatelessWidget {
                               padding: const EdgeInsets.all(15.0),
                               child: Row(
                                 children: [
-                                  Text("Teacher  "),
+                                  Text("Teacher "),
                                   Text("J.M.A.S. Jayasooriya"),
                                 ],
                               ),
@@ -72,11 +74,10 @@ class Course extends StatelessWidget {
                     ),
                   ),
                 ),
-
-
                 GestureDetector(
-                  onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder:(context)=>QrScanner()));
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => QrScanner()));
                     String datetime = DateTime.now().toString();
                     print(datetime);
                     print("Course 3 clicked");
@@ -98,7 +99,8 @@ class Course extends StatelessWidget {
                           children: [
                             Padding(
                               padding: const EdgeInsets.all(8.0),
-                              child: Text("Science for technology",
+                              child: Text(
+                                "Science for technology",
                                 style: TextStyle(
                                   fontSize: 20,
                                   color: Colors.white,
@@ -120,10 +122,10 @@ class Course extends StatelessWidget {
                     ),
                   ),
                 ),
-
                 GestureDetector(
-                  onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder:(context)=>QrScanner()));
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => QrScanner()));
                     String datetime = DateTime.now().toString();
                     print(datetime);
                     print("Course 3 clicked");
@@ -145,7 +147,8 @@ class Course extends StatelessWidget {
                           children: [
                             Padding(
                               padding: const EdgeInsets.all(8.0),
-                              child: Text("Engineering technology",
+                              child: Text(
+                                "Engineering technology",
                                 style: TextStyle(
                                   fontSize: 20,
                                   color: Colors.white,
@@ -167,11 +170,10 @@ class Course extends StatelessWidget {
                     ),
                   ),
                 ),
-
-
                 GestureDetector(
-                  onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder:(context)=>QrScanner()));
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => QrScanner()));
                     String datetime = DateTime.now().toString();
                     print(datetime);
                     print("Course 3 clicked");
@@ -193,7 +195,8 @@ class Course extends StatelessWidget {
                           children: [
                             Padding(
                               padding: const EdgeInsets.all(8.0),
-                              child: Text("Science for technology",
+                              child: Text(
+                                "Science for technology",
                                 style: TextStyle(
                                   fontSize: 20,
                                   color: Colors.white,
@@ -215,56 +218,54 @@ class Course extends StatelessWidget {
                     ),
                   ),
                 ),
-
-
-
                 GestureDetector(
-                  onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder:(context)=>Grade()));
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Grade()));
                     String datetime = DateTime.now().toString();
                     print(datetime);
                     print("Course 3 clicked");
                   },
-                 child: Padding(
-                   padding: const EdgeInsets.all(8.0),
-                   child: Container(
-                     decoration: BoxDecoration(
-                       borderRadius: BorderRadius.circular(15.0),
-                       color: Colors.blue,
-                     ),
-                     height: 100.0,
-                     // height: 100,
-                     // width: double.infinity,
-                     // color: Colors.green,
-                     child: SingleChildScrollView(
-                       child: Column(
-                         crossAxisAlignment: CrossAxisAlignment.start,
-                         children: [
-                           Padding(
-                             padding: const EdgeInsets.all(8.0),
-                             child: Text("Biosystem technology",
-                             style: TextStyle(
-                               fontSize: 20,
-                               color: Colors.white,
-                             ),
-                             ),
-                           ),
-                           Padding(
-                             padding: const EdgeInsets.all(15.0),
-                             child: Row(
-                               children: [
-                                 Text("Teacher  "),
-                                 Text("J.M.A.S. Jayasooriya"),
-                               ],
-                             ),
-                           ),
-                         ],
-                       ),
-                     ),
-                   ),
-                 ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15.0),
+                        color: Colors.blue,
+                      ),
+                      height: 100.0,
+                      // height: 100,
+                      // width: double.infinity,
+                      // color: Colors.green,
+                      child: SingleChildScrollView(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                "Biosystem technology",
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(15.0),
+                              child: Row(
+                                children: [
+                                  Text("Teacher  "),
+                                  Text("J.M.A.S. Jayasooriya"),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
-
               ],
             ),
           ),
@@ -274,19 +275,25 @@ class Course extends StatelessWidget {
           color: Colors.white,
           activeColor: Colors.white,
           tabs: [
-            GButton(icon: Icons.home,
-              text: ("Home"),),
-            GButton(icon: Icons.select_all,
-              text: ("Courses"),),
-            GButton(icon: Icons.settings,
-              text: ("Course"),),
-            GButton(icon: Icons.logout,
-              text: "Log out",),
+            GButton(
+              icon: Icons.home,
+              text: ("Home"),
+            ),
+            GButton(
+              icon: Icons.select_all,
+              text: ("Courses"),
+            ),
+            GButton(
+              icon: Icons.settings,
+              text: ("Course"),
+            ),
+            GButton(
+              icon: Icons.logout,
+              text: "Log out",
+            ),
           ],
           selectedIndex: 1,
-
         ),
-
       ),
     );
   }
