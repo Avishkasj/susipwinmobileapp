@@ -100,13 +100,25 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(20.0),
             child: Container(
-              child: Text(
-                'Date: $cdate',
-                style: TextStyle(
-                  color: Colors.white,
-                ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(right: 10),
+                    child: Icon(
+                      Icons.date_range,
+                      color: Colors.white,
+                    ),
+                  ),
+                  Text(
+                    'Date: $cdate',
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
@@ -121,47 +133,18 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Center(
               child: (result != null)
                   ? Text(
-                      'Barcode Type: ${describeEnum(result!.format)}   Data: ${result!.code}'
-                ,)
-                  : Text('Scan a code',
-                style: TextStyle(
-                  color: Colors.white,
-                ),),
+                      'Barcode Type: ${describeEnum(result!.format)}   Data: ${result!.code}',
+                    )
+                  : Text(
+                      'Scan a code',
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
             ),
           ),
           Container(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Container(
-                  child: TextButton(
-                    onPressed: () {},
-                    style: TextButton.styleFrom(
-                      primary: Colors.purpleAccent,
-                      backgroundColor: Colors.black, // Background Color
-                    ),
-                    child: const Text(
-                      'ADD ',
-                      style: TextStyle(fontSize: 24),
-                    ),
-                  ),
-                ),
-                TextButton(
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => MyApp()));
-                  },
-                  style: TextButton.styleFrom(
-                    primary: Colors.purpleAccent,
-                    backgroundColor: Colors.black, // Background Color
-                  ),
-                  child: const Text(
-                    'CANCLE',
-                    style: TextStyle(fontSize: 24),
-                  ),
-                ),
-              ],
-            ),
+            child: Text("test"),
           )
         ],
       ),

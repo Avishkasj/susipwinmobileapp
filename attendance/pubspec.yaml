@@ -34,6 +34,7 @@ dependencies:
   qr_code_scanner: ^1.0.1
   intl: ^0.17.0
   google_nav_bar: ^5.0.6
+  mysql1: ^0.20.0
 
 
   # The following adds the Cupertino Icons font to your application.
