@@ -80,8 +80,9 @@ class _loginState extends State<login> {
                           borderRadius: BorderRadius.circular(12)),
                       child: Padding(
                         padding: const EdgeInsets.only(left: 20.0),
-                        child: TextField(
+                        child: TextFormField(
                           controller: emailcontroller,
+                          validator: (val) => val == ""? "Please Enter E-mail" : null,
                           decoration: InputDecoration(
                             border: InputBorder.none,
                             hintText: 'Email',
@@ -105,8 +106,9 @@ class _loginState extends State<login> {
                           borderRadius: BorderRadius.circular(12)),
                       child: Padding(
                         padding: const EdgeInsets.only(left: 20.0),
-                        child: TextField(
+                        child: TextFormField(
                           controller: passwordcontroller,
+                          validator: (val) => val == ""? "Please Enter Password" : null,
                           obscureText: true,
                           decoration: InputDecoration(
                             border: InputBorder.none,
