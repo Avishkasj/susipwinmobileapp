@@ -37,7 +37,7 @@ class _loginState extends State<login> {
   var formkey = GlobalKey<FormState>();
   var emailcontroller = TextEditingController();
   var passwordcontroller = TextEditingController();
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -81,6 +81,7 @@ class _loginState extends State<login> {
                       child: Padding(
                         padding: const EdgeInsets.only(left: 20.0),
                         child: TextField(
+                          controller: emailcontroller,
                           decoration: InputDecoration(
                             border: InputBorder.none,
                             hintText: 'Email',
@@ -105,6 +106,7 @@ class _loginState extends State<login> {
                       child: Padding(
                         padding: const EdgeInsets.only(left: 20.0),
                         child: TextField(
+                          controller: passwordcontroller,
                           obscureText: true,
                           decoration: InputDecoration(
                             border: InputBorder.none,
