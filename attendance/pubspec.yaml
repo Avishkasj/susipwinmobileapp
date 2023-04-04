@@ -35,6 +35,8 @@ dependencies:
   intl: ^0.17.0
   google_nav_bar: ^5.0.6
   mysql1: ^0.20.0
+  get: ^4.6.5
+  http: ^0.13.5
 
 
   # The following adds the Cupertino Icons font to your application.

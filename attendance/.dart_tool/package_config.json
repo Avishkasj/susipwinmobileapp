@@ -74,8 +74,26 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "get",
+      "rootUri": "file:///Users/avishkasupun/.pub-cache/hosted/pub.dev/get-4.6.5",
+      "packageUri": "lib/",
+      "languageVersion": "2.15"
+    },
+    {
       "name": "google_nav_bar",
       "rootUri": "file:///Users/avishkasupun/.pub-cache/hosted/pub.dev/google_nav_bar-5.0.6",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "http",
+      "rootUri": "file:///Users/avishkasupun/.pub-cache/hosted/pub.dev/http-0.13.5",
+      "packageUri": "lib/",
+      "languageVersion": "2.14"
+    },
+    {
+      "name": "http_parser",
+      "rootUri": "file:///Users/avishkasupun/.pub-cache/hosted/pub.dev/http_parser-4.0.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -206,7 +224,7 @@
       "languageVersion": "2.18"
     }
   ],
-  "generated": "2023-03-31T20:45:21.394798Z",
+  "generated": "2023-04-04T06:11:14.951805Z",
   "generator": "pub",
   "generatorVersion": "2.19.5"
 }
