@@ -1,0 +1,14 @@
+{
+  'version': 0,
+  'use-external-names': 'false',
+  'case-sensitive': 'false',
+  'roots': [{
+    'type': 'directory',
+    'name': "/Users/avishkasupun/AndroidStudioProjects/susipwinmobileapp/attendance/ios/build/Debug-iphonesimulator/qr_code_scanner/qr_code_scanner.framework/Modules"
+    'contents': [{
+      'type': 'file',
+      'name': "module.modulemap",
+      'external-contents': "/Users/avishkasupun/AndroidStudioProjects/susipwinmobileapp/attendance/ios/build/Pods.build/Debug-iphonesimulator/qr_code_scanner.build/unextended-module.modulemap",
+    }]
+  }]
+}

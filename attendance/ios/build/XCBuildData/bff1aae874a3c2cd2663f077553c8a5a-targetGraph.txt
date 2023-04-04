@@ -1,0 +1,14 @@
+Target dependency graph (5 targets)
+Flutter in Pods, no dependencies
+MTBBarcodeScanner in Pods, no dependencies
+qr_code_scanner in Pods, depends on:
+Flutter in Pods (explicit)
+MTBBarcodeScanner in Pods (explicit)
+Pods-Runner in Pods, depends on:
+Flutter in Pods (explicit)
+MTBBarcodeScanner in Pods (explicit)
+qr_code_scanner in Pods (explicit)
+Runner in Runner, depends on:
+Pods-Runner in Pods (implicit dependency via file 'Pods_Runner.framework' in build phase 'Link Binary')
+MTBBarcodeScanner in Pods (implicit dependency via options '-framework MTBBarcodeScanner' in build setting 'OTHER_LDFLAGS')
+qr_code_scanner in Pods (implicit dependency via options '-framework qr_code_scanner' in build setting 'OTHER_LDFLAGS')

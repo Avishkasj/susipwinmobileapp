@@ -1,0 +1,6 @@
+version: "Apple Swift version 5.7.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)"
+options: "edb04cc9fa9fceecd00275731808650cecb0fe2751fbc832907c5675517e7aa8"
+build_start_time: [1680609139, 108747005]
+build_end_time: [1680609139, 191148996]
+inputs:
+  "/Users/avishkasupun/AndroidStudioProjects/susipwinmobileapp/attendance/ios/Runner/AppDelegate.swift": !private [1634330199, 0]
