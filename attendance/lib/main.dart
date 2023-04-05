@@ -11,7 +11,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -26,8 +25,7 @@ class MyApp extends StatelessWidget {
 }
 
 class login extends StatefulWidget {
-   const login({Key? key}) : super(key: key);
-
+  const login({Key? key}) : super(key: key);
 
   @override
   State<login> createState() => _loginState();
@@ -46,7 +44,7 @@ class _loginState extends State<login> {
         child: Center(
           child: SingleChildScrollView(
             child: Form(
-              key:formkey,
+              key: formkey,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -82,7 +80,8 @@ class _loginState extends State<login> {
                         padding: const EdgeInsets.only(left: 20.0),
                         child: TextFormField(
                           controller: emailcontroller,
-                          validator: (val) => val == ""? "Please Enter E-mail" : null,
+                          validator: (val) =>
+                              val == "" ? "Please Enter E-mail" : null,
                           decoration: InputDecoration(
                             border: InputBorder.none,
                             hintText: 'Email',
@@ -95,7 +94,6 @@ class _loginState extends State<login> {
                   SizedBox(
                     height: 20,
                   ),
-                  
 
                   //password
                   Padding(
@@ -109,7 +107,8 @@ class _loginState extends State<login> {
                         padding: const EdgeInsets.only(left: 20.0),
                         child: TextFormField(
                           controller: passwordcontroller,
-                          validator: (val) => val == ""? "Please Enter Password" : null,
+                          validator: (val) =>
+                              val == "" ? "Please Enter Password" : null,
                           obscureText: true,
                           decoration: InputDecoration(
                             border: InputBorder.none,
@@ -138,8 +137,10 @@ class _loginState extends State<login> {
                                 MaterialStateProperty.all<Color>(Colors.blue),
                           ),
                           onPressed: () {
-                            Navigator.push(context,
-                                MaterialPageRoute(builder: (context) => Course()));
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Course()));
                           },
                           child: Text('LOG IN'),
                         )),
@@ -169,8 +170,6 @@ class _loginState extends State<login> {
           ),
         ),
       ),
-
-
     );
   }
 }
