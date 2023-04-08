@@ -42,14 +42,14 @@ class Grade extends StatelessWidget {
                               shape: BoxShape.circle,
                               color: Colors.blue,
                             ),
-                            child: Icon(Icons.arrow_forward, color: Colors.white),
+                            child:
+                                Icon(Icons.arrow_forward, color: Colors.white),
                           ),
                         ],
                       ),
                     ),
                   ),
                 ),
-
                 Padding(
                   padding: const EdgeInsets.fromLTRB(20, 10, 20, 0),
                   child: Card(
@@ -69,16 +69,14 @@ class Grade extends StatelessWidget {
                               shape: BoxShape.circle,
                               color: Colors.blue,
                             ),
-                            child: Icon(Icons.arrow_forward, color: Colors.white),
+                            child:
+                                Icon(Icons.arrow_forward, color: Colors.white),
                           ),
                         ],
                       ),
                     ),
                   ),
                 ),
-
-
-
                 Padding(
                   padding: const EdgeInsets.fromLTRB(20, 10, 20, 0),
                   child: Card(
@@ -98,17 +96,14 @@ class Grade extends StatelessWidget {
                               shape: BoxShape.circle,
                               color: Colors.blue,
                             ),
-                            child: Icon(Icons.arrow_forward, color: Colors.white),
+                            child:
+                                Icon(Icons.arrow_forward, color: Colors.white),
                           ),
                         ],
                       ),
                     ),
                   ),
                 ),
-
-
-
-
                 Padding(
                   padding: const EdgeInsets.fromLTRB(20, 10, 20, 0),
                   child: Card(
@@ -128,16 +123,14 @@ class Grade extends StatelessWidget {
                               shape: BoxShape.circle,
                               color: Colors.blue,
                             ),
-                            child: Icon(Icons.arrow_forward, color: Colors.white),
+                            child:
+                                Icon(Icons.arrow_forward, color: Colors.white),
                           ),
                         ],
                       ),
                     ),
                   ),
                 ),
-
-
-
                 Padding(
                   padding: const EdgeInsets.fromLTRB(20, 10, 20, 0),
                   child: Card(
@@ -157,16 +150,14 @@ class Grade extends StatelessWidget {
                               shape: BoxShape.circle,
                               color: Colors.blue,
                             ),
-                            child: Icon(Icons.arrow_forward, color: Colors.white),
+                            child:
+                                Icon(Icons.arrow_forward, color: Colors.white),
                           ),
                         ],
                       ),
                     ),
                   ),
                 ),
-
-
-
                 Padding(
                   padding: const EdgeInsets.fromLTRB(20, 10, 20, 0),
                   child: Card(
@@ -186,15 +177,14 @@ class Grade extends StatelessWidget {
                               shape: BoxShape.circle,
                               color: Colors.blue,
                             ),
-                            child: Icon(Icons.arrow_forward, color: Colors.white),
+                            child:
+                                Icon(Icons.arrow_forward, color: Colors.white),
                           ),
                         ],
                       ),
                     ),
                   ),
                 ),
-
-
                 Padding(
                   padding: const EdgeInsets.fromLTRB(20, 10, 20, 0),
                   child: Card(
@@ -214,15 +204,14 @@ class Grade extends StatelessWidget {
                               shape: BoxShape.circle,
                               color: Colors.blue,
                             ),
-                            child: Icon(Icons.arrow_forward, color: Colors.white),
+                            child:
+                                Icon(Icons.arrow_forward, color: Colors.white),
                           ),
                         ],
                       ),
                     ),
                   ),
                 ),
-
-
                 Padding(
                   padding: const EdgeInsets.fromLTRB(20, 10, 20, 0),
                   child: Card(
@@ -242,16 +231,14 @@ class Grade extends StatelessWidget {
                               shape: BoxShape.circle,
                               color: Colors.blue,
                             ),
-                            child: Icon(Icons.arrow_forward, color: Colors.white),
+                            child:
+                                Icon(Icons.arrow_forward, color: Colors.white),
                           ),
                         ],
                       ),
                     ),
                   ),
                 ),
-
-
-
                 Padding(
                   padding: const EdgeInsets.fromLTRB(20, 10, 20, 0),
                   child: Card(
@@ -271,16 +258,14 @@ class Grade extends StatelessWidget {
                               shape: BoxShape.circle,
                               color: Colors.blue,
                             ),
-                            child: Icon(Icons.arrow_forward, color: Colors.white),
+                            child:
+                                Icon(Icons.arrow_forward, color: Colors.white),
                           ),
                         ],
                       ),
                     ),
                   ),
                 ),
-
-
-
                 Padding(
                   padding: const EdgeInsets.fromLTRB(20, 10, 20, 0),
                   child: Card(
@@ -300,16 +285,14 @@ class Grade extends StatelessWidget {
                               shape: BoxShape.circle,
                               color: Colors.blue,
                             ),
-                            child: Icon(Icons.arrow_forward, color: Colors.white),
+                            child:
+                                Icon(Icons.arrow_forward, color: Colors.white),
                           ),
                         ],
                       ),
                     ),
                   ),
                 ),
-
-
-
                 Padding(
                   padding: const EdgeInsets.fromLTRB(20, 10, 20, 0),
                   child: Card(
@@ -329,14 +312,14 @@ class Grade extends StatelessWidget {
                               shape: BoxShape.circle,
                               color: Colors.blue,
                             ),
-                            child: Icon(Icons.arrow_forward, color: Colors.white),
+                            child:
+                                Icon(Icons.arrow_forward, color: Colors.white),
                           ),
                         ],
                       ),
                     ),
                   ),
                 ),
-
               ],
             ),
           ),
