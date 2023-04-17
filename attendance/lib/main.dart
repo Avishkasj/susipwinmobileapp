@@ -1,7 +1,11 @@
+import 'dart:convert';
+
 import 'package:attendance/QrScanner.dart';
+import 'package:attendance/api_connection.dart';
 import 'package:attendance/course.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:http/http.dart' as http;
 
 void main() {
   runApp(const MyApp());
@@ -35,6 +39,29 @@ class _loginState extends State<login> {
   var formkey = GlobalKey<FormState>();
   var emailcontroller = TextEditingController();
   var passwordcontroller = TextEditingController();
+
+  loginUserNow() async
+  {
+    var res = await http .post(
+    Uri.parse(API.login),
+    body :{
+      "user_email": emailcontroller.text.trim(),
+      "user_password": passwordcontroller.text.trim(),
+    },
+    );
+
+    if(res.statusCode == 200)
+      {
+        var resBodyofLogin = jsonDecode(res.body);
+        if(resBodyofLogin['success'] == true) {
+          print("login successful");
+          Course(); // call the Course() function
+        } else {
+          print("login failed");
+        }
+
+      }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -131,19 +158,19 @@ class _loginState extends State<login> {
                         decoration: BoxDecoration(
                             color: Colors.black,
                             borderRadius: BorderRadius.circular(12)),
-                        child: TextButton(
-                          style: ButtonStyle(
-                            foregroundColor:
-                                MaterialStateProperty.all<Color>(Colors.blue),
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12)
+                            ),
                           ),
                           onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => Course()));
+                            loginUserNow();
                           },
                           child: Text('LOG IN'),
-                        )),
+                        ),
+
+                    ),
                   ),
 
                   SizedBox(
