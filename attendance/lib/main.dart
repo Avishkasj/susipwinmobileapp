@@ -42,12 +42,12 @@ class _loginState extends State<login> {
 
   loginUserNow() async
   {
-    var res = await http .post(
-    Uri.parse(API.login),
-    body :{
-      "user_email": emailcontroller.text.trim(),
-      "user_password": passwordcontroller.text.trim(),
-    },
+    var res = await http.post(
+      Uri.parse('http://123.231.127.17/api_att/login.php'),
+      body: {
+        "user_email": emailcontroller.text.trim(),
+        "user_password": passwordcontroller.text.trim(),
+      },
     );
 
     if(res.statusCode == 200)
