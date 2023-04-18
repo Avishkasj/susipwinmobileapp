@@ -44,12 +44,11 @@ class _loginState extends State<login> {
   {
     print("funtion run");
     var res = await http.post(
-      Uri.parse('http://123.231.127.17/api_att/login.php'),
+      Uri.parse('http://192.168.8.126/api_att/login.php'),
       body: {
         "user_email": emailcontroller.text.trim(),
         "user_password": passwordcontroller.text.trim(),
-      },
-    );
+      });
 
     if(res.statusCode == 200)
       {
