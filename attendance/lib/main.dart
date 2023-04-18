@@ -52,7 +52,7 @@ class _loginState extends State<login> {
       if (response.statusCode == 200) {
         print('Response body: ${response.body}');
         final responseData = json.decode(response.body);
-        if (responseData['success'] == true) {
+        if (responseData["sucess"] == true) {
           print('Login successful');
           Navigator.push(
             context,
