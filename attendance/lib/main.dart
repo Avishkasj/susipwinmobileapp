@@ -42,6 +42,7 @@ class _loginState extends State<login> {
 
   loginUserNow() async
   {
+    print("funtion run");
     var res = await http.post(
       Uri.parse('http://123.231.127.17/api_att/login.php'),
       body: {
