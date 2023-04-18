@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:attendance/QrScanner.dart';
 import 'package:attendance/api_connection.dart';
 import 'package:attendance/course.dart';
+import 'package:attendance/User.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:http/http.dart' as http;
@@ -50,14 +51,14 @@ class _loginState extends State<login> {
         },
       );
 
+
       if (response.statusCode == 200) {
         print('Response body: ${response.body}');
         print('test line-------------------');
         var responseData = json.decode(response.body);
-
-        if (responseData["success"] == true) {
-          // fixed spelling mistake
-          print('Login successful');
+        if (responseData['success']) {
+          User user = User.fromJson(responseData);
+          print('Login successful. User ID: ${user.id}');
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => Course()),
@@ -65,6 +66,7 @@ class _loginState extends State<login> {
         } else {
           print('Login failed');
         }
+
       } else {
         throw Exception(
             'HTTP request failed with status ${response.statusCode}');
