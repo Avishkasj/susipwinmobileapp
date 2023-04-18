@@ -40,31 +40,36 @@ class _loginState extends State<login> {
   var emailcontroller = TextEditingController();
   var passwordcontroller = TextEditingController();
 
-  loginUserNow() async
-  {
-    print("funtion run");
-    var res = await http.post(
-      Uri.parse('http://192.168.8.126/api_att/login.php'),
-      body: {
-        "user_email": emailcontroller.text.trim(),
-        "user_password": passwordcontroller.text.trim(),
-      });
-
-    if(res.statusCode == 200)
-      {
-        var resBodyofLogin = jsonDecode(res.body);
-        if(resBodyofLogin['success'] == true) {
-          setState(() {
-            print("login successful");
-            Course();
-          });
-           // call the Course() function
+  Future<void> loginUserNow() async {
+    try {
+      final response = await http.post(
+        Uri.parse('http://192.168.8.126/api_att/login.php'),
+        body: {
+          'user_email': emailcontroller.text.trim(),
+          'user_password': passwordcontroller.text.trim(),
+        },
+      );
+      if (response.statusCode == 200) {
+        print('Response body: ${response.body}');
+        final responseData = json.decode(response.body);
+        if (responseData['success'] == true) {
+          print('Login successful');
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Course()),
+          );
         } else {
-          print("login failed");
+          print('Login failed');
         }
-
+      } else {
+        throw Exception('HTTP request failed with status ${response.statusCode}');
       }
+    } catch (error) {
+      print('An error occurred: $error');
+    }
   }
+
+
 
   @override
   Widget build(BuildContext context) {
