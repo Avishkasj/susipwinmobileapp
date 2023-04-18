@@ -55,8 +55,11 @@ class _loginState extends State<login> {
       {
         var resBodyofLogin = jsonDecode(res.body);
         if(resBodyofLogin['success'] == true) {
-          print("login successful");
-          Course(); // call the Course() function
+          setState(() {
+            print("login successful");
+            Course();
+          });
+           // call the Course() function
         } else {
           print("login failed");
         }
