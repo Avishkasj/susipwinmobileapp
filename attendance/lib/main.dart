@@ -49,10 +49,14 @@ class _loginState extends State<login> {
           'user_password': passwordcontroller.text.trim(),
         },
       );
+
       if (response.statusCode == 200) {
         print('Response body: ${response.body}');
-        final responseData = json.decode(response.body);
-        if (responseData["sucess"] == true) {
+        print('test line-------------------');
+        var responseData = json.decode(response.body);
+
+        if (responseData["success"] == true) {
+          // fixed spelling mistake
           print('Login successful');
           Navigator.push(
             context,
@@ -62,14 +66,13 @@ class _loginState extends State<login> {
           print('Login failed');
         }
       } else {
-        throw Exception('HTTP request failed with status ${response.statusCode}');
+        throw Exception(
+            'HTTP request failed with status ${response.statusCode}');
       }
     } catch (error) {
       print('An error occurred: $error');
     }
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -162,22 +165,20 @@ class _loginState extends State<login> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 25.0),
                     child: Container(
-                        padding: EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                            color: Colors.black,
-                            borderRadius: BorderRadius.circular(12)),
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(12)
-                            ),
-                          ),
-                          onPressed: () {
-                            loginUserNow();
-                          },
-                          child: Text('LOG IN'),
+                      padding: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                          color: Colors.black,
+                          borderRadius: BorderRadius.circular(12)),
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12)),
                         ),
-
+                        onPressed: () {
+                          loginUserNow();
+                        },
+                        child: Text('LOG IN'),
+                      ),
                     ),
                   ),
 
