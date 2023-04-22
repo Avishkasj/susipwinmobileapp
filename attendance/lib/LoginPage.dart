@@ -1,8 +1,10 @@
 import 'dart:convert';
 
 import 'package:attendance/QrScanner.dart';
+import 'package:attendance/course.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:flutter_session_manager/flutter_session_manager.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -47,10 +49,14 @@ class _LoginPageState extends State<LoginPage> {
       // Check if the login was successful
       if (data['success']) {
         // Navigate to the home page
+        var uname = data['username'];
+
+
+        print(uname);
         print("done");
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => QrScanner()),
+          MaterialPageRoute(builder: (context) => Course()),
         );
       } else {
         // Set the error message

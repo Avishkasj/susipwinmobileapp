@@ -5,8 +5,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
+import 'package:flutter_session_manager/flutter_session_manager.dart';
 
 class Course extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -27,12 +29,14 @@ class Course extends StatelessWidget {
             child: Column(
               children: [
                 GestureDetector(
-                  onTap: () {
+                  onTap: () async {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => QrScanner()));
                     String datetime = DateTime.now().toString();
                     print(datetime);
-                    print("Course 3 clicked");
+                    dynamic id = await SessionManager().get("name");
+                    print(id);
+                    print("Course 00000000 clicked");
                   },
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),

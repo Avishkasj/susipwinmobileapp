@@ -50,6 +50,18 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "ffi",
+      "rootUri": "file:///Users/avishkasupun/.pub-cache/hosted/pub.dev/ffi-2.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
+      "name": "file",
+      "rootUri": "file:///Users/avishkasupun/.pub-cache/hosted/pub.dev/file-6.1.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "flutter",
       "rootUri": "file:///Users/avishkasupun/dev/flutter/packages/flutter",
       "packageUri": "lib/",
@@ -60,6 +72,12 @@
       "rootUri": "file:///Users/avishkasupun/.pub-cache/hosted/pub.dev/flutter_lints-2.0.1",
       "packageUri": "lib/",
       "languageVersion": "2.17"
+    },
+    {
+      "name": "flutter_session_manager",
+      "rootUri": "file:///Users/avishkasupun/.pub-cache/hosted/pub.dev/flutter_session_manager-1.0.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "flutter_test",
@@ -158,14 +176,92 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "path_provider_linux",
+      "rootUri": "file:///Users/avishkasupun/.pub-cache/hosted/pub.dev/path_provider_linux-2.1.10",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
+      "name": "path_provider_platform_interface",
+      "rootUri": "file:///Users/avishkasupun/.pub-cache/hosted/pub.dev/path_provider_platform_interface-2.0.6",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "path_provider_windows",
+      "rootUri": "file:///Users/avishkasupun/.pub-cache/hosted/pub.dev/path_provider_windows-2.1.5",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
+      "name": "platform",
+      "rootUri": "file:///Users/avishkasupun/.pub-cache/hosted/pub.dev/platform-3.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "plugin_platform_interface",
+      "rootUri": "file:///Users/avishkasupun/.pub-cache/hosted/pub.dev/plugin_platform_interface-2.1.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
       "name": "pool",
       "rootUri": "file:///Users/avishkasupun/.pub-cache/hosted/pub.dev/pool-1.5.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
+      "name": "process",
+      "rootUri": "file:///Users/avishkasupun/.pub-cache/hosted/pub.dev/process-4.2.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.14"
+    },
+    {
       "name": "qr_code_scanner",
       "rootUri": "file:///Users/avishkasupun/.pub-cache/hosted/pub.dev/qr_code_scanner-1.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
+      "name": "shared_preferences",
+      "rootUri": "file:///Users/avishkasupun/.pub-cache/hosted/pub.dev/shared_preferences-2.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
+      "name": "shared_preferences_android",
+      "rootUri": "file:///Users/avishkasupun/.pub-cache/hosted/pub.dev/shared_preferences_android-2.1.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
+      "name": "shared_preferences_foundation",
+      "rootUri": "file:///Users/avishkasupun/.pub-cache/hosted/pub.dev/shared_preferences_foundation-2.2.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
+      "name": "shared_preferences_linux",
+      "rootUri": "file:///Users/avishkasupun/.pub-cache/hosted/pub.dev/shared_preferences_linux-2.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
+      "name": "shared_preferences_platform_interface",
+      "rootUri": "file:///Users/avishkasupun/.pub-cache/hosted/pub.dev/shared_preferences_platform_interface-2.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
+      "name": "shared_preferences_web",
+      "rootUri": "file:///Users/avishkasupun/.pub-cache/hosted/pub.dev/shared_preferences_web-2.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
+      "name": "shared_preferences_windows",
+      "rootUri": "file:///Users/avishkasupun/.pub-cache/hosted/pub.dev/shared_preferences_windows-2.2.0",
       "packageUri": "lib/",
       "languageVersion": "2.17"
     },
@@ -224,13 +320,25 @@
       "languageVersion": "2.14"
     },
     {
+      "name": "win32",
+      "rootUri": "file:///Users/avishkasupun/.pub-cache/hosted/pub.dev/win32-3.1.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
+      "name": "xdg_directories",
+      "rootUri": "file:///Users/avishkasupun/.pub-cache/hosted/pub.dev/xdg_directories-1.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
       "name": "attendance",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "2.18"
     }
   ],
-  "generated": "2023-04-22T12:15:38.135988Z",
+  "generated": "2023-04-22T18:38:10.893546Z",
   "generator": "pub",
   "generatorVersion": "2.19.6"
 }
