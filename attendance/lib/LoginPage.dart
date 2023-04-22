@@ -74,6 +74,9 @@ class _LoginPageState extends State<LoginPage> {
         child: ListView(
           padding: EdgeInsets.all(16.0),
           children: [
+            SizedBox(
+              height: 30,
+            ),
             Padding(
               padding: const EdgeInsets.all(30.0),
               child: Image(image: AssetImage('assets/susipwinlogo.png')),
@@ -81,56 +84,81 @@ class _LoginPageState extends State<LoginPage> {
             // SizedBox(
             //   height: 30,
             // ),
-            Text(
-              "Hello",
-              style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
+            Center(
+              child: Text(
+                "Hello",
+                style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
+              ),
             ),
-            Text(
-              "Susipwin",
-              style: TextStyle(fontSize: 20),
+            Center(
+              child: Text(
+                "Susipwin",
+                style: TextStyle(fontSize: 20),
+              ),
             ),
             SizedBox(
               height: 30,
             ),
-            TextFormField(
-              controller: _emailController,
-              decoration: InputDecoration(labelText: 'Email'),
-              keyboardType: TextInputType.emailAddress,
-              validator: (value) {
-                if  (value! == null) {
-                  print("enter email");
-                  return 'Please enter your email.';
-                }
-                return null;
-              },
+
+
+            Padding(
+              padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+              child: Container(
+                child: TextFormField(
+                  controller: _emailController,
+                  decoration: InputDecoration(labelText: 'Email'),
+                  keyboardType: TextInputType.emailAddress,
+                  validator: (value) {
+                    if  (value! == null) {
+                      print("enter email");
+                      return 'Please enter your email.';
+                    }
+                    return null;
+                  },
+                ),
+              ),
             ),
 
-            TextFormField(
-              controller: _passwordController,
-              decoration: InputDecoration(labelText: 'Password'),
-              obscureText: true,
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return 'Please enter your password.';
-                }
-                return null;
-              },
+            Padding(
+              padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+              child: Container(
+                child: TextFormField(
+                  controller: _passwordController,
+                  decoration: InputDecoration(labelText: 'Password'),
+                  obscureText: true,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Please enter your password.';
+                    }
+                    return null;
+                  },
+                ),
+              ),
             ),
             SizedBox(height: 16.0),
-            ElevatedButton(
-              child: _isLoading
-                  ? CircularProgressIndicator()
-                  : Text('Login'),
-              onPressed: _isLoading ? null : _login,
+
+            Padding(
+              padding: const EdgeInsets.fromLTRB(110, 0, 110, 0),
+              child: ElevatedButton(
+                child: _isLoading
+                    ? CircularProgressIndicator()
+                    : Text('Login'),
+                onPressed: _isLoading ? null : _login,
+              ),
             ),
             if (_errorMessage.isNotEmpty)
               Padding(
-                padding: EdgeInsets.only(top: 16.0),
-                child: Text(
-                  _errorMessage,
-                  style: TextStyle(
-                    color: Theme.of(context).errorColor,
-                    fontWeight: FontWeight.bold,
+                padding: const EdgeInsets.only(top: 30),
+                child: Center(
+                  child: Padding(
+                    padding: EdgeInsets.only(top: 16.0),
+                    child: Text(
+                      _errorMessage,
+                      style: TextStyle(
+                        color: Theme.of(context).errorColor,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
                 ),
               ),
