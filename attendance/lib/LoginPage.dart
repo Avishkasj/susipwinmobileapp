@@ -12,6 +12,7 @@ class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+
   bool _isLoading = false;
   String _errorMessage = '';
 
@@ -81,20 +82,22 @@ class _LoginPageState extends State<LoginPage> {
               decoration: InputDecoration(labelText: 'Email'),
               keyboardType: TextInputType.emailAddress,
               validator: (value) {
-                // if (value.isEmpty) {
-                //   return 'Please enter your email.';
-                // }
+                if  (value! == null) {
+                  print("enter email");
+                  return 'Please enter your email.';
+                }
                 return null;
               },
             ),
+
             TextFormField(
               controller: _passwordController,
               decoration: InputDecoration(labelText: 'Password'),
               obscureText: true,
               validator: (value) {
-                // if (value.isEmpty) {
-                //   return 'Please enter your password.';
-                // }
+                if (value!.isEmpty) {
+                  return 'Please enter your password.';
+                }
                 return null;
               },
             ),
