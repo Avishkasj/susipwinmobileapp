@@ -69,14 +69,29 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Login'),
-      ),
       body: Form(
         key: _formKey,
         child: ListView(
           padding: EdgeInsets.all(16.0),
           children: [
+            Padding(
+              padding: const EdgeInsets.all(30.0),
+              child: Image(image: AssetImage('assets/susipwinlogo.png')),
+            ),
+            // SizedBox(
+            //   height: 30,
+            // ),
+            Text(
+              "Hello",
+              style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
+            ),
+            Text(
+              "Susipwin",
+              style: TextStyle(fontSize: 20),
+            ),
+            SizedBox(
+              height: 30,
+            ),
             TextFormField(
               controller: _emailController,
               decoration: InputDecoration(labelText: 'Email'),
