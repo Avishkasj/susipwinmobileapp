@@ -1,18 +1,15 @@
-import 'dart:convert';
-import 'package:http/http.dart' as http;
-
 class User {
-  final int id;
-  final String username;
-  final String email;
-  final String tel;
-  final String password;
-  final int role;
-  final String profile;
-  final bool emailVerified;
-  final bool telVerified;
-  final DateTime createdAt;
-  final DateTime updatedAt;
+  int id;
+  String username;
+  String email;
+  String tel;
+  String password;
+  int role;
+  String profile;
+  bool emailVerified;
+  bool telVerified;
+  DateTime createdAt;
+  DateTime updatedAt;
 
   User({
     required this.id,
@@ -21,44 +18,40 @@ class User {
     required this.tel,
     required this.password,
     required this.role,
-    required this.profile,
-    required this.emailVerified,
-    required this.telVerified,
+    this.profile = '',
+    this.emailVerified = false,
+    this.telVerified = false,
     required this.createdAt,
     required this.updatedAt,
   });
 
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
-      id: int.parse(json['id']),
+      id: json['id'],
       username: json['username'],
-      email: json['email'],
-      tel: json['tel'],
+      email: json['emailIndex'],
+      tel: json['telIndex'],
       password: json['password'],
-      role: int.parse(json['role']),
-      profile: json['profile'],
+      role: json['role'],
+      profile: json['profile'] ?? '',
       emailVerified: json['email_verified'] ?? false,
       telVerified: json['tel_verified'] ?? false,
       createdAt: DateTime.parse(json['createdAt']),
       updatedAt: DateTime.parse(json['updatedAt']),
     );
   }
-}
 
-Future<void> main() async {
-  try {
-    final response = await http.get(Uri.parse('http://localhost:3000/api/user/22'));
-
-    if (response.statusCode == 200) {
-      final data = jsonDecode(response.body);
-      final userData = data['userData'][0];
-      final user = User.fromJson(userData);
-
-      print(user.username); // prints "avishka"
-    } else {
-      throw Exception('Failed to connect to server');
-    }
-  } catch (e) {
-    print('An error occurred: $e');
-  }
+  Map<String, dynamic> toJson() => {
+    'id': id,
+    'username': username,
+    'emailIndex': email,
+    'telIndex': tel,
+    'password': password,
+    'role': role,
+    'profile': profile,
+    'email_verified': emailVerified,
+    'tel_verified': telVerified,
+    'createdAt': createdAt.toIso8601String(),
+    'updatedAt': updatedAt.toIso8601String(),
+  };
 }

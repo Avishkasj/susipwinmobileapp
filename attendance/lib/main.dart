@@ -1,11 +1,13 @@
 import 'dart:convert';
 
+import 'package:attendance/LoginPage.dart';
 import 'package:attendance/QrScanner.dart';
 import 'package:attendance/api_connection.dart';
 import 'package:attendance/course.dart';
 import 'package:attendance/User.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:attendance/User.dart';
 import 'package:http/http.dart' as http;
 
 void main() {
@@ -51,15 +53,13 @@ class _loginState extends State<login> {
         },
       );
 
-
       if (response.statusCode == 200) {
         print('Response body: ${response.body}');
         print('test line-------------------');
-        // var responseData = response.body;
 
-         var responseData = jsonDecode(response.body);
+        var responseData = json.decode(response.body);
         if (responseData['success']) {
-          User user = User.fromJson(responseData);
+          User user = User.fromJson(responseData['userData']);
           print('Login successful. User ID: ${user.id}');
           Navigator.push(
             context,
@@ -77,6 +77,7 @@ class _loginState extends State<login> {
       print('An error occurred: $error');
     }
   }
+
 
 
 
@@ -183,6 +184,10 @@ class _loginState extends State<login> {
                         ),
                         onPressed: () {
                           loginUserNow();
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => LoginPage()),
+                          );
                         },
                         child: Text('LOG IN'),
                       ),

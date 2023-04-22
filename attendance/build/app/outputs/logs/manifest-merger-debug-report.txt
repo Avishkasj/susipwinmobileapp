@@ -25,6 +25,7 @@ INJECTED from /Users/avishkasupun/AndroidStudioProjects/susipwinmobileapp/attend
 INJECTED from /Users/avishkasupun/AndroidStudioProjects/susipwinmobileapp/attendance/android/app/src/main/AndroidManifest.xml:1:1-34:12
 INJECTED from /Users/avishkasupun/AndroidStudioProjects/susipwinmobileapp/attendance/android/app/src/main/AndroidManifest.xml:1:1-34:12
 MERGED from /Users/avishkasupun/AndroidStudioProjects/susipwinmobileapp/attendance/android/app/src/main/AndroidManifest.xml:1:1-34:12
+MERGED from [:fluttertoast] /Users/avishkasupun/AndroidStudioProjects/susipwinmobileapp/attendance/build/fluttertoast/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [:qr_code_scanner] /Users/avishkasupun/AndroidStudioProjects/susipwinmobileapp/attendance/build/qr_code_scanner/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.window:window-java:1.0.0-beta04] /Users/avishkasupun/.gradle/caches/transforms-3/81ab56d65c09c82b2d42791c14ec24c9/transformed/jetified-window-java-1.0.0-beta04/AndroidManifest.xml:17:1-23:12
 MERGED from [androidx.window:window:1.0.0-beta04] /Users/avishkasupun/.gradle/caches/transforms-3/7698c8f6c038119d1e6e439b51491d2b/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:17:1-33:12
@@ -77,6 +78,8 @@ uses-sdk
 INJECTED from /Users/avishkasupun/AndroidStudioProjects/susipwinmobileapp/attendance/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/avishkasupun/AndroidStudioProjects/susipwinmobileapp/attendance/android/app/src/main/AndroidManifest.xml
 INJECTED from /Users/avishkasupun/AndroidStudioProjects/susipwinmobileapp/attendance/android/app/src/main/AndroidManifest.xml
+MERGED from [:fluttertoast] /Users/avishkasupun/AndroidStudioProjects/susipwinmobileapp/attendance/build/fluttertoast/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:fluttertoast] /Users/avishkasupun/AndroidStudioProjects/susipwinmobileapp/attendance/build/fluttertoast/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:qr_code_scanner] /Users/avishkasupun/AndroidStudioProjects/susipwinmobileapp/attendance/build/qr_code_scanner/intermediates/merged_manifest/debug/AndroidManifest.xml:6:5-9:67
 MERGED from [:qr_code_scanner] /Users/avishkasupun/AndroidStudioProjects/susipwinmobileapp/attendance/build/qr_code_scanner/intermediates/merged_manifest/debug/AndroidManifest.xml:6:5-9:67
 MERGED from [androidx.window:window-java:1.0.0-beta04] /Users/avishkasupun/.gradle/caches/transforms-3/81ab56d65c09c82b2d42791c14ec24c9/transformed/jetified-window-java-1.0.0-beta04/AndroidManifest.xml:19:5-21:41
