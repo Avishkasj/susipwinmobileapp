@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:attendance/QrScanner.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -47,6 +48,10 @@ class _LoginPageState extends State<LoginPage> {
       if (data['success']) {
         // Navigate to the home page
         print("done");
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => QrScanner()),
+        );
       } else {
         // Set the error message
         setState(() {
@@ -100,7 +105,6 @@ class _LoginPageState extends State<LoginPage> {
               height: 30,
             ),
 
-
             Padding(
               padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
               child: Container(
@@ -109,7 +113,7 @@ class _LoginPageState extends State<LoginPage> {
                   decoration: InputDecoration(labelText: 'Email'),
                   keyboardType: TextInputType.emailAddress,
                   validator: (value) {
-                    if  (value! == null) {
+                    if (value! == null) {
                       print("enter email");
                       return 'Please enter your email.';
                     }
@@ -140,9 +144,7 @@ class _LoginPageState extends State<LoginPage> {
             Padding(
               padding: const EdgeInsets.fromLTRB(110, 0, 110, 0),
               child: ElevatedButton(
-                child: _isLoading
-                    ? CircularProgressIndicator()
-                    : Text('Login'),
+                child: _isLoading ? CircularProgressIndicator() : Text('Login'),
                 onPressed: _isLoading ? null : _login,
               ),
             ),
