@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 #Sat Apr 22 12:30:39 IST 2023
+=======
+#Tue Apr 18 07:15:45 IST 2023
+>>>>>>> parent of c57fb15 (t)
 base.0=/Users/avishkasupun/AndroidStudioProjects/susipwinmobileapp/attendance/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
 renamed.0=classes.dex
 path.0=classes.dex

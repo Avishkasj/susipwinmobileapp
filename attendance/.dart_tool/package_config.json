@@ -74,6 +74,12 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "fluttertoast",
+      "rootUri": "file:///Users/avishkasupun/.pub-cache/hosted/pub.dev/fluttertoast-8.2.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "get",
       "rootUri": "file:///Users/avishkasupun/.pub-cache/hosted/pub.dev/get-4.6.5",
       "packageUri": "lib/",
@@ -224,7 +230,7 @@
       "languageVersion": "2.18"
     }
   ],
-  "generated": "2023-04-20T02:38:18.081536Z",
+  "generated": "2023-04-18T18:17:13.331661Z",
   "generator": "pub",
   "generatorVersion": "2.19.5"
 }

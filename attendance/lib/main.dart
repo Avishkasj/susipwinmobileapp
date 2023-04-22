@@ -41,38 +41,64 @@ class _loginState extends State<login> {
   var emailcontroller = TextEditingController();
   var passwordcontroller = TextEditingController();
 
-  Future<void> loginUserNow() async {
-    try {
-      final response = await http.post(
-        Uri.parse('http://192.168.8.126/api_att/login.php'),
-        body: {
-          'user_email': emailcontroller.text.trim(),
-          'user_password': passwordcontroller.text.trim(),
-        },
-      );
+  // Future<void> loginUserNow() async {
+  //   try {
+  //     final response = await http.post(
+  //       Uri.parse('http://192.168.8.126/api_att/login.php'),
+  //       body: {
+  //         'user_email': emailcontroller.text.trim(),
+  //         'user_password': passwordcontroller.text.trim(),
+  //       },
+  //     );
+  //
+  //
+  //     if (response.statusCode == 200) {
+  //       print('Response body: ${response.body}');
+  //       print('test line-------------------');
+  //       // var responseData = response.body;
+  //
+  //        var responseData = jsonDecode(response.body);
+  //       if (responseData['success']) {
+  //         User user = User.fromJson(responseData);
+  //         print('Login successful. User ID: ${user.id}');
+  //         Navigator.push(
+  //           context,
+  //           MaterialPageRoute(builder: (context) => Course()),
+  //         );
+  //       } else {
+  //         print('Login failed');
+  //       }
+  //
+  //     } else {
+  //       throw Exception(
+  //           'HTTP request failed with status ${response.statusCode}');
+  //     }
+  //   } catch (error) {
+  //     print('An error occurred: $error');
+  //   }
+  // }
 
 
-      if (response.statusCode == 200) {
-        print('Response body: ${response.body}');
-        print('test line-------------------');
-        var responseData = json.decode(response.body);
-        if (responseData['success']) {
-          User user = User.fromJson(responseData);
-          print('Login successful. User ID: ${user.id}');
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => Course()),
-          );
-        } else {
-          print('Login failed');
-        }
+  void loginUserNow() async {
+    final response = await http.post(
+      Uri.parse('http://yourdomain.com/login.php'),
+      body: {
+        'user_email': emailcontroller.text.trim(),
+        'user_password': passwordcontroller.text.trim(),
+      },
+    );
 
+    if (response.statusCode == 200) {
+      if (response.body == 'success') {
+        print("okkkkkk");
+        // Login successful, do something
       } else {
-        throw Exception(
-            'HTTP request failed with status ${response.statusCode}');
+        print("Not ok");
+        // Login failed, show error message
       }
-    } catch (error) {
-      print('An error occurred: $error');
+    } else {
+      print("okkkkkk");
+      // Show error message
     }
   }
 
