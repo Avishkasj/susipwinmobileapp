@@ -119,7 +119,9 @@ class _LoginPageState extends State<LoginPage> {
               child: Container(
                 child: TextFormField(
                   controller: _emailController,
-                  decoration: InputDecoration(labelText: 'Email'),
+                  decoration: InputDecoration(hintText: 'Email',
+                      // errorText: 'Error Text',
+                      border: OutlineInputBorder()),
                   keyboardType: TextInputType.emailAddress,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
@@ -135,11 +137,13 @@ class _LoginPageState extends State<LoginPage> {
             ),
 
             Padding(
-              padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+              padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
               child: Container(
                 child: TextFormField(
                   controller: _passwordController,
-                  decoration: InputDecoration(labelText: 'Password'),
+                  decoration: InputDecoration(hintText: 'Password',
+                      // errorText: 'Error Text',
+                      border: OutlineInputBorder()),
                   obscureText: true,
                   validator: (value) {
                     if (value!.isEmpty) {
