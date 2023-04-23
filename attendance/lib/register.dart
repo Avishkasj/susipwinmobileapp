@@ -15,7 +15,9 @@ class _registerState extends State<register> {
       body: SafeArea(
         child: Column(
           children: [
-            SizedBox(height: 50,),
+            SizedBox(
+              height: 50,
+            ),
             Padding(
               padding: const EdgeInsets.all(30.0),
               child: Image(image: AssetImage('assets/susipwinlogo.png')),
@@ -55,30 +57,28 @@ class _registerState extends State<register> {
             Center(
               child: Text(
                 "admin@susipwin.com",
-                style: TextStyle(fontSize: 17,
-                color: Colors.blueAccent),
+                style: TextStyle(fontSize: 17, color: Colors.blueAccent),
               ),
             ),
             SizedBox(
               height: 30,
             ),
 
-      Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                    child: Container(
-                      padding: EdgeInsets.all(10),
-                      child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => LoginPage()),
-                          );
-                        },
-                        child: Text('Back'),
-                      ),
-                    ),
-                  ),
-
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25.0),
+              child: Container(
+                padding: EdgeInsets.all(10),
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => LoginPage()),
+                    );
+                  },
+                  child: Text('Back'),
+                ),
+              ),
+            ),
           ],
         ),
       ),
