@@ -1,4 +1,6 @@
 import 'dart:convert';
+import 'dart:core';
+import 'package:email_validator/email_validator.dart';
 
 import 'package:attendance/QrScanner.dart';
 import 'package:attendance/course.dart';
@@ -119,9 +121,11 @@ class _LoginPageState extends State<LoginPage> {
                   decoration: InputDecoration(labelText: 'Email'),
                   keyboardType: TextInputType.emailAddress,
                   validator: (value) {
-                    if (value! == null) {
-                      print("enter email");
+                    if (value == null || value.isEmpty) {
                       return 'Please enter your email.';
+                    }
+                    if (!EmailValidator.validate(value)) {
+                      return 'Please enter a valid email address.';
                     }
                     return null;
                   },

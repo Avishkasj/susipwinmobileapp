@@ -16,7 +16,7 @@ class QrScanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'qr',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -96,6 +96,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 borderRadius: 10,
                 borderColor: getColor(),
                 cutOutSize: MediaQuery.of(context).size.width * 0.8,
+                
               ),
             ),
           ),
@@ -148,29 +149,30 @@ class _MyHomePageState extends State<MyHomePage> {
           )
         ],
       ),
-      bottomNavigationBar: GNav(
-        backgroundColor: Color.fromRGBO(7, 20, 48, 1),
-        color: Colors.white,
-        activeColor: Colors.white,
-        tabs: [
-          GButton(
-            icon: Icons.home,
-            text: ("Home"),
-          ),
-          GButton(
-            icon: Icons.stacked_bar_chart,
-            text: ("Grade"),
-          ),
-          GButton(
-            icon: Icons.settings,
-            text: ("Course"),
-          ),
-          GButton(
-            icon: Icons.logout,
-            text: "Log out",
-          ),
-        ],
-      ),
+
+      // bottomNavigationBar: GNav(
+      //   backgroundColor: Color.fromRGBO(7, 20, 48, 1),
+      //   color: Colors.white,
+      //   activeColor: Colors.white,
+      //   tabs: [
+      //     GButton(
+      //       icon: Icons.home,
+      //       text: ("Home"),
+      //     ),
+      //     GButton(
+      //       icon: Icons.stacked_bar_chart,
+      //       text: ("Grade"),
+      //     ),
+      //     GButton(
+      //       icon: Icons.settings,
+      //       text: ("Course"),
+      //     ),
+      //     GButton(
+      //       icon: Icons.logout,
+      //       text: "Log out",
+      //     ),
+      //   ],
+      // ),
     );
   }
 
