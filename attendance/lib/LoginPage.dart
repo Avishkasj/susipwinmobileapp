@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:core';
+import 'package:attendance/register.dart';
 import 'package:email_validator/email_validator.dart';
 
 import 'package:attendance/QrScanner.dart';
@@ -158,14 +159,25 @@ class _LoginPageState extends State<LoginPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text('Not a member? .'),
-                Text(
-                  'Register now',
-                  style: TextStyle(
-                    color: Colors.blue,
+
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => register()),
+                    );
+                  },
+                  child: Text(
+                    'Register now',
+                    style: TextStyle(
+                      color: Colors.blue,
+                    ),
                   ),
-                )
+                ),
+
               ],
             ),
+
 
             Padding(
               padding: const EdgeInsets.fromLTRB(110, 20, 110, 0),
@@ -174,6 +186,8 @@ class _LoginPageState extends State<LoginPage> {
                 onPressed: _isLoading ? null : _login,
               ),
             ),
+
+
             if (_errorMessage.isNotEmpty)
               Padding(
                 padding: const EdgeInsets.only(top: 30),
