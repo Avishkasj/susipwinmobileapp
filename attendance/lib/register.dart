@@ -15,6 +15,7 @@ class _registerState extends State<register> {
       body: SafeArea(
         child: Column(
           children: [
+            SizedBox(height: 50,),
             Padding(
               padding: const EdgeInsets.all(30.0),
               child: Image(image: AssetImage('assets/susipwinlogo.png')),
