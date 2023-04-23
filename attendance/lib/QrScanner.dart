@@ -96,7 +96,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 borderRadius: 10,
                 borderColor: getColor(),
                 cutOutSize: MediaQuery.of(context).size.width * 0.8,
-                
+
               ),
             ),
           ),

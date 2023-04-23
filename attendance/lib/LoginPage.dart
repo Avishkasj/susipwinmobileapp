@@ -149,10 +149,26 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
             ),
+
+
             SizedBox(height: 16.0),
 
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text('Not a member? .'),
+                Text(
+                  'Register now',
+                  style: TextStyle(
+                    color: Colors.blue,
+                  ),
+                )
+              ],
+            ),
+
             Padding(
-              padding: const EdgeInsets.fromLTRB(110, 0, 110, 0),
+              padding: const EdgeInsets.fromLTRB(110, 20, 110, 0),
               child: ElevatedButton(
                 child: _isLoading ? CircularProgressIndicator() : Text('Login'),
                 onPressed: _isLoading ? null : _login,
