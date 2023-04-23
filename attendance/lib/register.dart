@@ -37,7 +37,7 @@ class _registerState extends State<register> {
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
                 child: Text(
-                  "If u need to register as staff you have to contact admin ",
+                  "If you need to register as staff you have to contact admin ",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 20,
@@ -45,6 +45,17 @@ class _registerState extends State<register> {
                     fontWeight: FontWeight.w800,
                   ),
                 ),
+              ),
+            ),
+            SizedBox(
+              height: 30,
+            ),
+
+            Center(
+              child: Text(
+                "admin@susipwin.com",
+                style: TextStyle(fontSize: 17,
+                color: Colors.blueAccent),
               ),
             ),
             SizedBox(
