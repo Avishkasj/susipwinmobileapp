@@ -1,3 +1,4 @@
+import 'package:attendance/LoginPage.dart';
 import 'package:flutter/material.dart';
 
 class register extends StatefulWidget {
@@ -14,8 +15,6 @@ class _registerState extends State<register> {
       body: SafeArea(
         child: Column(
           children: [
-            Text("data"),
-
             Padding(
               padding: const EdgeInsets.all(30.0),
               child: Image(image: AssetImage('assets/susipwinlogo.png')),
@@ -34,27 +33,40 @@ class _registerState extends State<register> {
               height: 30,
             ),
 
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+                child: Text(
+                  "If u need to register as staff you have to contact admin ",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.black,
+                    fontWeight: FontWeight.w800,
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 30,
+            ),
 
-        Padding(
+      Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 25.0),
                     child: Container(
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          border: Border.all(color: Colors.redAccent),
-                          borderRadius: BorderRadius.circular(5)),
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 20.0),
-                        child: TextFormField(
-                          validator: (val) =>
-                              val == "" ? "Please Enter E-mail" : null,
-                          decoration: InputDecoration(
-                            border: InputBorder.none,
-                            hintText: 'Email',
-                          ),
-                        ),
+                      padding: EdgeInsets.all(10),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => LoginPage()),
+                          );
+                        },
+                        child: Text('Back'),
                       ),
                     ),
                   ),
+
           ],
         ),
       ),
