@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/Users/avishkasupun/AndroidStudioProjects/susipwinmobileapp/attendance/build/shared_preferences_android/intermediates/res/merged/debug/drawable/notification_bg.xml",
+        "source": "/Users/avishkasupun/.gradle/caches/transforms-3/4d3757909b435a72e2377b1c620217b0/transformed/core-1.6.0/res/drawable/notification_bg.xml"
+    },
+    {
+        "merged": "/Users/avishkasupun/AndroidStudioProjects/susipwinmobileapp/attendance/build/shared_preferences_android/intermediates/res/merged/debug/drawable/notification_icon_background.xml",
+        "source": "/Users/avishkasupun/.gradle/caches/transforms-3/4d3757909b435a72e2377b1c620217b0/transformed/core-1.6.0/res/drawable/notification_icon_background.xml"
+    },
+    {
+        "merged": "/Users/avishkasupun/AndroidStudioProjects/susipwinmobileapp/attendance/build/shared_preferences_android/intermediates/res/merged/debug/drawable/notification_bg_low.xml",
+        "source": "/Users/avishkasupun/.gradle/caches/transforms-3/4d3757909b435a72e2377b1c620217b0/transformed/core-1.6.0/res/drawable/notification_bg_low.xml"
+    },
+    {
+        "merged": "/Users/avishkasupun/AndroidStudioProjects/susipwinmobileapp/attendance/build/shared_preferences_android/intermediates/res/merged/debug/drawable/notification_tile_bg.xml",
+        "source": "/Users/avishkasupun/.gradle/caches/transforms-3/4d3757909b435a72e2377b1c620217b0/transformed/core-1.6.0/res/drawable/notification_tile_bg.xml"
+    }
+]

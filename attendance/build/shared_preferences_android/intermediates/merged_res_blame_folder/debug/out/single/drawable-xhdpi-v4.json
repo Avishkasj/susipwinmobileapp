@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "/Users/avishkasupun/AndroidStudioProjects/susipwinmobileapp/attendance/build/shared_preferences_android/intermediates/res/merged/debug/drawable-xhdpi-v4/notify_panel_notification_icon_bg.png",
+        "source": "/Users/avishkasupun/.gradle/caches/transforms-3/4d3757909b435a72e2377b1c620217b0/transformed/core-1.6.0/res/drawable-xhdpi-v4/notify_panel_notification_icon_bg.png"
+    },
+    {
+        "merged": "/Users/avishkasupun/AndroidStudioProjects/susipwinmobileapp/attendance/build/shared_preferences_android/intermediates/res/merged/debug/drawable-xhdpi-v4/notification_bg_normal_pressed.9.png",
+        "source": "/Users/avishkasupun/.gradle/caches/transforms-3/4d3757909b435a72e2377b1c620217b0/transformed/core-1.6.0/res/drawable-xhdpi-v4/notification_bg_normal_pressed.9.png"
+    },
+    {
+        "merged": "/Users/avishkasupun/AndroidStudioProjects/susipwinmobileapp/attendance/build/shared_preferences_android/intermediates/res/merged/debug/drawable-xhdpi-v4/notification_bg_normal.9.png",
+        "source": "/Users/avishkasupun/.gradle/caches/transforms-3/4d3757909b435a72e2377b1c620217b0/transformed/core-1.6.0/res/drawable-xhdpi-v4/notification_bg_normal.9.png"
+    },
+    {
+        "merged": "/Users/avishkasupun/AndroidStudioProjects/susipwinmobileapp/attendance/build/shared_preferences_android/intermediates/res/merged/debug/drawable-xhdpi-v4/notification_bg_low_normal.9.png",
+        "source": "/Users/avishkasupun/.gradle/caches/transforms-3/4d3757909b435a72e2377b1c620217b0/transformed/core-1.6.0/res/drawable-xhdpi-v4/notification_bg_low_normal.9.png"
+    },
+    {
+        "merged": "/Users/avishkasupun/AndroidStudioProjects/susipwinmobileapp/attendance/build/shared_preferences_android/intermediates/res/merged/debug/drawable-xhdpi-v4/notification_bg_low_pressed.9.png",
+        "source": "/Users/avishkasupun/.gradle/caches/transforms-3/4d3757909b435a72e2377b1c620217b0/transformed/core-1.6.0/res/drawable-xhdpi-v4/notification_bg_low_pressed.9.png"
+    }
+]

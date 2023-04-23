@@ -39,7 +39,8 @@ class _LoginPageState extends State<LoginPage> {
     try {
       // Send a POST request to the PHP script
       final response = await http.post(
-        Uri.parse('http://192.168.8.126/api_att/login.php'),
+        // Uri.parse('http://123.231.123.124/api_att/login.php'),
+        Uri.parse('https://encode99.com.lk/api_att/login.php'),
         body: {
           'email': _emailController.text.trim(),
           'password': _passwordController.text.trim(),

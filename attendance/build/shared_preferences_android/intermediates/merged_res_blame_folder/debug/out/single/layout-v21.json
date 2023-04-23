@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/Users/avishkasupun/AndroidStudioProjects/susipwinmobileapp/attendance/build/shared_preferences_android/intermediates/res/merged/debug/layout-v21/notification_action.xml",
+        "source": "/Users/avishkasupun/.gradle/caches/transforms-3/4d3757909b435a72e2377b1c620217b0/transformed/core-1.6.0/res/layout-v21/notification_action.xml"
+    },
+    {
+        "merged": "/Users/avishkasupun/AndroidStudioProjects/susipwinmobileapp/attendance/build/shared_preferences_android/intermediates/res/merged/debug/layout-v21/notification_template_icon_group.xml",
+        "source": "/Users/avishkasupun/.gradle/caches/transforms-3/4d3757909b435a72e2377b1c620217b0/transformed/core-1.6.0/res/layout-v21/notification_template_icon_group.xml"
+    },
+    {
+        "merged": "/Users/avishkasupun/AndroidStudioProjects/susipwinmobileapp/attendance/build/shared_preferences_android/intermediates/res/merged/debug/layout-v21/notification_action_tombstone.xml",
+        "source": "/Users/avishkasupun/.gradle/caches/transforms-3/4d3757909b435a72e2377b1c620217b0/transformed/core-1.6.0/res/layout-v21/notification_action_tombstone.xml"
+    },
+    {
+        "merged": "/Users/avishkasupun/AndroidStudioProjects/susipwinmobileapp/attendance/build/shared_preferences_android/intermediates/res/merged/debug/layout-v21/notification_template_custom_big.xml",
+        "source": "/Users/avishkasupun/.gradle/caches/transforms-3/4d3757909b435a72e2377b1c620217b0/transformed/core-1.6.0/res/layout-v21/notification_template_custom_big.xml"
+    }
+]
