@@ -5,6 +5,8 @@ import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:intl/intl.dart';
+import 'package:http/http.dart' as http;
+
 
 final String date = DateTime.now().toString();
 String cdate = DateFormat("yyyy-MM-dd").format(DateTime.now());
@@ -178,14 +180,20 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _onQRViewCreated(QRViewController controller) {
     this.controller = controller;
-    controller.scannedDataStream.listen((scanData) {
+    controller.scannedDataStream.listen((scanData) async {
       setState(() {
         result = scanData;
       });
+
+      // Send HTTP POST request to PHP script
+      var url = Uri.parse('http://123.231.123.124/api_att/login.php');
+      // Uri.parse('http://123.231.123.124/api_att/login.php'),
+      var response = await http.post(url, body: {'code': result!.code});
+      print('Response status: ${response.statusCode}');
+      print('Response body: ${response.body}');
     });
-    controller.pauseCamera();
-    controller.resumeCamera();
   }
+
 
   @override
   void dispose() {
