@@ -178,21 +178,32 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  void _onQRViewCreated(QRViewController controller) {
+  void _onQRViewCreated(QRViewController controller) async {
     this.controller = controller;
     controller.scannedDataStream.listen((scanData) async {
-      setState(() {
-        result = scanData;
-      });
+      // Pause the camera until the result is processed.
+      await controller.pauseCamera();
 
-      // Send HTTP POST request to PHP script
-      var url = Uri.parse('http://123.231.123.124/api_att/qr.php');
-      // Uri.parse('http://123.231.123.124/api_att/login.php'),
-      var response = await http.post(url, body: {'code': result!.code});
-      print('Response status: ${response.statusCode}');
-      print('Response body: ${response.body}');
+      // Send the scan data to the PHP backend.
+      var response = await http.post(Uri.parse('https://api.encode99.com.lk/susipwinapi/qr.php'), body: {'data': scanData.code});
+
+      // Handle the response.
+      if (response.statusCode == 200) {
+        // Show a success message.
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('QR code scanned successfully.')));
+        // Display the scanned QR code data.
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Scanned data: ${scanData.code}')));
+
+      } else {
+        // Show an error message.
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Failed to scan QR code. Please try again.')));
+      }
+
+      // Resume the camera.
+      await controller.resumeCamera();
     });
   }
+
 
 
   @override
