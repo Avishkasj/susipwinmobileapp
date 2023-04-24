@@ -186,7 +186,7 @@ class _MyHomePageState extends State<MyHomePage> {
       });
 
       // Send HTTP POST request to PHP script
-      var url = Uri.parse('http://123.231.123.124/api_att/login.php');
+      var url = Uri.parse('http://123.231.123.124/api_att/qr.php');
       // Uri.parse('http://123.231.123.124/api_att/login.php'),
       var response = await http.post(url, body: {'code': result!.code});
       print('Response status: ${response.statusCode}');
