@@ -6,6 +6,7 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:intl/intl.dart';
 import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 
 final String date = DateTime.now().toString();
@@ -194,6 +195,12 @@ class _MyHomePageState extends State<MyHomePage> {
         // Display the scanned QR code data.
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Scanned data: ${scanData.code}')));
 
+        // final res = json.decode(response.body);
+
+        // if(res != null){
+        //   print("donnnnnnnnnnnn");
+        // }
+
       } else {
         // Show an error message.
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Failed to scan QR code. Please try again.')));
@@ -206,9 +213,12 @@ class _MyHomePageState extends State<MyHomePage> {
 
 
 
+
+
   @override
   void dispose() {
     controller?.dispose();
     super.dispose();
   }
 }
+
