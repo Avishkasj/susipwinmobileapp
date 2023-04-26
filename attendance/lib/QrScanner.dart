@@ -11,6 +11,8 @@ import 'dart:convert';
 
 final String date = DateTime.now().toString();
 String cdate = DateFormat("yyyy-MM-dd").format(DateTime.now());
+String? name;
+String? sgender;
 
 class QrScanner extends StatelessWidget {
   const QrScanner({Key? key}) : super(key: key);
@@ -56,6 +58,20 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
+
+  set setName(String value) {
+    setState(() {
+      name = value;
+    });
+  }
+
+  set setSgender(String value) {
+    setState(() {
+      sgender = value;
+    });
+  }
+
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
   Barcode? result;
   QRViewController? controller;
@@ -85,9 +101,13 @@ class _MyHomePageState extends State<MyHomePage> {
     }
 
 
+
+
+
     void _onQRViewCreated(QRViewController controller) async {
       this.controller = controller;
       var responseData;
+      String nn;
 
       controller.scannedDataStream.listen((scanData) async {
         // Pause the camera until the result is processed.
@@ -101,44 +121,49 @@ class _MyHomePageState extends State<MyHomePage> {
           // Decode the JSON data from the response body.
           final decodedData = jsonDecode(response.body);
 
+
           for (var data in decodedData) {
             // Access the properties of each object
-            String name = data['sfullname'];
-            String sgender = data['sgender'];
+            setState(() {
+              name = data['sfullname'];
+              sgender = data['sgender'];
+            });
+
+
 
             // Do something with the properties (e.g. add to a list, display on screen)
-            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-              content: Text('Name: $name'),
-            ));
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text('Name: $name'),
+              ),
+            );
 
-
-            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-              content: Text('Gender: $sgender'),
-            ));
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text('Gender: $sgender'),
+              ),
+            );
           }
 
           // Show a success message.
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('QR code scanned successfully.')));
-          // Show a success message.
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text('QR code scanned successfully. Decoded data: $decodedData'),
-          ));
-
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text('QR code scanned successfully. Decoded data: $decodedData'),
-          ));
-
-          String msg = "QR code scanned successfully. Decoded data: $decodedData";
-
-
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('QR code scanned successfully. Decoded data: $decodedData'),
+            ),
+          );
 
           // Update the responseData variable with the decoded data.
           setState(() {
-            responseData = decodedData;
+            nn = '$name';
           });
+
         } else {
           // Show an error message.
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Failed to scan QR code. Please try again.')));
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('Failed to scan QR code. Please try again.'),
+            ),
+          );
         }
 
         // Resume the camera.
@@ -202,7 +227,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       'Barcode Type: ${describeEnum(result!.format)}   Data: ${result!.code}',
                     )
                   : Text(
-                      'Scan a code',
+                'Name: $name',
                       style: TextStyle(
                         color: Colors.white,
                       ),
@@ -212,6 +237,7 @@ class _MyHomePageState extends State<MyHomePage> {
           Container(
             child: Text("test"),
           ),
+
 
         ],
       ),
