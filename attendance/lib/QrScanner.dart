@@ -13,6 +13,8 @@ final String date = DateTime.now().toString();
 String cdate = DateFormat("yyyy-MM-dd").format(DateTime.now());
 String? name;
 String? sgender;
+String? cname2;
+String? cname;
 
 class QrScanner extends StatelessWidget {
   const QrScanner({Key? key}) : super(key: key);
@@ -116,6 +118,7 @@ class _MyHomePageState extends State<MyHomePage> {
         // Send the scan data to the PHP backend.
         var response = await http.post(Uri.parse('https://api.encode99.com.lk/susipwinapi/qr.php'), body: {'data': scanData.code});
 
+
         // Handle the response.
         if (response.statusCode == 200) {
           // Decode the JSON data from the response body.
@@ -129,6 +132,16 @@ class _MyHomePageState extends State<MyHomePage> {
               sgender = data['sgender'];
             });
 
+
+            // List<String> courseList = [];
+            //
+            // for (var data2 in decodedData) {
+            //   // Access the properties of each object
+            //   setState(() {
+            //     String course = data['coursename'];
+            //     courseList.add(course);
+            //   });
+            // }
 
 
             // Do something with the properties (e.g. add to a list, display on screen)
@@ -148,14 +161,50 @@ class _MyHomePageState extends State<MyHomePage> {
           // Show a success message.
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text('QR code scanned successfully. Decoded data: $decodedData'),
+              content: Text('QR code scanned successfully. Decoded data: '),
             ),
           );
 
-          // Update the responseData variable with the decoded data.
-          setState(() {
-            nn = '$name';
-          });
+
+          //stage 222222222
+
+          var response2 = await http.post(Uri.parse('https://api.encode99.com.lk/susipwinapi/course.php'), body: {'data': scanData.code});
+
+
+          // Handle the response.
+          if (response2.statusCode == 200) {
+            // Decode the JSON data from the response body.
+            final decodedData = jsonDecode(response2.body);
+
+
+            for (var data2 in decodedData) {
+              // Access the properties of each object
+              setState(() {
+                cname = data2['coursename'];
+              });
+
+
+              // List<String> courseList = [];
+              //
+              // for (var data2 in decodedData) {
+              //   // Access the properties of each object
+              //   setState(() {
+              //     String course = data['coursename'];
+              //     courseList.add(course);
+              //   });
+              // }
+
+            }
+
+          } else {
+            // Show an error message.
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text('Failed to scan QR code. Please try again.'),
+              ),
+            );
+          }
+
 
         } else {
           // Show an error message.
@@ -165,6 +214,21 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           );
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         // Resume the camera.
         await controller.resumeCamera();
@@ -235,7 +299,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
           Container(
-            child: Text("test"),
+            child: Text('Name: $cname'),
           ),
 
 
