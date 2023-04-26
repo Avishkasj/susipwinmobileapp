@@ -84,6 +84,68 @@ class _MyHomePageState extends State<MyHomePage> {
       ;
     }
 
+
+    void _onQRViewCreated(QRViewController controller) async {
+      this.controller = controller;
+      var responseData;
+
+      controller.scannedDataStream.listen((scanData) async {
+        // Pause the camera until the result is processed.
+        await controller.pauseCamera();
+
+        // Send the scan data to the PHP backend.
+        var response = await http.post(Uri.parse('https://api.encode99.com.lk/susipwinapi/qr.php'), body: {'data': scanData.code});
+
+        // Handle the response.
+        if (response.statusCode == 200) {
+          // Decode the JSON data from the response body.
+          final decodedData = jsonDecode(response.body);
+
+          for (var data in decodedData) {
+            // Access the properties of each object
+            String name = data['sfullname'];
+            String sgender = data['sgender'];
+
+            // Do something with the properties (e.g. add to a list, display on screen)
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              content: Text('Name: $name'),
+            ));
+
+
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              content: Text('Gender: $sgender'),
+            ));
+          }
+
+          // Show a success message.
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('QR code scanned successfully.')));
+          // Show a success message.
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text('QR code scanned successfully. Decoded data: $decodedData'),
+          ));
+
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text('QR code scanned successfully. Decoded data: $decodedData'),
+          ));
+
+          String msg = "QR code scanned successfully. Decoded data: $decodedData";
+
+
+
+          // Update the responseData variable with the decoded data.
+          setState(() {
+            responseData = decodedData;
+          });
+        } else {
+          // Show an error message.
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Failed to scan QR code. Please try again.')));
+        }
+
+        // Resume the camera.
+        await controller.resumeCamera();
+      });
+    }
+
     return Scaffold(
       backgroundColor: Color.fromRGBO(7, 20, 48, 1),
       body: Column(
@@ -182,46 +244,6 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  void _onQRViewCreated(QRViewController controller) async {
-    this.controller = controller;
-    var responseData;
-
-    controller.scannedDataStream.listen((scanData) async {
-      // Pause the camera until the result is processed.
-      await controller.pauseCamera();
-
-      // Send the scan data to the PHP backend.
-      var response = await http.post(Uri.parse('https://api.encode99.com.lk/susipwinapi/qr.php'), body: {'data': scanData.code});
-
-      // Handle the response.
-      if (response.statusCode == 200) {
-        // Decode the JSON data from the response body.
-        final decodedData = jsonDecode(response.body);
-
-        // Show a success message.
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('QR code scanned successfully.')));
-        // Show a success message.
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text('QR code scanned successfully. Decoded data: $decodedData'),
-        ));
-
-        String msg = "QR code scanned successfully. Decoded data: $decodedData";
-
-
-
-        // Update the responseData variable with the decoded data.
-        setState(() {
-          responseData = decodedData;
-        });
-      } else {
-        // Show an error message.
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Failed to scan QR code. Please try again.')));
-      }
-
-      // Resume the camera.
-      await controller.resumeCamera();
-    });
-  }
 
 
 
