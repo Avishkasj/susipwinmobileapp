@@ -149,9 +149,11 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           Container(
             child: Text("test"),
-          )
+          ),
         ],
       ),
+
+
 
       // bottomNavigationBar: GNav(
       //   backgroundColor: Color.fromRGBO(7, 20, 48, 1),
@@ -181,6 +183,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _onQRViewCreated(QRViewController controller) async {
     this.controller = controller;
+    var responseData;
+
     controller.scannedDataStream.listen((scanData) async {
       // Pause the camera until the result is processed.
       await controller.pauseCamera();
@@ -190,17 +194,22 @@ class _MyHomePageState extends State<MyHomePage> {
 
       // Handle the response.
       if (response.statusCode == 200) {
+        // Decode the JSON data from the response body.
+        final decodedData = jsonDecode(response.body);
+
         // Show a success message.
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('QR code scanned successfully.')));
-        // Display the scanned QR code data.
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Scanned data: ${scanData.code}')));
+        // Show a success message.
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text('QR code scanned successfully. Decoded data: $decodedData'),
+        ));
 
-        // final res = json.decode(response.body);
 
-        // if(res != null){
-        //   print("donnnnnnnnnnnn");
-        // }
 
+        // Update the responseData variable with the decoded data.
+        setState(() {
+          responseData = decodedData;
+        });
       } else {
         // Show an error message.
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Failed to scan QR code. Please try again.')));
@@ -215,10 +224,12 @@ class _MyHomePageState extends State<MyHomePage> {
 
 
 
+
+
+
   @override
   void dispose() {
     controller?.dispose();
     super.dispose();
   }
 }
-
