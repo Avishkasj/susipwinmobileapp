@@ -150,6 +150,7 @@ class _MyHomePageState extends State<MyHomePage> {
           Container(
             child: Text("test"),
           ),
+
         ],
       ),
 
@@ -203,6 +204,8 @@ class _MyHomePageState extends State<MyHomePage> {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text('QR code scanned successfully. Decoded data: $decodedData'),
         ));
+
+        String msg = "QR code scanned successfully. Decoded data: $decodedData";
 
 
 
