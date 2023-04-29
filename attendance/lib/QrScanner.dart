@@ -183,6 +183,13 @@ class _MyHomePageState extends State<MyHomePage> {
                 cname = data2['coursename'];
               });
 
+              // Show a success message.
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text('QR code scanned successfully. Decoded data: $cname'),
+                ),
+              );
+
 
               // List<String> courseList = [];
               //
