@@ -71,7 +71,7 @@ class _LoginPageState extends State<LoginPage> {
     } catch (e) {
       // Set the error message
       setState(() {
-        _errorMessage = 'An error occurred: $e';
+        _errorMessage = 'please connect device to internet $e';
       });
     } finally {
       // Set the loading state

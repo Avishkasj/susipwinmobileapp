@@ -15,6 +15,8 @@ String? name;
 String? sgender;
 String? cname2;
 String? cname;
+List<String> myList = [];
+String? selectedCourse;
 
 class QrScanner extends StatelessWidget {
   const QrScanner({Key? key}) : super(key: key);
@@ -167,41 +169,35 @@ class _MyHomePageState extends State<MyHomePage> {
 
 
           //stage 222222222
+          var response2 = await http.post(
+              Uri.parse('https://api.encode99.com.lk/susipwinapi/course.php'),
+              body: {'data': scanData.code});
 
-          var response2 = await http.post(Uri.parse('https://api.encode99.com.lk/susipwinapi/course.php'), body: {'data': scanData.code});
-
-
-          // Handle the response.
+// Handle the response.
           if (response2.statusCode == 200) {
             // Decode the JSON data from the response body.
             final decodedData = jsonDecode(response2.body);
-
+            
 
             for (var data2 in decodedData) {
               // Access the properties of each object
-              setState(() {
-                cname = data2['coursename'];
-              });
+              String cname = data2['coursename'];
 
-              // Show a success message.
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text('QR code scanned successfully. Decoded data: $cname'),
-                ),
-              );
-
-
-              // List<String> courseList = [];
-              //
-              // for (var data2 in decodedData) {
-              //   // Access the properties of each object
-              //   setState(() {
-              //     String course = data['coursename'];
-              //     courseList.add(course);
-              //   });
-              // }
-
+              // Add the value of cname to the list using the add method
+              myList.add(cname);
             }
+
+            // Update the state with the list of course names
+            setState(() {
+            });
+
+            // Show a success message.
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text('All courses: $myList'),
+              ),
+            );
+
 
           } else {
             // Show an error message.
@@ -284,10 +280,27 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
           ),
+
+          Text('Name: $selectedCourse'),
+          DropdownButton<String>(
+            value: selectedCourse,
+            items: myList.map((String courseName) {
+              return DropdownMenuItem<String>(
+                value: courseName,
+                child: Text(courseName),
+              );
+            }).toList(),
+            onChanged: (String? value) {
+              setState(() {
+                selectedCourse = value;
+              });
+            },
+          ),
+
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
-              child: Text("Student Number: TG514"),
+              child: Text("course $cname"),
             ),
           ),
           Expanded(
@@ -305,9 +318,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
             ),
           ),
-          Container(
-            child: Text('Name: $cname'),
-          ),
+
 
 
         ],
