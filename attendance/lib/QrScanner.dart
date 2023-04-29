@@ -17,6 +17,12 @@ String? cname2;
 String? cname;
 List<String> myList = [];
 String? selectedCourse;
+String? selectedOption;
+
+
+
+
+
 
 class QrScanner extends StatelessWidget {
   const QrScanner({Key? key}) : super(key: key);
@@ -175,9 +181,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
 // Handle the response.
           if (response2.statusCode == 200) {
+            myList.clear();
             // Decode the JSON data from the response body.
             final decodedData = jsonDecode(response2.body);
-            
+
 
             for (var data2 in decodedData) {
               // Access the properties of each object
@@ -218,25 +225,13 @@ class _MyHomePageState extends State<MyHomePage> {
           );
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         // Resume the camera.
         await controller.resumeCamera();
       });
     }
+
+
+
 
     return Scaffold(
       backgroundColor: Color.fromRGBO(7, 20, 48, 1),
@@ -281,21 +276,59 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
 
-          Text('Name: $selectedCourse'),
-          DropdownButton<String>(
-            value: selectedCourse,
-            items: myList.map((String courseName) {
-              return DropdownMenuItem<String>(
-                value: courseName,
-                child: Text(courseName),
-              );
-            }).toList(),
-            onChanged: (String? value) {
-              setState(() {
-                selectedCourse = value;
-              });
-            },
+
+
+          //Corse dropdown show mylist data
+
+          Text(
+            'Selected Option: $selectedOption',
+            style: TextStyle(fontSize: 20),
           ),
+          SizedBox(height: 20),
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 16.0),
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: Colors.grey,
+                width: 1.0,
+              ),
+              borderRadius: BorderRadius.circular(4.0),
+            ),
+            child: DropdownButton<String>(
+              value: selectedOption,
+              items:myList.map((String courseName) {
+                return DropdownMenuItem<String>(
+                  value: courseName,
+                  child: Text(courseName),
+                );
+              }).toList(),
+              onChanged: (String? value) {
+                setState(() {
+                  selectedOption = value ?? '';
+                });
+              },
+              isExpanded: true,
+              underline: SizedBox(),
+            ),
+          ),
+
+
+
+          // Text('Name: $selectedCourse'),
+          // DropdownButton<String>(
+          //   value: selectedCourse,
+          //   items: myList.map((String courseName) {
+          //     return DropdownMenuItem<String>(
+          //       value: courseName,
+          //       child: Text(courseName),
+          //     );
+          //   }).toList(),
+          //   onChanged: (String? value) {
+          //     setState(() {
+          //       selectedCourse = value;
+          //     });
+          //   },
+          // ),
 
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -353,11 +386,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
 
-
-
-
-
-
+  
 
 
   @override
