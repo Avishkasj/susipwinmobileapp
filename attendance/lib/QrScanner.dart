@@ -30,6 +30,38 @@ class QrScanner extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+
+    // if (selectedOption != null) {
+    //   // Use conditional statement to check if value is not null
+    //   WidgetsBinding.instance.addPostFrameCallback((_) {
+    //     showModalBottomSheet<void>(
+    //       context: context,
+    //       builder: (BuildContext context) {
+    //         return Container(
+    //           height: 300,
+    //           child: Column(
+    //             children: [
+    //               TextButton(
+    //                 onPressed: () {
+    //                   selectedOption = null;
+    //                   // Your onClick action goes here
+    //                 },
+    //                 child: Text('Click me!', style: TextStyle(fontSize: 20)),
+    //                 style: TextButton.styleFrom(
+    //                   primary: Colors.blue,
+    //                   padding: EdgeInsets.all(16.0),
+    //                 ),
+    //               ),
+    //
+    //             ],
+    //           ),
+    //           // Add your content here
+    //         );
+    //       },
+    //     );
+    //   });
+    // }
+
     return MaterialApp(
       title: 'qr',
       theme: ThemeData(
@@ -198,6 +230,8 @@ class _MyHomePageState extends State<MyHomePage> {
             setState(() {
             });
 
+            // MaterialPageRoute(builder: (context) => addPostFrameCallback()),
+
             // Show a success message.
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
@@ -285,32 +319,40 @@ class _MyHomePageState extends State<MyHomePage> {
             style: TextStyle(fontSize: 20),
           ),
           SizedBox(height: 20),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 16.0),
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: Colors.grey,
-                width: 1.0,
+          Padding(
+            padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 16.0),
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: Colors.redAccent,
+                  width: 1.0,
+                ),
+                borderRadius: BorderRadius.circular(4.0),
               ),
-              borderRadius: BorderRadius.circular(4.0),
-            ),
-            child: DropdownButton<String>(
-              value: selectedOption,
-              items:myList.map((String courseName) {
-                return DropdownMenuItem<String>(
-                  value: courseName,
-                  child: Text(courseName),
-                );
-              }).toList(),
-              onChanged: (String? value) {
-                setState(() {
-                  selectedOption = value ?? '';
-                });
-              },
-              isExpanded: true,
-              underline: SizedBox(),
+              child: DropdownButton<String>(
+                value: selectedOption,
+                items:myList.map((String courseName) {
+                  return DropdownMenuItem<String>(
+                    value: courseName,
+                    child: Text(courseName,
+                    style: TextStyle(
+                      color: Colors.redAccent,
+                    ),),
+                  );
+                }).toList(),
+                onChanged: (String? value) {
+                  setState(() {
+                    selectedOption = value ?? '';
+                  });
+                },
+                isExpanded: true,
+                underline: SizedBox(),
+              ),
             ),
           ),
+
+
 
 
 
@@ -332,7 +374,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Container(
+            child:
+            Container(
               child: Text("course $cname"),
             ),
           ),
@@ -351,42 +394,44 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
             ),
           ),
+          
+          Column(
+            children: [
+              // Add other widgets here
+              if (selectedOption != null) // Use conditional statement to check if value is not null
+                TextButton(
+                  child: Text(
+                    "Click",
+                    style: TextStyle(fontSize: 25),
+                  ),
+                  onPressed: () {
+                    showModalBottomSheet<void>(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return Container(
+                          height: 300,
+                          // Add your content here
+                        );
+                      },
+                    );
+                  },
+                ),
+            ],
+          )
+
 
 
 
         ],
+
       ),
-
-
-
-      // bottomNavigationBar: GNav(
-      //   backgroundColor: Color.fromRGBO(7, 20, 48, 1),
-      //   color: Colors.white,
-      //   activeColor: Colors.white,
-      //   tabs: [
-      //     GButton(
-      //       icon: Icons.home,
-      //       text: ("Home"),
-      //     ),
-      //     GButton(
-      //       icon: Icons.stacked_bar_chart,
-      //       text: ("Grade"),
-      //     ),
-      //     GButton(
-      //       icon: Icons.settings,
-      //       text: ("Course"),
-      //     ),
-      //     GButton(
-      //       icon: Icons.logout,
-      //       text: "Log out",
-      //     ),
-      //   ],
-      // ),
+      
     );
+
   }
 
 
-  
+
 
 
   @override
