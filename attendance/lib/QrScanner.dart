@@ -8,7 +8,6 @@ import 'package:intl/intl.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-
 final String date = DateTime.now().toString();
 String cdate = DateFormat("yyyy-MM-dd").format(DateTime.now());
 String? name;
@@ -19,18 +18,12 @@ List<String> myList = [];
 String? selectedCourse;
 String? selectedOption;
 
-
-
-
-
-
 class QrScanner extends StatelessWidget {
   const QrScanner({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-
     // if (selectedOption != null) {
     //   // Use conditional statement to check if value is not null
     //   WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -100,8 +93,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
-
   set setName(String value) {
     setState(() {
       name = value;
@@ -142,10 +133,6 @@ class _MyHomePageState extends State<MyHomePage> {
       ;
     }
 
-
-
-
-
     void _onQRViewCreated(QRViewController controller) async {
       this.controller = controller;
       var responseData;
@@ -156,14 +143,14 @@ class _MyHomePageState extends State<MyHomePage> {
         await controller.pauseCamera();
 
         // Send the scan data to the PHP backend.
-        var response = await http.post(Uri.parse('https://api.encode99.com.lk/susipwinapi/qr.php'), body: {'data': scanData.code});
-
+        var response = await http.post(
+            Uri.parse('https://api.encode99.com.lk/susipwinapi/qr.php'),
+            body: {'data': scanData.code});
 
         // Handle the response.
         if (response.statusCode == 200) {
           // Decode the JSON data from the response body.
           final decodedData = jsonDecode(response.body);
-
 
           for (var data in decodedData) {
             // Access the properties of each object
@@ -171,7 +158,6 @@ class _MyHomePageState extends State<MyHomePage> {
               name = data['sfullname'];
               sgender = data['sgender'];
             });
-
 
             // List<String> courseList = [];
             //
@@ -182,7 +168,6 @@ class _MyHomePageState extends State<MyHomePage> {
             //     courseList.add(course);
             //   });
             // }
-
 
             // Do something with the properties (e.g. add to a list, display on screen)
             ScaffoldMessenger.of(context).showSnackBar(
@@ -205,7 +190,6 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           );
 
-
           //stage 222222222
           var response2 = await http.post(
               Uri.parse('https://api.encode99.com.lk/susipwinapi/course.php'),
@@ -217,7 +201,6 @@ class _MyHomePageState extends State<MyHomePage> {
             // Decode the JSON data from the response body.
             final decodedData = jsonDecode(response2.body);
 
-
             for (var data2 in decodedData) {
               // Access the properties of each object
               String cname = data2['coursename'];
@@ -227,8 +210,7 @@ class _MyHomePageState extends State<MyHomePage> {
             }
 
             // Update the state with the list of course names
-            setState(() {
-            });
+            setState(() {});
 
             // MaterialPageRoute(builder: (context) => addPostFrameCallback()),
 
@@ -238,8 +220,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 content: Text('All courses: $myList'),
               ),
             );
-
-
           } else {
             // Show an error message.
             ScaffoldMessenger.of(context).showSnackBar(
@@ -248,8 +228,6 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             );
           }
-
-
         } else {
           // Show an error message.
           ScaffoldMessenger.of(context).showSnackBar(
@@ -263,9 +241,6 @@ class _MyHomePageState extends State<MyHomePage> {
         await controller.resumeCamera();
       });
     }
-
-
-
 
     return Scaffold(
       backgroundColor: Color.fromRGBO(7, 20, 48, 1),
@@ -282,7 +257,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 borderRadius: 10,
                 borderColor: getColor(),
                 cutOutSize: MediaQuery.of(context).size.width * 0.8,
-
               ),
             ),
           ),
@@ -310,8 +284,6 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
 
-
-
           //Corse dropdown show mylist data
 
           Text(
@@ -332,13 +304,15 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               child: DropdownButton<String>(
                 value: selectedOption,
-                items:myList.map((String courseName) {
+                items: myList.map((String courseName) {
                   return DropdownMenuItem<String>(
                     value: courseName,
-                    child: Text(courseName,
-                    style: TextStyle(
-                      color: Colors.redAccent,
-                    ),),
+                    child: Text(
+                      courseName,
+                      style: TextStyle(
+                        color: Colors.redAccent,
+                      ),
+                    ),
                   );
                 }).toList(),
                 onChanged: (String? value) {
@@ -351,10 +325,6 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
           ),
-
-
-
-
 
           // Text('Name: $selectedCourse'),
           // DropdownButton<String>(
@@ -372,13 +342,6 @@ class _MyHomePageState extends State<MyHomePage> {
           //   },
           // ),
 
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child:
-            Container(
-              child: Text("course $cname"),
-            ),
-          ),
           Expanded(
             flex: 1,
             child: Center(
@@ -387,52 +350,91 @@ class _MyHomePageState extends State<MyHomePage> {
                       'Barcode Type: ${describeEnum(result!.format)}   Data: ${result!.code}',
                     )
                   : Text(
-                'Name: $name',
+                      'Name: $name',
                       style: TextStyle(
                         color: Colors.white,
                       ),
                     ),
             ),
           ),
-          
+
           Column(
             children: [
               // Add other widgets here
-              if (selectedOption != null) // Use conditional statement to check if value is not null
-                TextButton(
-                  child: Text(
-                    "Click",
-                    style: TextStyle(fontSize: 25),
+              if (selectedOption != null)
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 20),
+                  child: TextButton(
+                    style: TextButton.styleFrom(
+                      backgroundColor: Colors.redAccent,
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                    ),
+                    onPressed: () {
+                      showModalBottomSheet<void>(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return Container(
+                            height: 300,
+                            child: Column(
+                              children: [
+                                // Add your content here
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.fromLTRB(250, 0, 0, 0),
+                                  child: TextButton(
+                                    child: Text('Close'),
+                                    onPressed: () => Navigator.pop(context),
+                                  ),
+                                ),
+
+                                Container(
+                                  decoration: BoxDecoration(
+                                    color: Colors
+                                        .green, // set background color to green
+                                    borderRadius: BorderRadius.circular(
+                                        50), // set rounded corners
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(20.0),
+                                    child: Icon(
+                                      Icons.check_circle_outline,
+                                      size: 52,
+                                      color: Colors
+                                          .white, // set icon color to white
+                                    ),
+                                  ),
+                                ),
+
+                                OutlinedButton(
+                                  child: Text("eeee"),
+                                  onPressed: () {},
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      );
+                    },
+                    child: Text(
+                      "Done",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
-                  onPressed: () {
-                    showModalBottomSheet<void>(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return Container(
-                          height: 300,
-                          // Add your content here
-                        );
-                      },
-                    );
-                  },
-                ),
+                ) // Use conditional statement to check if value is not null
             ],
           )
-
-
-
-
         ],
-
       ),
-      
     );
-
   }
-
-
-
-
 
   @override
   void dispose() {
