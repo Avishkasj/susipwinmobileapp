@@ -195,7 +195,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Uri.parse('https://api.encode99.com.lk/susipwinapi/course.php'),
               body: {'data': scanData.code});
 
-// Handle the response.
+          // Handle the response.
           if (response2.statusCode == 200) {
             myList.clear();
             // Decode the JSON data from the response body.
@@ -220,14 +220,40 @@ class _MyHomePageState extends State<MyHomePage> {
                 content: Text('All courses: $myList'),
               ),
             );
+          }
+
+
+
+          //stage 33
+          var response3 = await http.post(
+              Uri.parse('https://api.encode99.com.lk/susipwinapi/payment.php'),
+              body: {'data': selectedOption});
+
+          // Handle the response.
+          if (response3.statusCode == 200) {
+            // Decode the JSON data from the response body.
+            final decodedData3 = jsonDecode(response3.body);
+
+            // Show a success message.
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text('All courses: $decodedData3'),
+              ),
+            );
           } else {
             // Show an error message.
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
-                content: Text('Failed to scan QR code. Please try again.'),
+                content: Text('Failed to scan QR code. Please try again.$response3'),
               ),
             );
           }
+
+
+
+
+
+
         } else {
           // Show an error message.
           ScaffoldMessenger.of(context).showSnackBar(
@@ -237,9 +263,11 @@ class _MyHomePageState extends State<MyHomePage> {
           );
         }
 
+
         // Resume the camera.
         await controller.resumeCamera();
       });
+
     }
 
     return Scaffold(
