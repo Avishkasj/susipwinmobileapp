@@ -222,8 +222,32 @@ class _MyHomePageState extends State<MyHomePage> {
             );
           }
 
-
-
+          //stage 33
+          // var response3 = await http.post(
+          //     Uri.parse('https://api.encode99.com.lk/susipwinapi/payment.php'),
+          //     body: {'data': selectedOption});
+          //
+          // // Handle the response.
+          // if (response3.statusCode == 200) {
+          //   // Decode the JSON data from the response body.
+          //   final decodedData3 = jsonDecode(response3.body);
+          //
+          //
+          //
+          //   // Show a success message.
+          //   ScaffoldMessenger.of(context).showSnackBar(
+          //     SnackBar(
+          //       content: Text('All courses: $decodedData3'),
+          //     ),
+          //   );
+          // } else {
+          //   // Show an error message.
+          //   ScaffoldMessenger.of(context).showSnackBar(
+          //     SnackBar(
+          //       content: Text('Failed to scan QR code. Please try again.$response3'),
+          //     ),
+          //   );
+          // }
         } else {
           // Show an error message.
           ScaffoldMessenger.of(context).showSnackBar(
@@ -233,39 +257,9 @@ class _MyHomePageState extends State<MyHomePage> {
           );
         }
 
-
-        //stage 33
-        var response3 = await http.post(
-            Uri.parse('https://api.encode99.com.lk/susipwinapi/payment.php'),
-            body: {'data': selectedOption});
-
-        // Handle the response.
-        if (response3.statusCode == 200) {
-          // Decode the JSON data from the response body.
-          final decodedData3 = jsonDecode(response3.body);
-
-
-
-          // Show a success message.
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text('All courses: $decodedData3'),
-            ),
-          );
-        } else {
-          // Show an error message.
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text('Failed to scan QR code. Please try again.$response3'),
-            ),
-          );
-        }
-
-
         // Resume the camera.
         await controller.resumeCamera();
       });
-
     }
 
     return Scaffold(
@@ -389,7 +383,7 @@ class _MyHomePageState extends State<MyHomePage> {
               // Add other widgets here
               if (selectedOption != null)
                 Padding(
-                  padding: const EdgeInsets.only(bottom: 20),
+                  padding: const EdgeInsets.only(bottom: 10),
                   child: TextButton(
                     style: TextButton.styleFrom(
                       backgroundColor: Colors.redAccent,
@@ -399,78 +393,88 @@ class _MyHomePageState extends State<MyHomePage> {
                         borderRadius: BorderRadius.circular(5),
                       ),
                     ),
-                    onPressed: () {
-                      showModalBottomSheet<void>(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return Container(
-                            height: 300,
-                            child: Column(
-                              children: [
-                                // Add your content here
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.fromLTRB(250, 0, 0, 0),
-                                  child: TextButton(
-                                    child: Text('Close'),
-                                    onPressed: () => Navigator.pop(context),
-                                  ),
-                                ),
+                    onPressed: () async {
+                      var response = await http.post(
+                        Uri.parse(
+                            'https://api.encode99.com.lk/susipwinapi/payment.php'),
+                        body: {'data': selectedOption},
+                      );
 
-                                Container(
-                                  decoration: BoxDecoration(
-                                    color: Colors
-                                        .green, // set background color to green
-                                    borderRadius: BorderRadius.circular(
-                                        50), // set rounded corners
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(20.0),
-                                    child: Icon(
-                                      Icons.check_circle_outline,
-                                      size: 52,
-                                      color: Colors
-                                          .white, // set icon color to white
+                      if (response.statusCode == 200) {
+                        var data = jsonDecode(response.body);
+                        showModalBottomSheet<void>(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return Container(
+                              height: 500,
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(250, 0, 0, 0),
+                                    child: TextButton(
+                                      child: Text('Close'),
+                                      onPressed: () => Navigator.pop(context),
                                     ),
                                   ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 20),
-                                  child: Text("Student Payment Status"),
-                                ),
-
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 50),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      OutlinedButton(
-                                        onPressed: () {
-                                          // Add your first button onPressed logic here
-                                        },
-                                        child: Text('Cancle'),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      color: Colors.green,
+                                      borderRadius: BorderRadius.circular(50),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(20.0),
+                                      child: Icon(
+                                        Icons.check_circle_outline,
+                                        size: 52,
+                                        color: Colors.white,
                                       ),
-                                      SizedBox(width: 20), // Add some spacing between the buttons
-                                      OutlinedButton(
-                                        onPressed: () {
-                                          // Add your second button onPressed logic here
-                                        },
-                                        child: Text('Add'),
-                                      ),
-                                    ],
+                                    ),
                                   ),
-                                ),
-
-
-                              ],
-                            ),
-                          );
-
-
-
-
-                        },
-                      );
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 20),
+                                    child: Text("Student Payment Status"),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 50),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        OutlinedButton(
+                                          onPressed: () {
+                                            // Add your first button onPressed logic here
+                                          },
+                                          child: Text('Cancel'),
+                                        ),
+                                        SizedBox(width: 20),
+                                        OutlinedButton(
+                                          onPressed: () {
+                                            // Add your second button onPressed logic here
+                                          },
+                                          child: Text('Add'),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Text("Course Details"),
+                                  Text("ID: ${data['id']}"),
+                                  Text("Course Name: ${data['coursename']}"),
+                                  Text("Description: ${data['description']}"),
+                                  // Add any other fields you want to display here
+                                ],
+                              ),
+                            );
+                          },
+                        );
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                                'Failed to fetch course data. Please try again.'),
+                          ),
+                        );
+                      }
                     },
                     child: Text(
                       "Done",
@@ -488,6 +492,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
+
 
   @override
   void dispose() {
