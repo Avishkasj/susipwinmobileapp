@@ -408,14 +408,41 @@ class _MyHomePageState extends State<MyHomePage> {
                                     ),
                                   ),
                                 ),
-
-                                OutlinedButton(
-                                  child: Text("eeee"),
-                                  onPressed: () {},
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 20),
+                                  child: Text("Student Payment Status"),
                                 ),
+
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 50),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      OutlinedButton(
+                                        onPressed: () {
+                                          // Add your first button onPressed logic here
+                                        },
+                                        child: Text('Cancle'),
+                                      ),
+                                      SizedBox(width: 20), // Add some spacing between the buttons
+                                      OutlinedButton(
+                                        onPressed: () {
+                                          // Add your second button onPressed logic here
+                                        },
+                                        child: Text('Add'),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+
+
                               ],
                             ),
                           );
+
+
+
+
                         },
                       );
                     },
