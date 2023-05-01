@@ -406,7 +406,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           context: context,
                           builder: (BuildContext context) {
                             return Container(
-                              height: 500,
+                              height: 700,
                               child: Column(
                                 children: [
                                   Padding(
@@ -457,7 +457,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                       ],
                                     ),
                                   ),
-                                  Text("Course Details"),
+                                  
+
                                   Text("ID: ${data['id']}"),
                                   Text("Course Name: ${data['coursename']}"),
                                   Text("Description: ${data['description']}"),
@@ -492,7 +493,6 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
-
 
   @override
   void dispose() {
