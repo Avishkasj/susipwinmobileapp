@@ -458,7 +458,6 @@ class _MyHomePageState extends State<MyHomePage> {
                                     ),
                                   ),
 
-
                                   Text("ID: ${data['id']}"),
                                   Text("Course Name: ${data['coursename']}"),
                                   Text("Description: ${data['description']}"),
