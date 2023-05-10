@@ -1,6 +1,7 @@
 import 'package:attendance/QrScanner.dart';
 import 'package:attendance/grade.dart';
 import 'package:attendance/main.dart';
+import 'package:attendance/optionmenu.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
@@ -81,7 +82,7 @@ class Course extends StatelessWidget {
                 GestureDetector(
                   onTap: () {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Grade()));
+                        MaterialPageRoute(builder: (context) => optionmenu()));
                     String datetime = DateTime.now().toString();
                     print(datetime);
                     print("Course 3 clicked");
