@@ -1,4 +1,5 @@
 import 'package:attendance/main.dart';
+import 'package:attendance/optionmenu.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
@@ -264,6 +265,18 @@ class _MyHomePageState extends State<MyHomePage> {
 
     return Scaffold(
       backgroundColor: Color.fromRGBO(7, 20, 48, 1),
+      appBar: AppBar(
+        backgroundColor: Color.fromRGBO(7, 20, 48, 1),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => optionmenu()),
+            );
+          },
+        ),
+      ),
       body: Column(
         children: <Widget>[
           Expanded(

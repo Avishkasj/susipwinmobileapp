@@ -1,4 +1,5 @@
 import 'package:attendance/QrScanner.dart';
+import 'package:attendance/pay.dart';
 import 'package:flutter/material.dart';
 
 class optionmenu extends StatefulWidget {
@@ -60,31 +61,39 @@ class _optionmenuState extends State<optionmenu> {
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(0, 50, 0, 0),
-            child: Container(
-              width: 350,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: Color.fromRGBO(7, 20, 48, 1),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(90, 50, 90, 50),
-                child: Column(
-                  children: [
-                    Icon(
-                      Icons.payment_rounded,
-                      color: Colors.white,
-                      size: 100,
-                    ),
-                    Text(
-                      "Pay ",
-                      style: TextStyle(
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => pay()),
+              );
+            },
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(0, 50, 0, 0),
+              child: Container(
+                width: 350,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Color.fromRGBO(7, 20, 48, 1),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(90, 50, 90, 50),
+                  child: Column(
+                    children: [
+                      Icon(
+                        Icons.payment_rounded,
                         color: Colors.white,
-                        fontSize: 20,
+                        size: 100,
                       ),
-                    ),
-                  ],
+                      Text(
+                        "Pay ",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
