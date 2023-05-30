@@ -25,7 +25,6 @@ class QrScanner extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-
     // if (selectedOption != null) {
     //   // Use conditional statement to check if value is not null
     //   WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -402,7 +401,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: TextButton(
                     style: TextButton.styleFrom(
                       backgroundColor: Colors.redAccent,
-                      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(5),
                       ),
@@ -410,11 +410,15 @@ class _MyHomePageState extends State<MyHomePage> {
                     onPressed: () async {
                       var response = await http.post(
                         Uri.parse('https://api.encode99.com.lk/susipwinapi/payment.php'),
-                        body: {'data': selectedOption},
+                        body: {'data': selectedOption, 'name': name},
                       );
+
+                      print("-------------------------------$selectedOption---------------------------");
+                      print("-------------------------------$name---------------------------");
 
                       if (response.statusCode == 200) {
                         var data = jsonDecode(response.body);
+
                         showModalBottomSheet<void>(
                           context: context,
                           builder: (BuildContext context) {
@@ -468,10 +472,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                       ],
                                     ),
                                   ),
-                                  Text("ID: ${data['id']}"),
-                                  Text("Course Name: ${data['coursename']}"),
-                                  Text("Description: ${data['description']}"),
-                                  // Add any other fields you want to display here
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 20),
+                                    child: Text(data),
+                                  ),
                                 ],
                               ),
                             );
@@ -485,6 +489,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         );
                       }
                     },
+
                     child: Text(
                       "Done",
                       style: TextStyle(
@@ -494,13 +499,12 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ),
                   ),
-                ) ,
+                ),
               // Use conditional statement to check if value is not null
             ],
           )
         ],
       ),
-
     );
   }
 
