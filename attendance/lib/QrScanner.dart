@@ -422,7 +422,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         Icon paymentIcon;
                         Color containerColor;
 
-                        if (data == 'pass') {
+                        if (data == 'Pay') {
                           paymentIcon = Icon(
                             Icons.check_circle_outline,
                             size: 52,
