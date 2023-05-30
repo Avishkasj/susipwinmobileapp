@@ -400,16 +400,14 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: TextButton(
                     style: TextButton.styleFrom(
                       backgroundColor: Colors.redAccent,
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(5),
                       ),
                     ),
                     onPressed: () async {
                       var response = await http.post(
-                        Uri.parse(
-                            'https://api.encode99.com.lk/susipwinapi/payment.php'),
+                        Uri.parse('https://api.encode99.com.lk/susipwinapi/payment.php'),
                         body: {'data': selectedOption},
                       );
 
@@ -423,8 +421,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               child: Column(
                                 children: [
                                   Padding(
-                                    padding:
-                                        const EdgeInsets.fromLTRB(250, 0, 0, 0),
+                                    padding: const EdgeInsets.fromLTRB(250, 0, 0, 0),
                                     child: TextButton(
                                       child: Text('Close'),
                                       onPressed: () => Navigator.pop(context),
@@ -451,8 +448,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                   Padding(
                                     padding: const EdgeInsets.only(top: 50),
                                     child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
+                                      mainAxisAlignment: MainAxisAlignment.center,
                                       children: [
                                         OutlinedButton(
                                           onPressed: () {
@@ -470,7 +466,6 @@ class _MyHomePageState extends State<MyHomePage> {
                                       ],
                                     ),
                                   ),
-
                                   Text("ID: ${data['id']}"),
                                   Text("Course Name: ${data['coursename']}"),
                                   Text("Description: ${data['description']}"),
@@ -483,8 +478,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
-                            content: Text(
-                                'Failed to fetch course data. Please try again.'),
+                            content: Text('Failed to fetch course data. Please try again.'),
                           ),
                         );
                       }
