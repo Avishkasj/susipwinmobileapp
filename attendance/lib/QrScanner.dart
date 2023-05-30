@@ -419,6 +419,26 @@ class _MyHomePageState extends State<MyHomePage> {
                       if (response.statusCode == 200) {
                         var data = jsonDecode(response.body);
 
+                        Icon paymentIcon;
+                        Color containerColor;
+
+                        if (data == 'pass') {
+                          paymentIcon = Icon(
+                            Icons.check_circle_outline,
+                            size: 52,
+                            color: Colors.white,
+                          );
+                          containerColor = Colors.green;
+                        } else {
+                          // Use a different icon for other cases
+                          paymentIcon = Icon(
+                            Icons.close,
+                            size: 52,
+                            color: Colors.white,
+                          );
+                          containerColor = Colors.red;
+                        }
+
                         showModalBottomSheet<void>(
                           context: context,
                           builder: (BuildContext context) {
@@ -435,16 +455,12 @@ class _MyHomePageState extends State<MyHomePage> {
                                   ),
                                   Container(
                                     decoration: BoxDecoration(
-                                      color: Colors.green,
+                                      color: containerColor,
                                       borderRadius: BorderRadius.circular(50),
                                     ),
                                     child: Padding(
                                       padding: const EdgeInsets.all(20.0),
-                                      child: Icon(
-                                        Icons.check_circle_outline,
-                                        size: 52,
-                                        color: Colors.white,
-                                      ),
+                                      child: paymentIcon,
                                     ),
                                   ),
                                   Padding(
