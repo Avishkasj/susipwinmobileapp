@@ -11,17 +11,21 @@ import 'package:attendance/User.dart';
 import 'package:http/http.dart' as http;
 
 void main() {
+
   runApp(const MyApp());
+
   const color = const Color(0x003679);
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.red,

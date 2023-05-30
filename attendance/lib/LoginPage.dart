@@ -9,6 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_session_manager/flutter_session_manager.dart';
 
+import 'optionmenu.dart';
+
 class LoginPage extends StatefulWidget {
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -60,7 +62,7 @@ class _LoginPageState extends State<LoginPage> {
         print("done");
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => Course()),
+          MaterialPageRoute(builder: (context) =>  optionmenu()),
         );
       } else {
         // Set the error message
@@ -206,7 +208,7 @@ class _LoginPageState extends State<LoginPage> {
                     child: Text(
                       _errorMessage,
                       style: TextStyle(
-                        color: Theme.of(context).errorColor,
+                        color: Colors.red,
                         fontWeight: FontWeight.bold,
                       ),
                     ),

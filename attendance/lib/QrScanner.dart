@@ -25,6 +25,7 @@ class QrScanner extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+
     // if (selectedOption != null) {
     //   // Use conditional statement to check if value is not null
     //   WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -57,6 +58,7 @@ class QrScanner extends StatelessWidget {
     // }
 
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'qr',
       theme: ThemeData(
         // This is the theme of your application.
@@ -492,11 +494,13 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ),
                   ),
-                ) // Use conditional statement to check if value is not null
+                ) ,
+              // Use conditional statement to check if value is not null
             ],
           )
         ],
       ),
+
     );
   }
 

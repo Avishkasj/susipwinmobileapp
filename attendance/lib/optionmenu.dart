@@ -1,3 +1,4 @@
+import 'package:attendance/LoginPage.dart';
 import 'package:attendance/QrScanner.dart';
 import 'package:attendance/pay.dart';
 import 'package:flutter/material.dart';
@@ -98,7 +99,37 @@ class _optionmenuState extends State<optionmenu> {
               ),
             ),
           ),
-          Container()
+
+          Container(
+
+          ),
+
+          Padding(
+            padding: const EdgeInsets.only(top: 80),
+            child: Container(
+              width: 100, // Set the desired width of the container
+              // Container properties
+              child: FloatingActionButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) =>LoginPage()),
+                  );
+                  // Handle the FAB button press
+                },
+                child: Icon(Icons.logout), // Set the desired icon for the FAB
+                backgroundColor: Colors.red, // Set the desired background color for the FAB
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(40), // Set the desired border radius for the button shape
+                ),
+              ),
+            ),
+          ),
+
+
+
+
+
         ],
       ),
     );

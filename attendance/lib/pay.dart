@@ -57,6 +57,7 @@ class pay extends StatelessWidget {
     // }
 
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'qr',
       theme: ThemeData(
         // This is the theme of your application.
