@@ -173,25 +173,25 @@ class _MyHomePageState extends State<MyHomePage> {
             // }
 
             // Do something with the properties (e.g. add to a list, display on screen)
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text('Name: $name'),
-              ),
-            );
+            // ScaffoldMessenger.of(context).showSnackBar(
+            //   SnackBar(
+            //     content: Text('Name: $name'),
+            //   ),
+            // );
 
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text('Gender: $sgender'),
-              ),
-            );
+            // ScaffoldMessenger.of(context).showSnackBar(
+            //   SnackBar(
+            //     content: Text('Gender: $sgender'),
+            //   ),
+            // );
           }
 
           // Show a success message.
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text('QR code scanned successfully. Decoded data: '),
-            ),
-          );
+          // ScaffoldMessenger.of(context).showSnackBar(
+          //   SnackBar(
+          //     content: Text('QR code scanned successfully. Decoded data: '),
+          //   ),
+          // );
 
           //stage 222222222
           var response2 = await http.post(
@@ -218,11 +218,11 @@ class _MyHomePageState extends State<MyHomePage> {
             // MaterialPageRoute(builder: (context) => addPostFrameCallback()),
 
             // Show a success message.
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text('All courses: $myList'),
-              ),
-            );
+            // ScaffoldMessenger.of(context).showSnackBar(
+            //   SnackBar(
+            //     content: Text('All courses: $myList'),
+            //   ),
+            // );
           }
 
           //stage 33
@@ -253,11 +253,11 @@ class _MyHomePageState extends State<MyHomePage> {
           // }
         } else {
           // Show an error message.
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text('Failed to scan QR code. Please try again.'),
-            ),
-          );
+          // ScaffoldMessenger.of(context).showSnackBar(
+          //   SnackBar(
+          //     content: Text('Failed to scan QR code. Please try again.'),
+          //   ),
+          // );
         }
 
         // Resume the camera.
@@ -296,7 +296,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(20.0),
+            padding: const EdgeInsets.all(15.0),
             child: Container(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -321,11 +321,11 @@ class _MyHomePageState extends State<MyHomePage> {
 
           //Corse dropdown show mylist data
 
-          Text(
-            'Selected Option: $selectedOption',
-            style: TextStyle(fontSize: 20),
-          ),
-          SizedBox(height: 20),
+          // Text(
+          //   'Selected Option: $selectedOption',
+          //   style: TextStyle(fontSize: 20),
+          // ),
+          SizedBox(height: 15),
           Padding(
             padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
             child: Container(
@@ -398,7 +398,7 @@ class _MyHomePageState extends State<MyHomePage> {
               // Add other widgets here
               if (selectedOption != null)
                 Padding(
-                  padding: const EdgeInsets.only(bottom: 10),
+                  padding: const EdgeInsets.only(bottom: 50),
                   child: TextButton(
                     style: TextButton.styleFrom(
                       backgroundColor: Colors.redAccent,

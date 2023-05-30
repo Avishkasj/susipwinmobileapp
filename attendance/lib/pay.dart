@@ -358,7 +358,7 @@ class _MyHomePageState extends State<MyHomePage> {
           //Corse dropdown show mylist data
           SizedBox(height: 20),
           Padding(
-            padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
+            padding: const EdgeInsets.fromLTRB(30, 0, 30, 15),
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 16.0),
               decoration: BoxDecoration(
@@ -408,121 +408,124 @@ class _MyHomePageState extends State<MyHomePage> {
           //   },
           // ),
 
-          Expanded(
-            flex: 1,
-            child: Center(
-            ),
-          ),
+          // Expanded(
+          //   flex: 1,
+          //   child: Center(
+          //   ),
+          // ),
 
-          Column(
-            children: [
-              // Add other widgets here
-              if (selectedOption != null)
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 10),
-                  child: TextButton(
-                    style: TextButton.styleFrom(
-                      backgroundColor: Colors.redAccent,
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 50),
+            child: Column(
+              children: [
+                // Add other widgets here
+                if (selectedOption != null)
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 10),
+                    child: TextButton(
+                      style: TextButton.styleFrom(
+                        backgroundColor: Colors.redAccent,
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5),
+                        ),
                       ),
-                    ),
-                    onPressed: () async {
-                      var response = await http.post(
-                        Uri.parse(
-                            'https://api.encode99.com.lk/susipwinapi/payment.php'),
-                        body: {'data': selectedOption},
-                      );
+                      onPressed: () async {
+                        var response = await http.post(
+                          Uri.parse(
+                              'https://api.encode99.com.lk/susipwinapi/payment.php'),
+                          body: {'data': selectedOption},
+                        );
 
-                      if (response.statusCode == 200) {
-                        var data = jsonDecode(response.body);
-                        showModalBottomSheet<void>(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return Container(
-                              height: 700,
-                              child: Column(
-                                children: [
-                                  Padding(
-                                    padding:
-                                        const EdgeInsets.fromLTRB(250, 0, 0, 0),
-                                    child: TextButton(
-                                      child: Text('Close'),
-                                      onPressed: () => Navigator.pop(context),
-                                    ),
-                                  ),
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      color: Colors.green,
-                                      borderRadius: BorderRadius.circular(50),
-                                    ),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(20.0),
-                                      child: Icon(
-                                        Icons.check_circle_outline,
-                                        size: 52,
-                                        color: Colors.white,
+                        if (response.statusCode == 200) {
+                          var data = jsonDecode(response.body);
+                          showModalBottomSheet<void>(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return Container(
+                                height: 700,
+                                child: Column(
+                                  children: [
+                                    Padding(
+                                      padding:
+                                          const EdgeInsets.fromLTRB(250, 0, 0, 0),
+                                      child: TextButton(
+                                        child: Text('Close'),
+                                        onPressed: () => Navigator.pop(context),
                                       ),
                                     ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 20),
-                                    child: Text("Student Payment Status"),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 50),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        OutlinedButton(
-                                          onPressed: () {
-                                            // Add your first button onPressed logic here
-                                          },
-                                          child: Text('Cancel'),
+                                    Container(
+                                      decoration: BoxDecoration(
+                                        color: Colors.green,
+                                        borderRadius: BorderRadius.circular(50),
+                                      ),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(20.0),
+                                        child: Icon(
+                                          Icons.check_circle_outline,
+                                          size: 52,
+                                          color: Colors.white,
                                         ),
-                                        SizedBox(width: 20),
-                                        OutlinedButton(
-                                          onPressed: () {
-                                            // Add your second button onPressed logic here
-                                          },
-                                          child: Text('Add'),
-                                        ),
-                                      ],
+                                      ),
                                     ),
-                                  ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 20),
+                                      child: Text("Student Payment Status"),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 50),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          OutlinedButton(
+                                            onPressed: () {
+                                              // Add your first button onPressed logic here
+                                            },
+                                            child: Text('Cancel'),
+                                          ),
+                                          SizedBox(width: 20),
+                                          OutlinedButton(
+                                            onPressed: () {
+                                              // Add your second button onPressed logic here
+                                            },
+                                            child: Text('Add'),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
 
-                                  Text("ID: ${data['id']}"),
-                                  Text("Course Name: ${data['coursename']}"),
-                                  Text("Description: ${data['description']}"),
-                                  // Add any other fields you want to display here
-                                ],
-                              ),
-                            );
-                          },
-                        );
-                      } else {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text(
-                                'Failed to fetch course data. Please try again.'),
-                          ),
-                        );
-                      }
-                    },
-                    child: Text(
-                      "Pay",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
+                                    Text("ID: ${data['id']}"),
+                                    Text("Course Name: ${data['coursename']}"),
+                                    Text("Description: ${data['description']}"),
+                                    // Add any other fields you want to display here
+                                  ],
+                                ),
+                              );
+                            },
+                          );
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                  'Failed to fetch course data. Please try again.'),
+                            ),
+                          );
+                        }
+                      },
+                      child: Text(
+                        "Pay",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
-                  ),
-                ) // Use conditional statement to check if value is not null
-            ],
+                  ) // Use conditional statement to check if value is not null
+              ],
+            ),
           )
         ],
       ),
