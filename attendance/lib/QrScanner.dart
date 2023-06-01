@@ -22,6 +22,8 @@ String? selectedOption;
 class QrScanner extends StatelessWidget {
   const QrScanner({Key? key}) : super(key: key);
 
+
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -56,6 +58,7 @@ class QrScanner extends StatelessWidget {
     //   });
     // }
 
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'qr',
@@ -72,12 +75,35 @@ class QrScanner extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
+
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
+
+
+
+  Future<void> addAtt() async {
+  var url = Uri.parse('https://api.encode99.com.lk/susipwinapi/addattendances.php');
+  var body = {'data': selectedOption, 'name': name};
+
+  try {
+  var response = await http.post(url, body: body);
+
+  if (response.statusCode == 200) {
+  var data = jsonDecode(response.body);
+  print(data);
+  } else {
+  print('Failed to add attendance. Status code: ${response.statusCode}');
+  }
+  } catch (e) {
+  print('Error adding attendance: $e');
+  }
+  }
+
+
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -100,6 +126,10 @@ class _MyHomePageState extends State<MyHomePage> {
       name = value;
     });
   }
+
+
+
+
 
   set setSgender(String value) {
     setState(() {
@@ -125,6 +155,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+
+
+
     Color getColor() {
       bool status = true;
       if (status == true) {
@@ -263,6 +296,10 @@ class _MyHomePageState extends State<MyHomePage> {
         await controller.resumeCamera();
       });
     }
+
+
+
+
 
     return Scaffold(
       backgroundColor: Color.fromRGBO(7, 20, 48, 1),
@@ -418,11 +455,12 @@ class _MyHomePageState extends State<MyHomePage> {
 
                       if (response.statusCode == 200) {
                         var data = jsonDecode(response.body);
+                        print("############################  $data #########################################");
 
                         Icon paymentIcon;
                         Color containerColor;
 
-                        if (data == 'Pay') {
+                        if (data == 'Paid') {
                           paymentIcon = Icon(
                             Icons.check_circle_outline,
                             size: 52,
@@ -468,29 +506,40 @@ class _MyHomePageState extends State<MyHomePage> {
                                     child: Text("Student Payment Status"),
                                   ),
                                   Padding(
+                                    padding: const EdgeInsets.only(top: 20),
+                                    child: Text(data),
+                                  ),
+                                  Padding(
                                     padding: const EdgeInsets.only(top: 50),
                                     child: Row(
                                       mainAxisAlignment: MainAxisAlignment.center,
                                       children: [
-                                        OutlinedButton(
-                                          onPressed: () {
+                                        ElevatedButton(
                                             // Add your first button onPressed logic here
-                                          },
+                                            onPressed: () => Navigator.pop(context),
+                                          style: ButtonStyle(
+                                            backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+                                          ),
                                           child: Text('Cancel'),
                                         ),
                                         SizedBox(width: 20),
-                                        OutlinedButton(
+                                        ElevatedButton(
                                           onPressed: () {
-                                            // Add your second button onPressed logic here
+                                            addAtt();
+
+
                                           },
+                                          style: ButtonStyle(
+                                            backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
+                                          ),
                                           child: Text('Add'),
                                         ),
+
+
+
+
                                       ],
                                     ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 20),
-                                    child: Text(data),
                                   ),
                                 ],
                               ),
@@ -524,9 +573,34 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
+
+
+
+
   @override
   void dispose() {
     controller?.dispose();
     super.dispose();
   }
 }
+
+
+  Future<void> addAtt() async {
+    var url = Uri.parse('https://api.encode99.com.lk/susipwinapi/addattendances.php');
+    var body = {'data': selectedOption, 'name': name};
+    
+    print("000000000000 $name 00000000000");
+
+    try {
+      var response = await http.post(url, body: body);
+
+      if (response.statusCode == 200) {
+        var data = jsonDecode(response.body);
+        print(data);
+      } else {
+        print('Failed to add attendance. Status code: ${response.statusCode}');
+      }
+    } catch (e) {
+      print('Error adding attendance: $e');
+    }
+  }
