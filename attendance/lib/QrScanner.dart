@@ -298,9 +298,6 @@ class _MyHomePageState extends State<MyHomePage> {
     }
 
 
-
-
-
     return Scaffold(
       backgroundColor: Color.fromRGBO(7, 20, 48, 1),
       appBar: AppBar(

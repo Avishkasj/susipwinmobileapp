@@ -1,3 +1,4 @@
+import 'package:attendance/CustomAppBar.dart';
 import 'package:attendance/LoginPage.dart';
 import 'package:attendance/QrScanner.dart';
 import 'package:attendance/pay.dart';
@@ -14,15 +15,7 @@ class _optionmenuState extends State<optionmenu> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: 70,
-        backgroundColor: Color.fromRGBO(7, 20, 48, 1),
-        leading: Padding(
-          padding: const EdgeInsets.only(left: 10),
-          child: Image.asset('assets/susipwinlogo.png'),
-        ),
-        // title: Text("QR scanner"),
-      ),
+      appBar: CustomAppBar(),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -34,7 +27,7 @@ class _optionmenuState extends State<optionmenu> {
                 );
               },
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(0, 50, 0, 0),
+                padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
                 child: Container(
                   width: 350,
                   decoration: BoxDecoration(
@@ -42,7 +35,7 @@ class _optionmenuState extends State<optionmenu> {
                     color: Color.fromRGBO(7, 20, 48, 1),
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.fromLTRB(90, 50, 90, 50),
+                    padding: const EdgeInsets.fromLTRB(90, 20, 90, 50),
                     child: Column(
                       children: [
                         Icon(
@@ -71,7 +64,7 @@ class _optionmenuState extends State<optionmenu> {
                 );
               },
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(0, 50, 0, 0),
+                padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
                 child: Container(
                   width: 350,
                   decoration: BoxDecoration(
@@ -79,7 +72,7 @@ class _optionmenuState extends State<optionmenu> {
                     color: Color.fromRGBO(7, 20, 48, 1),
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.fromLTRB(90, 50, 90, 50),
+                    padding: const EdgeInsets.fromLTRB(90, 20, 90, 50),
                     child: Column(
                       children: [
                         Icon(
