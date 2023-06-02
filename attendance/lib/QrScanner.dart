@@ -13,6 +13,7 @@ final String date = DateTime.now().toString();
 String cdate = DateFormat("yyyy-MM-dd").format(DateTime.now());
 String? name;
 String? sgender;
+String?  uid;
 String? cname2;
 String? cname;
 List<String> myList = [];
@@ -85,23 +86,26 @@ class MyHomePage extends StatefulWidget {
 
 
 
-  Future<void> addAtt() async {
-  var url = Uri.parse('https://api.encode99.com.lk/susipwinapi/addattendances.php');
-  var body = {'data': selectedOption, 'name': name};
-
-  try {
-  var response = await http.post(url, body: body);
-
-  if (response.statusCode == 200) {
-  var data = jsonDecode(response.body);
-  print(data);
-  } else {
-  print('Failed to add attendance. Status code: ${response.statusCode}');
-  }
-  } catch (e) {
-  print('Error adding attendance: $e');
-  }
-  }
+  // Future<void> addAtt() async {
+  //   print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ $selectedOption @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+  // var url = Uri.parse('https://api.encode99.com.lk/susipwinapi/addattendances.php');
+  // var body = {'data': selectedOption, 'name': uid};
+  //
+  //
+  //
+  // try {
+  // var response = await http.post(url, body: body);
+  //
+  // if (response.statusCode == 200) {
+  // var data = jsonDecode(response.body);
+  // print(data);
+  // } else {
+  // print('Failed to add attendance. Status code: ${response.statusCode}');
+  // }
+  // } catch (e) {
+  // print('Error adding attendance: $e');
+  // }
+  // }
 
 
 
@@ -190,8 +194,9 @@ class _MyHomePageState extends State<MyHomePage> {
           for (var data in decodedData) {
             // Access the properties of each object
             setState(() {
-              name = data['sfullname'];
-              sgender = data['sgender'];
+              name = data['username'];
+              sgender = data['gender'];
+              uid = data['id'];
             });
 
             // List<String> courseList = [];
@@ -305,6 +310,15 @@ class _MyHomePageState extends State<MyHomePage> {
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
+            myList = [];
+            uid = "";
+            name= "";
+
+            setState(() {
+              selectedOption = null;
+
+            });
+
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => optionmenu()),
@@ -429,6 +443,7 @@ class _MyHomePageState extends State<MyHomePage> {
           Column(
             children: [
               // Add other widgets here
+
               if (selectedOption != null)
                 Padding(
                   padding: const EdgeInsets.only(bottom: 50),
@@ -444,7 +459,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     onPressed: () async {
                       var response = await http.post(
                         Uri.parse('https://api.encode99.com.lk/susipwinapi/payment.php'),
-                        body: {'data': selectedOption, 'name': name},
+                        body: {'data': selectedOption, 'name': uid},
                       );
 
                       print("-------------------------------$selectedOption---------------------------");
@@ -522,7 +537,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         SizedBox(width: 20),
                                         ElevatedButton(
                                           onPressed: () {
-                                            addAtt();
+                                            addAtt(context);
 
 
                                           },
@@ -581,23 +596,78 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
+Future<void> addAtt(BuildContext context) async {
+  var url = Uri.parse('https://api.encode99.com.lk/susipwinapi/addattendances.php');
+  var body = {'data': selectedOption, 'name': uid};
 
-  Future<void> addAtt() async {
-    var url = Uri.parse('https://api.encode99.com.lk/susipwinapi/addattendances.php');
-    var body = {'data': selectedOption, 'name': name};
-    
-    print("000000000000 $name 00000000000");
+  print("000000000000 $name 00000000000");
+  print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ $selectedOption @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 
-    try {
-      var response = await http.post(url, body: body);
+  try {
+    var response = await http.post(url, body: body);
 
-      if (response.statusCode == 200) {
-        var data = jsonDecode(response.body);
-        print(data);
-      } else {
-        print('Failed to add attendance. Status code: ${response.statusCode}');
+    if (response.statusCode == 200) {
+      var data = jsonDecode(response.body);
+      print(data);
+      if (data == 'use') {
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text('Status'),
+              content: Row(
+                children: [
+                  Icon(Icons.info,size: 50,color: Colors.red,),
+                  SizedBox(width: 8),
+                  Text('Already, Mark!'),
+                ],
+              ),
+              actions: [
+                TextButton(
+                  child: Text('OK'),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => QrScanner()),
+                    );
+                  },
+                ),
+              ],
+            );
+          },
+        );
+      }else if(data == 'Mark'){
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text('Statu'),
+              content: Row(
+                children: [
+                  Icon(Icons.check_circle_outline,size: 50,color: Colors.green,),
+                  SizedBox(width: 8),
+                  Text('Successfully, Mark!'),
+                ],
+              ),
+              actions: [
+                TextButton(
+                  child: Text('OK'),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => QrScanner()),
+                    );
+                  },
+                ),
+              ],
+            );
+          },
+        );
       }
-    } catch (e) {
-      print('Error adding attendance: $e');
+    } else {
+      print('Failed to add attendance. Status code: ${response.statusCode}');
     }
+  } catch (e) {
+    print('Error adding attendance: $e');
   }
+}

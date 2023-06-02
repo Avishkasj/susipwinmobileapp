@@ -10,11 +10,26 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Image.asset(
-          'assets/background_image.png', // Replace with the path to your background image
-          fit: BoxFit.cover,
-          height: 120, // Set the desired height of the background image
-        ),
+        Container(
+          width: 500,
+          height: 500,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/bg2.jpg'),
+              fit: BoxFit.cover,
+            ),
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                Colors.black,
+                Colors.black87,
+              ],
+            ),
+          ),
+        )
+        ,
+
         AppBar(
           backgroundColor: Colors.transparent,
           leading: IconButton(
