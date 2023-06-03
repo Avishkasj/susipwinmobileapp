@@ -13,6 +13,7 @@ final String date = DateTime.now().toString();
 String cdate = DateFormat("yyyy-MM-dd").format(DateTime.now());
 String? name;
 String? sgender;
+String?  uid;
 String? cname2;
 String? cname;
 List<String> myList = [];
@@ -21,6 +22,8 @@ String? selectedOption;
 
 class pay extends StatelessWidget {
   const pay({Key? key}) : super(key: key);
+
+
 
   // This widget is the root of your application.
   @override
@@ -56,6 +59,7 @@ class pay extends StatelessWidget {
     //   });
     // }
 
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'qr',
@@ -72,12 +76,38 @@ class pay extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
+
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
+
+
+
+  // Future<void> addAtt() async {
+  //   print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ $selectedOption @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+  // var url = Uri.parse('https://api.encode99.com.lk/susipwinapi/addattendances.php');
+  // var body = {'data': selectedOption, 'name': uid};
+  //
+  //
+  //
+  // try {
+  // var response = await http.post(url, body: body);
+  //
+  // if (response.statusCode == 200) {
+  // var data = jsonDecode(response.body);
+  // print(data);
+  // } else {
+  // print('Failed to add attendance. Status code: ${response.statusCode}');
+  // }
+  // } catch (e) {
+  // print('Error adding attendance: $e');
+  // }
+  // }
+
+
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -100,6 +130,10 @@ class _MyHomePageState extends State<MyHomePage> {
       name = value;
     });
   }
+
+
+
+
 
   set setSgender(String value) {
     setState(() {
@@ -125,6 +159,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+
+
+
     Color getColor() {
       bool status = true;
       if (status == true) {
@@ -157,8 +194,9 @@ class _MyHomePageState extends State<MyHomePage> {
           for (var data in decodedData) {
             // Access the properties of each object
             setState(() {
-              name = data['sfullname'];
-              sgender = data['sgender'];
+              name = data['username'];
+              sgender = data['gender'];
+              uid = data['id'];
             });
 
             // List<String> courseList = [];
@@ -172,25 +210,25 @@ class _MyHomePageState extends State<MyHomePage> {
             // }
 
             // Do something with the properties (e.g. add to a list, display on screen)
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text('Name: $name'),
-              ),
-            );
+            // ScaffoldMessenger.of(context).showSnackBar(
+            //   SnackBar(
+            //     content: Text('Name: $name'),
+            //   ),
+            // );
 
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text('Gender: $sgender'),
-              ),
-            );
+            // ScaffoldMessenger.of(context).showSnackBar(
+            //   SnackBar(
+            //     content: Text('Gender: $sgender'),
+            //   ),
+            // );
           }
 
           // Show a success message.
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text('QR code scanned successfully. Decoded data: '),
-            ),
-          );
+          // ScaffoldMessenger.of(context).showSnackBar(
+          //   SnackBar(
+          //     content: Text('QR code scanned successfully. Decoded data: '),
+          //   ),
+          // );
 
           //stage 222222222
           var response2 = await http.post(
@@ -217,11 +255,11 @@ class _MyHomePageState extends State<MyHomePage> {
             // MaterialPageRoute(builder: (context) => addPostFrameCallback()),
 
             // Show a success message.
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text('All courses: $myList'),
-              ),
-            );
+            // ScaffoldMessenger.of(context).showSnackBar(
+            //   SnackBar(
+            //     content: Text('All courses: $myList'),
+            //   ),
+            // );
           }
 
           //stage 33
@@ -252,17 +290,18 @@ class _MyHomePageState extends State<MyHomePage> {
           // }
         } else {
           // Show an error message.
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text('Failed to scan QR code. Please try again.'),
-            ),
-          );
+          // ScaffoldMessenger.of(context).showSnackBar(
+          //   SnackBar(
+          //     content: Text('Failed to scan QR code. Please try again.'),
+          //   ),
+          // );
         }
 
         // Resume the camera.
         await controller.resumeCamera();
       });
     }
+
 
     return Scaffold(
       backgroundColor: Color.fromRGBO(7, 20, 48, 1),
@@ -271,6 +310,15 @@ class _MyHomePageState extends State<MyHomePage> {
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
+            myList = [];
+            uid = "";
+            name= "";
+
+            setState(() {
+              selectedOption = null;
+
+            });
+
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => optionmenu()),
@@ -294,71 +342,39 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
           ),
-
           Padding(
-            padding: const EdgeInsets.fromLTRB(30, 20, 30, 0),
+            padding: const EdgeInsets.all(15.0),
             child: Container(
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Container(
-                    height: 80,
-                    width: 140,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                      color: Colors.red,
+                  Padding(
+                    padding: const EdgeInsets.only(right: 10),
+                    child: Icon(
+                      Icons.date_range,
+                      color: Colors.white,
                     ),
-                    child: Center(
-                        child: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Expanded(
-                        flex: 1,
-                        child: Center(
-                          child: (result != null)
-                              ? Text(
-                            'Barcode Type: ${describeEnum(result!.format)}   Data: ${result!.code}',
-                          )
-                              : Text(
-                            'Name: $name',
-                            style: TextStyle(
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                      ),
-                    )),
                   ),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  Container(
-                    height: 80,
-                    width: 140,
-                    decoration: BoxDecoration(
-                      color: Colors.red,
+                  Text(
+                    'Date: $cdate',
+                    style: TextStyle(
+                      color: Colors.white,
                     ),
-                    child: Center(
-                        child: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Text(
-                        'Date: $cdate',
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
-                      ),
-                    )),
                   ),
                 ],
               ),
             ),
           ),
 
-
-
           //Corse dropdown show mylist data
-          SizedBox(height: 20),
+
+          // Text(
+          //   'Selected Option: $selectedOption',
+          //   style: TextStyle(fontSize: 20),
+          // ),
+          SizedBox(height: 15),
           Padding(
-            padding: const EdgeInsets.fromLTRB(30, 0, 30, 15),
+            padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 16.0),
               decoration: BoxDecoration(
@@ -408,133 +424,250 @@ class _MyHomePageState extends State<MyHomePage> {
           //   },
           // ),
 
-          // Expanded(
-          //   flex: 1,
-          //   child: Center(
-          //   ),
-          // ),
+          Expanded(
+            flex: 1,
+            child: Center(
+              child: (result != null)
+                  ? Text(
+                'Barcode Type: ${describeEnum(result!.format)}   Data: ${result!.code}',
+              )
+                  : Text(
+                'Name: $name',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ),
 
-          Padding(
-            padding: const EdgeInsets.only(bottom: 50),
-            child: Column(
-              children: [
-                // Add other widgets here
-                if (selectedOption != null)
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 10),
-                    child: TextButton(
-                      style: TextButton.styleFrom(
-                        backgroundColor: Colors.redAccent,
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                      ),
-                      onPressed: () async {
-                        var response = await http.post(
-                          Uri.parse(
-                              'https://api.encode99.com.lk/susipwinapi/payment.php'),
-                          body: {'data': selectedOption},
-                        );
+          Column(
+            children: [
+              // Add other widgets here
 
-                        if (response.statusCode == 200) {
-                          var data = jsonDecode(response.body);
-                          showModalBottomSheet<void>(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return Container(
-                                height: 700,
-                                child: Column(
-                                  children: [
-                                    Padding(
-                                      padding:
-                                          const EdgeInsets.fromLTRB(250, 0, 0, 0),
-                                      child: TextButton(
-                                        child: Text('Close'),
-                                        onPressed: () => Navigator.pop(context),
-                                      ),
-                                    ),
-                                    Container(
-                                      decoration: BoxDecoration(
-                                        color: Colors.green,
-                                        borderRadius: BorderRadius.circular(50),
-                                      ),
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(20.0),
-                                        child: Icon(
-                                          Icons.check_circle_outline,
-                                          size: 52,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(top: 20),
-                                      child: Text("Student Payment Status"),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(top: 50),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          OutlinedButton(
-                                            onPressed: () {
-                                              // Add your first button onPressed logic here
-                                            },
-                                            child: Text('Cancel'),
-                                          ),
-                                          SizedBox(width: 20),
-                                          OutlinedButton(
-                                            onPressed: () {
-                                              // Add your second button onPressed logic here
-                                            },
-                                            child: Text('Add'),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-
-                                    Text("ID: ${data['id']}"),
-                                    Text("Course Name: ${data['coursename']}"),
-                                    Text("Description: ${data['description']}"),
-                                    // Add any other fields you want to display here
-                                  ],
-                                ),
-                              );
-                            },
-                          );
-                        } else {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(
-                                  'Failed to fetch course data. Please try again.'),
-                            ),
-                          );
-                        }
-                      },
-                      child: Text(
-                        "Pay",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        ),
+              if (selectedOption != null)
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 50),
+                  child: TextButton(
+                    style: TextButton.styleFrom(
+                      backgroundColor: Colors.redAccent,
+                      padding:
+                      EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5),
                       ),
                     ),
-                  ) // Use conditional statement to check if value is not null
-              ],
-            ),
+                    onPressed: () async {
+                      var response = await http.post(
+                        Uri.parse('https://api.encode99.com.lk/susipwinapi/payment.php'),
+                        body: {'data': selectedOption, 'name': uid},
+                      );
+
+                      print("-------------------------------$selectedOption---------------------------");
+                      print("-------------------------------$name---------------------------");
+
+                      if (response.statusCode == 200) {
+                        var data = jsonDecode(response.body);
+                        print("############################  $data #########################################");
+
+                        Icon paymentIcon;
+                        Color containerColor;
+
+                        if (data == 'Paid') {
+                          paymentIcon = Icon(
+                            Icons.check_circle_outline,
+                            size: 52,
+                            color: Colors.white,
+                          );
+                          containerColor = Colors.green;
+                        } else {
+                          // Use a different icon for other cases
+                          paymentIcon = Icon(
+                            Icons.close,
+                            size: 52,
+                            color: Colors.white,
+                          );
+                          containerColor = Colors.red;
+                        }
+
+                        showModalBottomSheet<void>(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return Container(
+                              height: 700,
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.fromLTRB(250, 0, 0, 0),
+                                    child: TextButton(
+                                      child: Text('Close'),
+                                      onPressed: () => Navigator.pop(context),
+                                    ),
+                                  ),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      color: containerColor,
+                                      borderRadius: BorderRadius.circular(50),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(20.0),
+                                      child: paymentIcon,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 20),
+                                    child: Text("Student Payment Status"),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 20),
+                                    child: Text(data),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 50),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        ElevatedButton(
+                                          // Add your first button onPressed logic here
+                                          onPressed: () => Navigator.pop(context),
+                                          style: ButtonStyle(
+                                            backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+                                          ),
+                                          child: Text('Cancel'),
+                                        ),
+                                        SizedBox(width: 20),
+                                        ElevatedButton(
+                                          onPressed: () {
+                                            addAtt(context);
+
+
+                                          },
+                                          style: ButtonStyle(
+                                            backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
+                                          ),
+                                          child: Text('Add'),
+                                        ),
+
+
+
+
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            );
+                          },
+                        );
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text('Failed to fetch course data. Please try again.'),
+                          ),
+                        );
+                      }
+                    },
+
+                    child: Text(
+                      "Pay",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+              // Use conditional statement to check if value is not null
+            ],
           )
         ],
       ),
     );
   }
 
+
+
+
+
   @override
   void dispose() {
     controller?.dispose();
     super.dispose();
+  }
+}
+
+Future<void> addAtt(BuildContext context) async {
+  var url = Uri.parse('https://api.encode99.com.lk/susipwinapi/addattendances.php');
+  var body = {'data': selectedOption, 'name': uid};
+
+  print("000000000000 $name 00000000000");
+  print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ $selectedOption @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+
+  try {
+    var response = await http.post(url, body: body);
+
+    if (response.statusCode == 200) {
+      var data = jsonDecode(response.body);
+      print(data);
+      if (data == 'use') {
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text('Status'),
+              content: Row(
+                children: [
+                  Icon(Icons.info,size: 50,color: Colors.red,),
+                  SizedBox(width: 8),
+                  Text('Already, Mark!'),
+                ],
+              ),
+              actions: [
+                TextButton(
+                  child: Text('OK'),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => pay()),
+                    );
+                  },
+                ),
+              ],
+            );
+          },
+        );
+      }else if(data == 'Mark'){
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text('Statu'),
+              content: Row(
+                children: [
+                  Icon(Icons.check_circle_outline,size: 50,color: Colors.green,),
+                  SizedBox(width: 8),
+                  Text('Successfully, Mark!'),
+                ],
+              ),
+              actions: [
+                TextButton(
+                  child: Text('OK'),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => pay()),
+                    );
+                  },
+                ),
+              ],
+            );
+          },
+        );
+      }
+    } else {
+      print('Failed to add attendance. Status code: ${response.statusCode}');
+    }
+  } catch (e) {
+    print('Error adding attendance: $e');
   }
 }
