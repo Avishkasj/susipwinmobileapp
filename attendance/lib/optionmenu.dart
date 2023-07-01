@@ -4,6 +4,8 @@ import 'package:attendance/QrScanner.dart';
 import 'package:attendance/pay.dart';
 import 'package:flutter/material.dart';
 
+import 'Manualadd.dart';
+
 class optionmenu extends StatefulWidget {
   const optionmenu({Key? key}) : super(key: key);
 
@@ -23,7 +25,7 @@ class _optionmenuState extends State<optionmenu> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => QrScanner()),
+                  MaterialPageRoute(builder: (context) => ManualAdd()),
                 );
               },
               child: Padding(
