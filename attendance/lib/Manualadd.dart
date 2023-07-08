@@ -23,8 +23,6 @@ String? selectedOption;
 class ManualAdd extends StatelessWidget {
   const ManualAdd({Key? key}) : super(key: key);
 
-
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -133,8 +131,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
 
 
-
-
   set setSgender(String value) {
     setState(() {
       sgender = value;
@@ -186,7 +182,7 @@ class _MyHomePageState extends State<MyHomePage> {
             Uri.parse('https://api.encode99.com.lk/susipwinapi/qr.php'),
             body: {'data': scanData.code});
 
-        
+
         // Handle the response.
         if (response.statusCode == 200) {
           // Decode the JSON data from the response body.
@@ -317,7 +313,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
             setState(() {
               selectedOption = null;
-
             });
 
             Navigator.push(
