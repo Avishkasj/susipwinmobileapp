@@ -333,8 +333,6 @@ class Grade extends StatelessWidget {
               icon: Icons.home,
               text: ("Home"),
             ),
-
-            
             GButton(
               icon: Icons.select_all,
               text: ("Courses"),
