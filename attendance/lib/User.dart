@@ -42,16 +42,16 @@ class User {
   }
 
   Map<String, dynamic> toJson() => {
-    'id': id,
-    'username': username,
-    'emailIndex': email,
-    'telIndex': tel,
-    'password': password,
-    'role': role,
-    'profile': profile,
-    'email_verified': emailVerified,
-    'tel_verified': telVerified,
-    'createdAt': createdAt.toIso8601String(),
-    'updatedAt': updatedAt.toIso8601String(),
-  };
+        'id': id,
+        'username': username,
+        'emailIndex': email,
+        'telIndex': tel,
+        'password': password,
+        'role': role,
+        'profile': profile,
+        'email_verified': emailVerified,
+        'tel_verified': telVerified,
+        'createdAt': createdAt.toIso8601String(),
+        'updatedAt': updatedAt.toIso8601String(),
+      };
 }
