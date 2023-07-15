@@ -13,7 +13,7 @@ final String date = DateTime.now().toString();
 String cdate = DateFormat("yyyy-MM-dd").format(DateTime.now());
 String? name;
 String? sgender;
-String?  uid;
+String? uid;
 String? cname2;
 String? cname;
 List<String> myList = [];
@@ -22,8 +22,6 @@ String? selectedOption;
 
 class QrScanner extends StatelessWidget {
   const QrScanner({Key? key}) : super(key: key);
-
-
 
   // This widget is the root of your application.
   @override
@@ -59,7 +57,6 @@ class QrScanner extends StatelessWidget {
     //   });
     // }
 
-
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'qr',
@@ -76,15 +73,12 @@ class QrScanner extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
-
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-
 
   // Future<void> addAtt() async {
   //   print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ $selectedOption @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
@@ -107,8 +101,6 @@ class MyHomePage extends StatefulWidget {
   // }
   // }
 
-
-
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
   // how it looks.
@@ -130,10 +122,6 @@ class _MyHomePageState extends State<MyHomePage> {
       name = value;
     });
   }
-
-
-
-
 
   set setSgender(String value) {
     setState(() {
@@ -159,9 +147,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-
-
-
     Color getColor() {
       bool status = true;
       if (status == true) {
@@ -302,7 +287,6 @@ class _MyHomePageState extends State<MyHomePage> {
       });
     }
 
-
     return Scaffold(
       backgroundColor: Color.fromRGBO(7, 20, 48, 1),
       appBar: AppBar(
@@ -312,11 +296,10 @@ class _MyHomePageState extends State<MyHomePage> {
           onPressed: () {
             myList = [];
             uid = "";
-            name= "";
+            name = "";
 
             setState(() {
               selectedOption = null;
-
             });
 
             Navigator.push(
@@ -458,16 +441,20 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                     onPressed: () async {
                       var response = await http.post(
-                        Uri.parse('https://api.encode99.com.lk/susipwinapi/payment.php'),
+                        Uri.parse(
+                            'https://api.encode99.com.lk/susipwinapi/payment.php'),
                         body: {'data': selectedOption, 'name': uid},
                       );
 
-                      print("-------------------------------$selectedOption---------------------------");
-                      print("-------------------------------$name---------------------------");
+                      print(
+                          "-------------------------------$selectedOption---------------------------");
+                      print(
+                          "-------------------------------$name---------------------------");
 
                       if (response.statusCode == 200) {
                         var data = jsonDecode(response.body);
-                        print("############################  $data #########################################");
+                        print(
+                            "############################  $data #########################################");
 
                         Icon paymentIcon;
                         Color containerColor;
@@ -497,7 +484,8 @@ class _MyHomePageState extends State<MyHomePage> {
                               child: Column(
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsets.fromLTRB(250, 0, 0, 0),
+                                    padding:
+                                        const EdgeInsets.fromLTRB(250, 0, 0, 0),
                                     child: TextButton(
                                       child: Text('Close'),
                                       onPressed: () => Navigator.pop(context),
@@ -524,13 +512,17 @@ class _MyHomePageState extends State<MyHomePage> {
                                   Padding(
                                     padding: const EdgeInsets.only(top: 50),
                                     child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: [
                                         ElevatedButton(
-                                            // Add your first button onPressed logic here
-                                            onPressed: () => Navigator.pop(context),
+                                          // Add your first button onPressed logic here
+                                          onPressed: () =>
+                                              Navigator.pop(context),
                                           style: ButtonStyle(
-                                            backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+                                            backgroundColor:
+                                                MaterialStateProperty.all<
+                                                    Color>(Colors.blue),
                                           ),
                                           child: Text('Cancel'),
                                         ),
@@ -538,18 +530,14 @@ class _MyHomePageState extends State<MyHomePage> {
                                         ElevatedButton(
                                           onPressed: () {
                                             addAtt(context);
-
-
                                           },
                                           style: ButtonStyle(
-                                            backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
+                                            backgroundColor:
+                                                MaterialStateProperty.all<
+                                                    Color>(Colors.green),
                                           ),
                                           child: Text('Add'),
                                         ),
-
-
-
-
                                       ],
                                     ),
                                   ),
@@ -561,12 +549,12 @@ class _MyHomePageState extends State<MyHomePage> {
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
-                            content: Text('Failed to fetch course data. Please try again.'),
+                            content: Text(
+                                'Failed to fetch course data. Please try again.'),
                           ),
                         );
                       }
                     },
-
                     child: Text(
                       "Done",
                       style: TextStyle(
@@ -585,10 +573,6 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-
-
-
-
   @override
   void dispose() {
     controller?.dispose();
@@ -597,11 +581,13 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 Future<void> addAtt(BuildContext context) async {
-  var url = Uri.parse('https://api.encode99.com.lk/susipwinapi/addattendances.php');
+  var url =
+      Uri.parse('https://api.encode99.com.lk/susipwinapi/addattendances.php');
   var body = {'data': selectedOption, 'name': uid};
 
   print("000000000000 $name 00000000000");
-  print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ $selectedOption @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+  print(
+      "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ $selectedOption @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 
   try {
     var response = await http.post(url, body: body);
@@ -617,7 +603,11 @@ Future<void> addAtt(BuildContext context) async {
               title: Text('Status'),
               content: Row(
                 children: [
-                  Icon(Icons.info,size: 50,color: Colors.red,),
+                  Icon(
+                    Icons.info,
+                    size: 50,
+                    color: Colors.red,
+                  ),
                   SizedBox(width: 8),
                   Text('Already, Mark!'),
                 ],
@@ -636,7 +626,7 @@ Future<void> addAtt(BuildContext context) async {
             );
           },
         );
-      }else if(data == 'Mark'){
+      } else if (data == 'Mark') {
         showDialog(
           context: context,
           builder: (BuildContext context) {
@@ -644,7 +634,11 @@ Future<void> addAtt(BuildContext context) async {
               title: Text('Statu'),
               content: Row(
                 children: [
-                  Icon(Icons.check_circle_outline,size: 50,color: Colors.green,),
+                  Icon(
+                    Icons.check_circle_outline,
+                    size: 50,
+                    color: Colors.green,
+                  ),
                   SizedBox(width: 8),
                   Text('Successfully, Mark!'),
                 ],
