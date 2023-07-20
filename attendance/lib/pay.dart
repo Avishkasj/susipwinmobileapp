@@ -81,36 +81,6 @@ class pay extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
 
-  // Future<void> addAtt() async {
-  //   print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ $selectedOption @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-  // var url = Uri.parse('https://api.encode99.com.lk/susipwinapi/addattendances.php');
-  // var body = {'data': selectedOption, 'name': uid};
-  //
-  //
-  //
-  // try {
-  // var response = await http.post(url, body: body);
-  //
-  // if (response.statusCode == 200) {
-  // var data = jsonDecode(response.body);
-  // print(data);
-  // } else {
-  // print('Failed to add attendance. Status code: ${response.statusCode}');
-  // }
-  // } catch (e) {
-  // print('Error adding attendance: $e');
-  // }
-  // }
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
   final String title;
 
   @override
@@ -139,11 +109,6 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void reassemble() {
     super.reassemble();
-    // if (Platform.isAndroid) {
-    //   controller!.pauseCamera();
-    // } else if (Platform.isIOS) {
-    //   controller!.resumeCamera();
-    // }
   }
 
   @override
@@ -184,37 +149,7 @@ class _MyHomePageState extends State<MyHomePage> {
               sgender = data['gender'];
               uid = data['id'];
             });
-
-            // List<String> courseList = [];
-            //
-            // for (var data2 in decodedData) {
-            //   // Access the properties of each object
-            //   setState(() {
-            //     String course = data['coursename'];
-            //     courseList.add(course);
-            //   });
-            // }
-
-            // Do something with the properties (e.g. add to a list, display on screen)
-            // ScaffoldMessenger.of(context).showSnackBar(
-            //   SnackBar(
-            //     content: Text('Name: $name'),
-            //   ),
-            // );
-
-            // ScaffoldMessenger.of(context).showSnackBar(
-            //   SnackBar(
-            //     content: Text('Gender: $sgender'),
-            //   ),
-            // );
           }
-
-          // Show a success message.
-          // ScaffoldMessenger.of(context).showSnackBar(
-          //   SnackBar(
-          //     content: Text('QR code scanned successfully. Decoded data: '),
-          //   ),
-          // );
 
           //stage 222222222
           var response2 = await http.post(
@@ -237,49 +172,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
             // Update the state with the list of course names
             setState(() {});
-
-            // MaterialPageRoute(builder: (context) => addPostFrameCallback()),
-
-            // Show a success message.
-            // ScaffoldMessenger.of(context).showSnackBar(
-            //   SnackBar(
-            //     content: Text('All courses: $myList'),
-            //   ),
-            // );
           }
-
-          //stage 33
-          // var response3 = await http.post(
-          //     Uri.parse('https://api.encode99.com.lk/susipwinapi/payment.php'),
-          //     body: {'data': selectedOption});
-          //
-          // // Handle the response.
-          // if (response3.statusCode == 200) {
-          //   // Decode the JSON data from the response body.
-          //   final decodedData3 = jsonDecode(response3.body);
-          //
-          //
-          //
-          //   // Show a success message.
-          //   ScaffoldMessenger.of(context).showSnackBar(
-          //     SnackBar(
-          //       content: Text('All courses: $decodedData3'),
-          //     ),
-          //   );
-          // } else {
-          //   // Show an error message.
-          //   ScaffoldMessenger.of(context).showSnackBar(
-          //     SnackBar(
-          //       content: Text('Failed to scan QR code. Please try again.$response3'),
-          //     ),
-          //   );
-          // }
         } else {
-          // Show an error message.
-          // ScaffoldMessenger.of(context).showSnackBar(
-          //   SnackBar(
-          //     content: Text('Failed to scan QR code. Please try again.'),
-          //   ),
           // );
         }
 
