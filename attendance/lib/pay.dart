@@ -27,36 +27,6 @@ class pay extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    // if (selectedOption != null) {
-    //   // Use conditional statement to check if value is not null
-    //   WidgetsBinding.instance.addPostFrameCallback((_) {
-    //     showModalBottomSheet<void>(
-    //       context: context,
-    //       builder: (BuildContext context) {
-    //         return Container(
-    //           height: 300,
-    //           child: Column(
-    //             children: [
-    //               TextButton(
-    //                 onPressed: () {
-    //                   selectedOption = null;
-    //                   // Your onClick action goes here
-    //                 },
-    //                 child: Text('Click me!', style: TextStyle(fontSize: 20)),
-    //                 style: TextButton.styleFrom(
-    //                   primary: Colors.blue,
-    //                   padding: EdgeInsets.all(16.0),
-    //                 ),
-    //               ),
-    //
-    //             ],
-    //           ),
-    //           // Add your content here
-    //         );
-    //       },
-    //     );
-    //   });
-    // }
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
