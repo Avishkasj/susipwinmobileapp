@@ -339,7 +339,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ),
                   Text(
-                    'Date: $cdate',
+                    'Date2: $cdate',
                     style: TextStyle(
                       color: Colors.white,
                     ),

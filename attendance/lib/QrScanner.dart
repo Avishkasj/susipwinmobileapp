@@ -184,15 +184,7 @@ class _MyHomePageState extends State<MyHomePage> {
               uid = data['id'];
             });
 
-            // List<String> courseList = [];
-            //
-            // for (var data2 in decodedData) {
-            //   // Access the properties of each object
-            //   setState(() {
-            //     String course = data['coursename'];
-            //     courseList.add(course);
-            //   });
-            // }
+
 
             // Do something with the properties (e.g. add to a list, display on screen)
             // ScaffoldMessenger.of(context).showSnackBar(
