@@ -26,37 +26,6 @@ class ManualAdd extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    // if (selectedOption != null) {
-    //   // Use conditional statement to check if value is not null
-    //   WidgetsBinding.instance.addPostFrameCallback((_) {
-    //     showModalBottomSheet<void>(
-    //       context: context,
-    //       builder: (BuildContext context) {
-    //         return Container(
-    //           height: 300,
-    //           child: Column(
-    //             children: [
-    //               TextButton(
-    //                 onPressed: () {
-    //                   selectedOption = null;
-    //                   // Your onClick action goes here
-    //                 },
-    //                 child: Text('Click me!', style: TextStyle(fontSize: 20)),
-    //                 style: TextButton.styleFrom(
-    //                   primary: Colors.blue,
-    //                   padding: EdgeInsets.all(16.0),
-    //                 ),
-    //               ),
-    //
-    //             ],
-    //           ),
-    //           // Add your content here
-    //         );
-    //       },
-    //     );
-    //   });
-    // }
-
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'qr',
@@ -79,36 +48,6 @@ class ManualAdd extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  // Future<void> addAtt() async {
-  //   print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ $selectedOption @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-  // var url = Uri.parse('https://api.encode99.com.lk/susipwinapi/addattendances.php');
-  // var body = {'data': selectedOption, 'name': uid};
-  //
-  //
-  //
-  // try {
-  // var response = await http.post(url, body: body);
-  //
-  // if (response.statusCode == 200) {
-  // var data = jsonDecode(response.body);
-  // print(data);
-  // } else {
-  // print('Failed to add attendance. Status code: ${response.statusCode}');
-  // }
-  // } catch (e) {
-  // print('Error adding attendance: $e');
-  // }
-  // }
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
 
   final String title;
 
@@ -157,19 +96,18 @@ class _MyHomePageState extends State<MyHomePage> {
       ;
     }
 
-    void _onQRViewCreated(QRViewController controller) async {
-      this.controller = controller;
-      var responseData;
-      String nn;
+// Define a TextEditingController to handle the text input.
+    final TextEditingController textInputController = TextEditingController();
 
-      controller.scannedDataStream.listen((scanData) async {
-        // Pause the camera until the result is processed.
-        await controller.pauseCamera();
-
-        // Send the scan data to the PHP backend.
+// Function to handle sending the text input to the PHP backend.
+    void _sendTextInputToBackend() async {
+      String textInput = textInputController.text;
+      if (textInput.isNotEmpty) {
+        // Send the text input data to the PHP backend.
         var response = await http.post(
-            Uri.parse('https://api.encode99.com.lk/susipwinapi/qr.php'),
-            body: {'data': scanData.code});
+          Uri.parse('https://api.encode99.com.lk/susipwinapi/qr.php'),
+          body: {'data': jsonEncode({'userid': textInput})},
+        );
 
         // Handle the response.
         if (response.statusCode == 200) {
@@ -177,56 +115,27 @@ class _MyHomePageState extends State<MyHomePage> {
           final decodedData = jsonDecode(response.body);
 
           for (var data in decodedData) {
-            // Access the properties of each object
+            // Access the properties of each object and update the state accordingly
             setState(() {
               name = data['username'];
               sgender = data['gender'];
               uid = data['id'];
             });
-
-            // List<String> courseList = [];
-            //
-            // for (var data2 in decodedData) {
-            //   // Access the properties of each object
-            //   setState(() {
-            //     String course = data['coursename'];
-            //     courseList.add(course);
-            //   });
-            // }
-
-            // Do something with the properties (e.g. add to a list, display on screen)
-            // ScaffoldMessenger.of(context).showSnackBar(
-            //   SnackBar(
-            //     content: Text('Name: $name'),
-            //   ),
-            // );
-
-            // ScaffoldMessenger.of(context).showSnackBar(
-            //   SnackBar(
-            //     content: Text('Gender: $sgender'),
-            //   ),
-            // );
           }
 
-          // Show a success message.
-          // ScaffoldMessenger.of(context).showSnackBar(
-          //   SnackBar(
-          //     content: Text('QR code scanned successfully. Decoded data: '),
-          //   ),
-          // );
-
-          //stage 222222222
+          // Fetch data from the second API endpoint (stage 222222222).
           var response2 = await http.post(
-              Uri.parse('https://api.encode99.com.lk/susipwinapi/course.php'),
-              body: {'data': scanData.code});
+            Uri.parse('https://api.encode99.com.lk/susipwinapi/course.php'),
+            body: {'data': jsonEncode({'userid': textInput})},
+          );
 
           // Handle the response.
           if (response2.statusCode == 200) {
             myList.clear();
             // Decode the JSON data from the response body.
-            final decodedData = jsonDecode(response2.body);
+            final decodedData2 = jsonDecode(response2.body);
 
-            for (var data2 in decodedData) {
+            for (var data2 in decodedData2) {
               // Access the properties of each object
               String cname = data2['coursename'];
 
@@ -234,59 +143,15 @@ class _MyHomePageState extends State<MyHomePage> {
               myList.add(cname);
             }
 
-            // Update the state with the list of course names
             setState(() {});
-
-            // MaterialPageRoute(builder: (context) => addPostFrameCallback()),
-
-            // Show a success message.
-            // ScaffoldMessenger.of(context).showSnackBar(
-            //   SnackBar(
-            //     content: Text('All courses: $myList'),
-            //   ),
-            // );
+          } else {
+            // Handle any error scenarios for the second API call here
           }
-
-          //stage 33
-          // var response3 = await http.post(
-          //     Uri.parse('https://api.encode99.com.lk/susipwinapi/payment.php'),
-          //     body: {'data': selectedOption});
-          //
-          // // Handle the response.
-          // if (response3.statusCode == 200) {
-          //   // Decode the JSON data from the response body.
-          //   final decodedData3 = jsonDecode(response3.body);
-          //
-          //
-          //
-          //   // Show a success message.
-          //   ScaffoldMessenger.of(context).showSnackBar(
-          //     SnackBar(
-          //       content: Text('All courses: $decodedData3'),
-          //     ),
-          //   );
-          // } else {
-          //   // Show an error message.
-          //   ScaffoldMessenger.of(context).showSnackBar(
-          //     SnackBar(
-          //       content: Text('Failed to scan QR code. Please try again.$response3'),
-          //     ),
-          //   );
-          // }
         } else {
-          // Show an error message.
-          // ScaffoldMessenger.of(context).showSnackBar(
-          //   SnackBar(
-          //     content: Text('Failed to scan QR code. Please try again.'),
-          //   ),
-          // );
+          // Handle any error scenarios for the first API call here
         }
-
-        // Resume the camera.
-        await controller.resumeCamera();
-      });
+      }
     }
-
     return Scaffold(
       backgroundColor: Color.fromRGBO(7, 20, 48, 1),
       appBar: AppBar(
@@ -311,20 +176,45 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Column(
         children: <Widget>[
-          Expanded(
-            flex: 5,
-            child: QRView(
-              key: qrKey,
-              onQRViewCreated: _onQRViewCreated,
-              overlay: QrScannerOverlayShape(
-                borderLength: 20,
-                borderWidth: 20,
-                borderRadius: 10,
-                borderColor: getColor(),
-                cutOutSize: MediaQuery.of(context).size.width * 0.8,
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              // Text input field for user to enter data
+              TextField(
+                controller: textInputController,
+                decoration: InputDecoration(
+                  hintText: 'Enter your text input here...',
+                ),
               ),
-            ),
+              SizedBox(height: 20),
+              // Button to trigger sending the entered text to the backend
+              ElevatedButton(
+                onPressed: _sendTextInputToBackend,
+                child: Text('Send Text Input to Backend'),
+              ),
+              // Add other UI elements you need to display the fetched data
+              // ...
+            ],
           ),
+
+          // Expanded(
+          //   flex: 5,
+          //   child: Container(
+          //     padding: EdgeInsets.all(10), // Optional padding for the QRView
+          //     child: QRView(
+          //       key: qrKey,
+          //       onQRViewCreated: _onQRViewCreated,
+          //       overlay: QrScannerOverlayShape(
+          //         borderLength: 20,
+          //         borderWidth: 20,
+          //         borderRadius: 10,
+          //         borderColor: getColor(),
+          //         cutOutSize: MediaQuery.of(context).size.width * 0.8,
+          //       ),
+          //     ),
+          //   ),
+          // ),
+
           Padding(
             padding: const EdgeInsets.all(15.0),
             child: Container(
@@ -339,7 +229,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ),
                   Text(
-                    'Date2: $cdate',
+                    'Date: $cdate',
                     style: TextStyle(
                       color: Colors.white,
                     ),
