@@ -25,7 +25,7 @@ class _optionmenuState extends State<optionmenu> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => ManualAdd()),
+                  MaterialPageRoute(builder: (context) => QrScanner()),
                 );
               },
               child: Padding(

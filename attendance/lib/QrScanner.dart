@@ -1,5 +1,7 @@
+import 'package:attendance/Manualadd.dart';
 import 'package:attendance/main.dart';
 import 'package:attendance/optionmenu.dart';
+import 'package:attendance/pay.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
@@ -340,6 +342,16 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
           ),
+
+        TextButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => ManualAdd()),
+            );
+          },
+          child: Text('Without QR'),
+        ),
 
           //Corse dropdown show mylist data
 

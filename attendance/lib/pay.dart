@@ -1,3 +1,4 @@
+import 'package:attendance/Manualpay.dart';
 import 'package:attendance/main.dart';
 import 'package:attendance/optionmenu.dart';
 import 'package:flutter/material.dart';
@@ -347,6 +348,17 @@ class _MyHomePageState extends State<MyHomePage> {
                 ],
               ),
             ),
+          ),
+
+
+          TextButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Manualpay()),
+              );
+            },
+            child: Text('Without QR'),
           ),
 
           //Corse dropdown show mylist data
