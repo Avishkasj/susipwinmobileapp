@@ -15,7 +15,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           height: 500,
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('assets/bg2.jpg'),
+              image: AssetImage('assets/bg3.jpg'),
               fit: BoxFit.cover,
             ),
             gradient: LinearGradient(

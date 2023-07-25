@@ -20,120 +20,107 @@ class _optionMenuState extends State<optionMenu> {
       appBar: CustomAppBar(),
       body: Container(
         decoration: BoxDecoration(
-          color: Colors.black54,
-          image: DecorationImage(
-            image: AssetImage('assets/bg3.jpg'), // Replace with your image path
-            fit: BoxFit.cover,
+          gradient: LinearGradient(
+            colors: [Colors.black, Colors.black54],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
           ),
         ),
-        child: Column(
-          children: [
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => QrScanner()),
-                );
-              },
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => QrScanner()),
+                  );
+                },
                 child: Container(
-                  width: 350,
+                  width: 200,
+                  height: 200,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     color: Color.fromRGBO(7, 20, 48, 1),
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.fromLTRB(90, 20, 90, 50),
-                    child: Column(
-                      children: [
-                        Icon(
-                          Icons.qr_code,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.qr_code,
+                        color: Colors.white,
+                        size: 80,
+                      ),
+                      SizedBox(height: 10),
+                      Text(
+                        "Attendance",
+                        style: TextStyle(
                           color: Colors.white,
-                          size: 100,
+                          fontSize: 18,
                         ),
-                        Text(
-                          "Attendance",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                          ),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
               ),
-            ),
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => pay()),
-                );
-              },
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
+              SizedBox(height: 20),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => pay()),
+                  );
+                },
                 child: Container(
-                  width: 350,
+                  width: 200,
+                  height: 200,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     color: Color.fromRGBO(7, 20, 48, 1),
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.fromLTRB(90, 20, 90, 50),
-                    child: Column(
-                      children: [
-                        Icon(
-                          Icons.payment_rounded,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.payment_rounded,
+                        color: Colors.white,
+                        size: 80,
+                      ),
+                      SizedBox(height: 10),
+                      Text(
+                        "Pay",
+                        style: TextStyle(
                           color: Colors.white,
-                          size: 100,
+                          fontSize: 18,
                         ),
-                        Text(
-                          "Pay ",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                          ),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
               ),
-            ),
-
-            Container(
-
-            ),
-
-            Padding(
-              padding: const EdgeInsets.only(top: 20),
-              child: Container(
-                width: 100, // Set the desired width of the container
-                // Container properties
-                child: FloatingActionButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) =>LoginPage()),
-                    );
-                    // Handle the FAB button press
-                  },
-                  child: Icon(Icons.logout), // Set the desired icon for the FAB
-                  backgroundColor: Colors.red, // Set the desired background color for the FAB
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => LoginPage()),
+                  );
+                },
+                child: Text(
+                  "Logout",
+                  style: TextStyle(fontSize: 18),
+                ),
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.red,
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(40), // Set the desired border radius for the button shape
+                    borderRadius: BorderRadius.circular(40),
                   ),
+                  padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
                 ),
               ),
-            ),
-
-
-
-
-
-          ],
+            ],
+          ),
         ),
       ),
     );

@@ -9,6 +9,8 @@ import 'package:intl/intl.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+import 'CustomAppBar.dart';
+
 final String date = DateTime.now().toString();
 String cdate = DateFormat("yyyy-MM-dd").format(DateTime.now());
 String? name;
@@ -154,43 +156,39 @@ class _MyHomePageState extends State<MyHomePage> {
     }
     return Scaffold(
       backgroundColor: Color.fromRGBO(7, 20, 48, 1),
-      appBar: AppBar(
-        backgroundColor: Color.fromRGBO(7, 20, 48, 1),
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            myList = [];
-            uid = "";
-            name = "";
-
-            setState(() {
-              selectedOption = null;
-            });
-
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => optionMenu()),
-            );
-          },
-        ),
-      ),
+      appBar:  CustomAppBar(),
       body: Column(
         children: <Widget>[
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               // Text input field for user to enter data
-              TextField(
-                controller: textInputController,
-                decoration: InputDecoration(
-                  hintText: 'Enter your text input here...',
+              Padding(
+                padding: const EdgeInsets.fromLTRB(30, 40, 30, 0),
+                child: TextField(
+                  controller: textInputController,
+                  decoration: InputDecoration(
+                    hintText: 'Enter Student Id',
+                    hintStyle: TextStyle(color: Colors.grey), // Change hint text color
+                    fillColor: Colors.white, // Change background color
+                    filled: true, // This property must be set to true to enable the background color
+                    // You can also change the color of the text entered by the user
+                    // using the style property as shown below
+                    // style: TextStyle(color: Colors.black),
+                    // Additionally, you can change the border color, focus border color, etc.
+                    // For example:
+                    // focusedBorder: OutlineInputBorder(
+                    //   borderSide: BorderSide(color: Colors.blue, width: 2.0),
+                    // ),
+                  ),
                 ),
               ),
+
               SizedBox(height: 20),
               // Button to trigger sending the entered text to the backend
               ElevatedButton(
                 onPressed: _sendTextInputToBackend,
-                child: Text('Send Text Input to Backend'),
+                child: Text('Submit'),
               ),
               // Add other UI elements you need to display the fetched data
               // ...

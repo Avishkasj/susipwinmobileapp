@@ -1,4 +1,4 @@
-#Tue Jul 25 19:26:34 IST 2023
+#Tue Jul 25 20:02:44 IST 2023
 base.0=/Users/avishkasupun/AndroidStudioProjects/susipwinmobileapp/attendance/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
 renamed.0=classes.dex
 path.0=classes.dex
