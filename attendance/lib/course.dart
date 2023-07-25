@@ -82,7 +82,7 @@ class Course extends StatelessWidget {
                 GestureDetector(
                   onTap: () {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => optionmenu()));
+                        MaterialPageRoute(builder: (context) => optionMenu()));
                     String datetime = DateTime.now().toString();
                     print(datetime);
                     print("Course 3 clicked");

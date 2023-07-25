@@ -6,19 +6,26 @@ import 'package:flutter/material.dart';
 
 import 'Manualadd.dart';
 
-class optionmenu extends StatefulWidget {
-  const optionmenu({Key? key}) : super(key: key);
+class optionMenu extends StatefulWidget {
+  const optionMenu({Key? key}) : super(key: key);
 
   @override
-  State<optionmenu> createState() => _optionmenuState();
+  State<optionMenu> createState() => _optionMenuState();
 }
 
-class _optionmenuState extends State<optionmenu> {
+class _optionMenuState extends State<optionMenu> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(),
-      body: SingleChildScrollView(
+      body: Container(
+        decoration: BoxDecoration(
+          color: Colors.black54,
+          image: DecorationImage(
+            image: AssetImage('assets/bg3.jpg'), // Replace with your image path
+            fit: BoxFit.cover,
+          ),
+        ),
         child: Column(
           children: [
             GestureDetector(
@@ -46,7 +53,7 @@ class _optionmenuState extends State<optionmenu> {
                           size: 100,
                         ),
                         Text(
-                          "Get Attendance",
+                          "Attendance",
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 20,

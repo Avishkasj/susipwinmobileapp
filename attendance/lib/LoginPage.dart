@@ -62,7 +62,7 @@ class _LoginPageState extends State<LoginPage> {
         print("done");
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) =>  optionmenu()),
+          MaterialPageRoute(builder: (context) =>  optionMenu()),
         );
       } else {
         // Set the error message

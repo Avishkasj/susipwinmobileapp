@@ -27,7 +27,6 @@ class pay extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'qr',
@@ -50,9 +49,7 @@ class pay extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
-
   final String title;
-
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
@@ -73,7 +70,6 @@ class _MyHomePageState extends State<MyHomePage> {
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
   Barcode? result;
   QRViewController? controller;
-
   // In order to get hot reload to work we need to pause the camera if the platform
   // is android, or resume the camera if the platform is iOS.
   @override
@@ -94,12 +90,23 @@ class _MyHomePageState extends State<MyHomePage> {
     }
 
     void _onQRViewCreated(QRViewController controller) async {
+
       this.controller = controller;
       var responseData;
       String nn;
 
       controller.scannedDataStream.listen((scanData) async {
         // Pause the camera until the result is processed.
+
+        setState(() {
+          // Clear the data when a new QR code is scanned
+          myList.clear();
+          selectedOption = null;
+          name = null;
+          sgender = null;
+          uid = null;
+        });
+
         await controller.pauseCamera();
 
         // Send the scan data to the PHP backend.
@@ -162,14 +169,13 @@ class _MyHomePageState extends State<MyHomePage> {
             myList = [];
             uid = "";
             name = "";
-
             setState(() {
               selectedOption = null;
             });
 
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => optionmenu()),
+              MaterialPageRoute(builder: (context) => optionMenu()),
             );
           },
         ),
@@ -226,61 +232,56 @@ class _MyHomePageState extends State<MyHomePage> {
 
           //Corse dropdown show mylist data
 
-          // Text(
-          //   'Selected Option: $selectedOption',
-          //   style: TextStyle(fontSize: 20),
-          // ),
           SizedBox(height: 15),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 16.0),
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: Colors.redAccent,
-                  width: 1.0,
+          SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 16.0),
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Colors.redAccent,
+                    width: 1.0,
+                  ),
+                  borderRadius: BorderRadius.circular(4.0),
                 ),
-                borderRadius: BorderRadius.circular(4.0),
-              ),
-              child: DropdownButton<String>(
-                value: selectedOption,
-                items: myList.map((String courseName) {
-                  return DropdownMenuItem<String>(
-                    value: courseName,
-                    child: Text(
-                      courseName,
-                      style: TextStyle(
-                        color: Colors.redAccent,
+                child: DropdownButton<String>(
+                  value: selectedOption,
+                  items: myList.map((String courseName) {
+                    return DropdownMenuItem<String>(
+                      value: courseName,
+                      child: Text(
+                        courseName,
+                        style: TextStyle(
+                          color: Colors.redAccent,
+                        ),
                       ),
-                    ),
-                  );
-                }).toList(),
-                onChanged: (String? value) {
-                  setState(() {
-                    selectedOption = value ?? '';
-                  });
-                },
-                isExpanded: true,
-                underline: SizedBox(),
+                    );
+                  }).toList(),
+                  onChanged: (String? value) {
+                    setState(() {
+                      selectedOption = value ?? '';
+                    });
+                  },
+                  isExpanded: true,
+                  underline: SizedBox(),
+                  // If there are duplicate values, choose a default value
+                  // or handle the situation accordingly.
+                  selectedItemBuilder: (BuildContext context) {
+                    return myList.map<Widget>((String courseName) {
+                      return Text(
+                        selectedOption == null
+                            ? "Choose a Course" // Show a placeholder text
+                            : selectedOption!,
+                        style: TextStyle(color: Colors.redAccent),
+                      );
+                    }).toList();
+                  },
+                ),
+              )
               ),
-            ),
           ),
 
-          // Text('Name: $selectedCourse'),
-          // DropdownButton<String>(
-          //   value: selectedCourse,
-          //   items: myList.map((String courseName) {
-          //     return DropdownMenuItem<String>(
-          //       value: courseName,
-          //       child: Text(courseName),
-          //     );
-          //   }).toList(),
-          //   onChanged: (String? value) {
-          //     setState(() {
-          //       selectedCourse = value;
-          //     });
-          //   },
-          // ),
 
           Expanded(
             flex: 1,
@@ -320,20 +321,16 @@ class _MyHomePageState extends State<MyHomePage> {
                             'https://api.encode99.com.lk/susipwinapi/payment.php'),
                         body: {'data': selectedOption, 'name': uid},
                       );
-
                       print(
                           "-------------------------------$selectedOption---------------------------");
                       print(
                           "-------------------------------$name---------------------------");
-
                       if (response.statusCode == 200) {
                         var data = jsonDecode(response.body);
                         print(
                             "############################  $data #########################################");
-
                         Icon paymentIcon;
                         Color containerColor;
-
                         if (data == 'Paid') {
                           paymentIcon = Icon(
                             Icons.check_circle_outline,
@@ -456,8 +453,7 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 Future<void> addAtt(BuildContext context) async {
-  var url =
-      Uri.parse('https://api.encode99.com.lk/susipwinapi/addattendances.php');
+  var url = Uri.parse('https://api.encode99.com.lk/susipwinapi/addpayment.php');
   var body = {'data': selectedOption, 'name': uid};
 
   print("000000000000 $name 00000000000");
@@ -466,9 +462,9 @@ Future<void> addAtt(BuildContext context) async {
 
   try {
     var response = await http.post(url, body: body);
-
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body);
+      print("==============================");
       print(data);
       if (data == 'use') {
         showDialog(
@@ -484,7 +480,7 @@ Future<void> addAtt(BuildContext context) async {
                     color: Colors.red,
                   ),
                   SizedBox(width: 8),
-                  Text('Already, Mark!'),
+                  Text('Already,Pay!'),
                 ],
               ),
               actions: [
