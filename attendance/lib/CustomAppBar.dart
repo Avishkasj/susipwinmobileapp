@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'LoginPage.dart';
 import 'optionmenu.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -60,6 +61,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 child: Icon(Icons.logout),
               ),
               onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => LoginPage()),
+                  );
                 // Add notification functionality
               },
             ),
